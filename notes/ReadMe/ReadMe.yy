@@ -1,0 +1,12 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"ReadMe",
+  "name":"ReadMe",
+  "openedOnFirstLoad":true,
+  "parent":{
+    "name":"newrpg",
+    "path":"newrpg.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}
