@@ -27,3 +27,7 @@ coordy = player.y;
 
 sprite_swap_rand(spr_enemy_jellyfish_idle);
 
+hitbox = instance_create_layer(x, y, "hurtboxes", enemy_jellyfish_hbox);
+
+
+

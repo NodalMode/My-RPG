@@ -39,7 +39,9 @@ enum pState
 {
     idle,  
     run,   
-    atk    
+    atk,
+	damaged,
+	dead
 }
 
 enum facing
@@ -64,9 +66,28 @@ swingNum = attackIndex.o;
 _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-attackCooldown = 0;
+attackCooldown = 0;  //0.25
+
+damageCooldown = 0;  //3
 
 attackIntent = false;
+
+hp = 200;
+
+function checkcollisionlist(x, y, list){
+	var length = array_length(list);
+	var beenhit = false;
+	for (var i = 0; i < length; i+=1)
+	{
+		 if place_meeting(x, y, list[i])  //this function takes a list of hitboxes as a parameter and checks if the player is making contact with any of them.
+		 {
+			 beenhit = true;
+		 }
+	}
+	return beenhit;
+}
+
+hurtbox = [enemy_jellyfish_hbox];
 
 global.dt = delta_time / 1000000;
 

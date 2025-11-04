@@ -19,3 +19,4 @@ if(_hor = 0 and _ver = 0)
 with (slash){
     draw_self();
 }    
+

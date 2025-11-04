@@ -5,6 +5,12 @@ _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
 prevState = state;
 
+if hp <= 0
+{
+	hp = 0;
+	state = pState.dead;
+}	
+
      
 
 
@@ -165,20 +171,30 @@ switch (state)
                             }
                         } 
                     }
-                    break;
-                }
-            }
-        }
-    if (image_index >= image_number - 1) 
-    { 
-        if (_hor == 0 && _ver == 0) state = pState.idle; 
-        else state = pState.run; 
+					break;
+				}
+			}	
             
-        attackCooldown = 0.25;
-        instance_destroy(slashhbox)
-    }
+	if (image_index >= image_number - 1) 
+	{ 
+		if (_hor == 0 && _ver == 0) state = pState.idle; 
+		else state = pState.run; 
+	            
+	    attackCooldown = 0.25;
+	    instance_destroy(slashhbox)
+	}
     break;    
-}    
+}   
+	case pState.damaged:
+	{
+		damageCooldown -= global.dt;
+		if damageCooldown <= 0
+		{
+			state = pState.idle;
+		}
+		break;
+	}
+}
 
 
 show_debug_message("horizontal speed - " + string(_hor));
@@ -189,4 +205,4 @@ if (attackCooldown <= 0){
     attackCooldown = 0
 }
 
-show_debug_message("atk cooldown - " + string(attackCooldown))
+show_debug_message("atk cooldown - " + string(attackCooldown));

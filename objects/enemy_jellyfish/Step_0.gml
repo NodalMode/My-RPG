@@ -1,5 +1,8 @@
 event_inherited();
 
+hitbox.x = x;
+hitbox.y = y;
+
 
 
 switch (state){
