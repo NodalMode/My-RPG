@@ -1,2 +1,2 @@
-visible = true;
+visible = false;
 solid = false;

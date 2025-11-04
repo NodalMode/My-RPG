@@ -194,21 +194,25 @@ switch (state)
             case facing.u:{
                 sprite_swap(spr_player_body_idle_down);
                 image_index = 0
+				dir = facing.d;
                 break;
             }
             case facing.d:{
                 sprite_swap(spr_player_body_idle_up);
                 image_index = 0
+				dir = facing.u;
                 break;
             }
             case facing.r:{
                 sprite_swap(spr_player_body_idle_right);
                 image_index = 0
+				dir = facing.r;
                 break;
             }
             case facing.l:{
                 sprite_swap(spr_player_body_idle_left);
                 image_index = 0
+				dir = facing.l;
                 break;
             }
         }
