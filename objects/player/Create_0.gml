@@ -68,7 +68,9 @@ _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
 attackCooldown = 0;  //0.25
 
-damageCooldown = 0;  //3
+invincibleCooldown = 0; //3
+
+damageCooldown = 0;  //0.25
 
 attackIntent = false;
 
@@ -87,7 +89,7 @@ function checkcollisionlist(x, y, list){
 	return beenhit;
 }
 
-hurtbox = [enemy_jellyfish_hbox];
+hurtbox = [];
 
 global.dt = delta_time / 1000000;
 

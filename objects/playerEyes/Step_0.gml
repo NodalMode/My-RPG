@@ -21,6 +21,9 @@ switch (player.state)
         visible = false;
         sprite_index = NOTHING;
         break;
+    case pState.damaged:
+        sprite_index = NOTHING;
+        break;
 }
 
 

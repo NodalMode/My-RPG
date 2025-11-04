@@ -5,11 +5,9 @@ _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
 prevState = state;
 
-if hp <= 0
-{
-	hp = 0;
-	state = pState.dead;
-}	
+if hp <= 0{
+    hp = 0;
+}
 
      
 
@@ -21,7 +19,7 @@ if (mouse_check_button_pressed(mb_left) && state != pState.atk && attackCooldown
 }    
 
 
-if (state != pState.atk) 
+if (state != pState.atk and state != pState.damaged) 
 {
     if (_hor == 0 && _ver == 0) state = pState.idle;
     else state = pState.run;
@@ -184,15 +182,36 @@ switch (state)
 	    instance_destroy(slashhbox)
 	}
     break;    
-}   
+    }   
 	case pState.damaged:
-	{
-		damageCooldown -= global.dt;
+    {
 		if damageCooldown <= 0
 		{
 			state = pState.idle;
-		}
-		break;
+        }
+        switch playerhbox.point{
+            case facing.u:{
+                sprite_swap(spr_player_body_idle_down);
+                image_index = 0
+                break;
+            }
+            case facing.d:{
+                sprite_swap(spr_player_body_idle_up);
+                image_index = 0
+                break;
+            }
+            case facing.r:{
+                sprite_swap(spr_player_body_idle_right);
+                image_index = 0
+                break;
+            }
+            case facing.l:{
+                sprite_swap(spr_player_body_idle_left);
+                image_index = 0
+                break;
+            }
+        }
+        break;
 	}
 }
 
@@ -202,7 +221,18 @@ show_debug_message("vertical speed - " + string(_ver));
 
 attackCooldown -= global.dt;
 if (attackCooldown <= 0){
-    attackCooldown = 0
+    attackCooldown = 0;
+}
+
+damageCooldown -= global.dt;
+if damageCooldown <= 0{
+    damageCooldown = 0;
+}
+
+invincibleCooldown -= global.dt;
+if invincibleCooldown <= 0{
+    invincibleCooldown = 0;
 }
 
 show_debug_message("atk cooldown - " + string(attackCooldown));
+show_debug_message("dmg cooldown - " + string(damageCooldown));

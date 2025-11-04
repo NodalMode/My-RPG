@@ -1,7 +1,9 @@
-visible = false;
+visible = true;
 solid = true;
 
 moveSpeed = 42;
+
+edges = layer_tilemap_get_id("edges");
 
 global.tilemap = [layer_tilemap_get_id("tlayerfg"), layer_tilemap_get_id("edges"), duckhbox]
 
@@ -17,3 +19,45 @@ function checkcollisionlist(x, y, list){
 	}
 	return beenhit;
 }
+
+function whohitme(x, y, list){
+    var length = array_length(list);
+    var dir = 0;
+    for (var i = 0; i < length; i+=1)
+    {
+        if place_meeting(x, y, list[i])
+        {
+            dir = point_direction(x, y, list[i].x, list[i].y);
+        }
+    }
+    return dir;
+}
+
+function place_meeting_tile(_x, _y, _tilemap) {
+    var tile = tilemap_get_at_pixel(_tilemap, _x, _y);
+    return (tile != 0);  
+                                         // if empty, it’s not a wall tile 
+}
+
+function dircardinal(dir){
+    if dir >= 225 and dir < 315{
+        dir = facing.u;
+    }
+    else if dir >= 315 or dir < 45{
+        dir = facing.r;
+    }
+    else if dir >= 45 and dir < 135{
+        dir = facing.d;
+    }
+    else if dir >= 135 and dir < 255{
+        dir = facing.l;
+    }
+    return dir;
+}
+
+dir = 0;
+
+dmgsp = 150;
+
+hitstop = 0; //0.2
+
