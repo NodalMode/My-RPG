@@ -188,6 +188,7 @@ switch (state)
 		if damageCooldown <= 0
 		{
 			state = pState.idle;
+            playerhbox.dmgsp = 150;
         }
         switch playerhbox.point{
             case facing.u:{

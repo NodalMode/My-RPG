@@ -5,9 +5,10 @@ if player.state != pState.damaged{
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
 }
 
-x = round(x);
-y = round(y);
-
+if player.state != pState.damaged{    
+    x = round(x);
+    y = round(y);
+}    
 
 
 show_debug_message("delta time is - " + string(global.dt));
@@ -20,11 +21,14 @@ switch (player.state)
 		{
 			player.state = pState.damaged;
 			player.hp -= 50;
-			player.damageCooldown = 0.1;
+			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
             dir = whohitme(x, y, player.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
+            dmgspeed = 150;
+            x = round(x);
+            y = round(y);
 		}
         break;	
 	}
@@ -34,11 +38,14 @@ switch (player.state)
 		{
 			player.state = pState.damaged;
 			player.hp -= 50;
-			player.damageCooldown = 0.1;
+			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
             dir = whohitme(x, y, player.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
+            dmgspeed = 150;
+            x = round(x);
+            y = round(y);
 		}
         break;	
 	}	
@@ -48,11 +55,14 @@ switch (player.state)
 		{
 			player.state = pState.damaged;
 			player.hp -= 50;
-			player.damageCooldown = 0.1;
+			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
             dir = whohitme(x, y, player.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
+            dmgspeed = 150;
+            x = round(x);
+            y = round(y);
 		}
         break;
 	}
@@ -60,24 +70,40 @@ switch (player.state)
     {
         switch point{
             case facing.u:{
+                dmgsp -= 5;
+                if dmgsp <= 0{
+                    dmgsp = 0;
+                }
                 if (!place_meeting_tile(x, y-2*dmgsp*global.dt, edges)){
                     y-=dmgsp*global.dt;
                 }
                 break;
             }
             case facing.d:{
+                dmgsp -= 5;
+                if dmgsp <= 0{
+                    dmgsp = 0;
+                }
                 if (!place_meeting_tile(x, y+2*dmgsp*global.dt, edges)){
                     y+=dmgsp*global.dt;
                 }
                 break;
             }
             case facing.r:{
+                dmgsp -= 5;
+                if dmgsp <= 0{
+                    dmgsp = 0;
+                }
                 if (!place_meeting_tile(x-2*dmgsp*global.dt, y, edges)){
                     x-=dmgsp*global.dt;
                 }
                 break;
             }
             case facing.l:{
+                dmgsp -= 5;
+                if dmgsp <= 0{
+                    dmgsp = 0;
+                }
                 if (!place_meeting_tile(x+2*dmgsp*global.dt, y, edges)){
                     x+=dmgsp*global.dt;
                 }
