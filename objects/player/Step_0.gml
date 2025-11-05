@@ -1,5 +1,12 @@
 global.dt = delta_time / 1000000;
 
+
+cleaninstancearray(hurtbox);
+
+
+
+//show_debug_message("all existing hurtboxes: " + arraytostring(hurtbox))
+
 _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 

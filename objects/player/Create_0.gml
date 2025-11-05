@@ -89,7 +89,28 @@ function checkcollisionlist(x, y, list){
 	return beenhit;
 }
 
+function cleaninstancearray(list){
+	var len = array_length(list);
+	for (var i = 0; i < len; i+=1){
+		if !instance_exists(list[i]){
+			list[i] = list[len-1]
+			array_resize(list, len-1)
+		}
+		len = array_length(list)
+	}
+}
+
 hurtbox = [];
+
+function arraytostring(list){
+	var len = array_length(list);
+	var str = "";
+	for (var i=0; i<len;i+=1){
+		str += string(list[i]);
+		str += " ";
+	}
+	return str;
+}		
 
 global.dt = delta_time / 1000000;
 

@@ -1,7 +1,7 @@
 var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-if player.state != pState.damaged{	
+if player.state != pState.damaged and kb <= 0{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
 }
 
@@ -63,6 +63,10 @@ switch (player.state)
             dmgspeed = 150;
             x = round(x);
             y = round(y);
+		}
+		if (wallcollidecheck(edges) or wallcollidecheck(foreground)) and kbsp <= 0{
+			kbsp = 70;
+			kb = 0.4;
 		}
         break;
 	}
@@ -126,3 +130,54 @@ hitstop -= global.dt;
 if hitstop <= 0{
     hitstop = 0;
 }
+
+kb -= global.dt;
+if kb <= 0{
+	kb = 0
+}	
+
+if  kb > 0{
+	switch player.dir{
+		case facing.u:{
+			if (!place_meeting_tile(x, y-2*kbsp*global.dt, edges)){
+				y+=kbsp*global.dt;
+			kbsp -= 5	
+			if kbsp <= 0{
+				kbsp = 0
+			}
+            }
+			break;
+		}	
+		case facing.d:{
+			if (!place_meeting_tile(x, y+2*kbsp*global.dt, edges)){
+				y-=kbsp*global.dt;
+			kbsp -= 5	
+			if kbsp <= 0{
+				kbsp = 0
+			}
+            }
+			break;
+		}	
+		case facing.l:{
+			if (!place_meeting_tile(x+2*kbsp*global.dt, y, edges)){
+				x+=kbsp*global.dt;
+			kbsp -= 5
+			if kbsp <= 0{
+				kbsp = 0
+			}
+            }
+			break;
+		}	
+		case facing.r:{
+			if (!place_meeting_tile(x-2*kbsp*global.dt, y, edges)){
+				x-=kbsp*global.dt;
+			kbsp -= 5	
+			if kbsp <= 0{
+				kbsp = 0
+			}
+            }	
+			break;
+		}	
+	}
+}
+

@@ -4,6 +4,7 @@ solid = true;
 moveSpeed = 42;
 
 edges = layer_tilemap_get_id("edges");
+foreground = layer_tilemap_get_id("tlayerfg");
 
 global.tilemap = [layer_tilemap_get_id("tlayerfg"), layer_tilemap_get_id("edges"), duckhbox]
 
@@ -55,9 +56,44 @@ function dircardinal(dir){
     return dir;
 }
 
+function wallcollidecheck(tilemap_id){
+	var hitwall = false;
+	switch player.dir{
+		case facing.u:{
+			if (tilemap_get_at_pixel(tilemap_id, x, y-31) != 0){
+				hitwall = true;
+				break;
+			}
+		}
+		case facing.d:{
+			if (tilemap_get_at_pixel(tilemap_id, x, y+31) != 0){
+				hitwall = true;
+				break;
+			}
+		}
+		case facing.l:{
+			if (tilemap_get_at_pixel(tilemap_id, x-30, y) != 0){
+				hitwall = true;
+				break;
+			}
+		}
+		case facing.r:{
+			if (tilemap_get_at_pixel(tilemap_id, x+30, y) != 0){
+				hitwall = true;
+				break;
+			}
+		}
+	}
+	return hitwall;
+}
+
 dir = 0;
 
 dmgsp = 150;
+
+kbsp = 0; //70
+
+kb = 0; //0.4
 
 hitstop = 0; //0.2
 

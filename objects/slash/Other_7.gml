@@ -3,3 +3,4 @@ if (sprite_index = spr_slash_down0 or sprite_index = spr_slash_down1 or sprite_i
     visible = false;
     sprite_index = NOTHING;
 }
+
