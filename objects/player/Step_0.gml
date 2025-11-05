@@ -202,26 +202,22 @@ switch (state)
         }
         switch playerhbox.point{
             case facing.u:{
-                sprite_swap(spr_player_body_idle_down);
-                image_index = 0
+                sprite_swap_rand(spr_player_body_dmg_down);
 				dir = facing.d;
                 break;
             }
             case facing.d:{
-                sprite_swap(spr_player_body_idle_up);
-                image_index = 0
+                sprite_swap_rand(spr_player_body_dmg_up);
 				dir = facing.u;
                 break;
             }
             case facing.r:{
-                sprite_swap(spr_player_body_idle_right);
-                image_index = 0
+                sprite_swap_rand(spr_player_body_dmg_right);
 				dir = facing.r;
                 break;
             }
             case facing.l:{
-                sprite_swap(spr_player_body_idle_left);
-                image_index = 0
+                sprite_swap_rand(spr_player_body_dmg_left);
 				dir = facing.l;
                 break;
             }
