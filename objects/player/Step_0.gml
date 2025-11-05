@@ -16,6 +16,8 @@ if hp <= 0{
     hp = 0;
 }
 
+
+
      
 
 
@@ -83,7 +85,7 @@ switch (state)
     
     case pState.atk:
     {
-        slashbox = instance_create_layer(x, y, "hurtboxes", slashhbox)    
+        slashbox = instance_create_layer(x, y, "hurtboxes", slashhbox);
         switch (dir)
             {
                 case facing.d:
@@ -186,7 +188,8 @@ switch (state)
 		else state = pState.run; 
 	            
 	    attackCooldown = 0.25;
-	    instance_destroy(slashhbox)
+	    instance_destroy(slashhbox);
+        instance_destroy(slashwall);
 	}
     break;    
     }   

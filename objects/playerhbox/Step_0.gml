@@ -8,7 +8,12 @@ if player.state != pState.damaged and kb <= 0{
 if player.state != pState.damaged{    
     x = round(x);
     y = round(y);
-}    
+}  
+
+if keyboard_check(ord("R")){
+    x = 255;
+    y = 642;
+}  
 
 
 show_debug_message("delta time is - " + string(global.dt));
@@ -51,7 +56,8 @@ switch (player.state)
 	}	
 	case pState.atk:
 	{
-		if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
+		slashhwall = instance_create_layer(x, y, "hitboxes", slashwall); 
+        if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
 			player.hp -= 50;
@@ -64,7 +70,7 @@ switch (player.state)
             x = round(x);
             y = round(y);
 		}
-		if (wallcollidecheck(edges) or wallcollidecheck(foreground)) and kbsp <= 0{
+		if slashwall.knockback and kbsp <= 0{
 			kbsp = 70;
 			kb = 0.4;
 		}
@@ -78,7 +84,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!place_meeting_tile(x, y-2*dmgsp*global.dt, edges)){
+                if (!tile_place_meeting(x, y-2*dmgsp*global.dt, edges)){
                     y-=dmgsp*global.dt;
                 }
                 break;
@@ -88,7 +94,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!place_meeting_tile(x, y+2*dmgsp*global.dt, edges)){
+                if (!tile_place_meeting(x, y+2*dmgsp*global.dt, edges)){
                     y+=dmgsp*global.dt;
                 }
                 break;
@@ -98,7 +104,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!place_meeting_tile(x-2*dmgsp*global.dt, y, edges)){
+                if (!tile_place_meeting(x-2*dmgsp*global.dt, y, edges)){
                     x-=dmgsp*global.dt;
                 }
                 break;
@@ -108,7 +114,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!place_meeting_tile(x+2*dmgsp*global.dt, y, edges)){
+                if (!tile_place_meeting(x+2*dmgsp*global.dt, y, edges)){
                     x+=dmgsp*global.dt;
                 }
                 break;
@@ -139,43 +145,43 @@ if kb <= 0{
 if  kb > 0{
 	switch player.dir{
 		case facing.u:{
-			if (!place_meeting_tile(x, y-2*kbsp*global.dt, edges)){
+			if (!tile_place_meeting(x, y-2*kbsp*global.dt, edges)){
 				y+=kbsp*global.dt;
+            }    
 			kbsp -= 5	
 			if kbsp <= 0{
 				kbsp = 0
-			}
             }
 			break;
 		}	
 		case facing.d:{
-			if (!place_meeting_tile(x, y+2*kbsp*global.dt, edges)){
+			if (!tile_place_meeting(x, y+2*kbsp*global.dt, edges)){
 				y-=kbsp*global.dt;
+            }
 			kbsp -= 5	
 			if kbsp <= 0{
 				kbsp = 0
 			}
-            }
 			break;
 		}	
 		case facing.l:{
-			if (!place_meeting_tile(x+2*kbsp*global.dt, y, edges)){
+			if (!tile_place_meeting(x+2*kbsp*global.dt, y, edges)){
 				x+=kbsp*global.dt;
+            }
 			kbsp -= 5
 			if kbsp <= 0{
 				kbsp = 0
 			}
-            }
 			break;
 		}	
 		case facing.r:{
-			if (!place_meeting_tile(x-2*kbsp*global.dt, y, edges)){
+			if (!tile_place_meeting(x-2*kbsp*global.dt, y, edges)){
 				x-=kbsp*global.dt;
+            }
 			kbsp -= 5	
 			if kbsp <= 0{
 				kbsp = 0
 			}
-            }	
 			break;
 		}	
 	}
