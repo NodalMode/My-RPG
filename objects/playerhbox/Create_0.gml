@@ -3,6 +3,8 @@ solid = true;
 
 moveSpeed = 42;
 
+exists = false;
+
 edges = layer_tilemap_get_id("edges");
 foreground = layer_tilemap_get_id("tlayerfg");
 

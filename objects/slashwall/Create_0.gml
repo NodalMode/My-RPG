@@ -1,4 +1,4 @@
-visible = false;
+visible = true;
 solid = false;
 
 function tile_place_meeting(xx, yy, layer_id){
@@ -18,6 +18,19 @@ function tile_place_meeting(xx, yy, layer_id){
     y = yp;
     
     return meeting;
+}
+
+function checkcollisionlist(x, y, list){
+	var length = array_length(list);
+	var beenhit = false;
+	for (var i = 0; i < length; i+=1)
+	{
+		 if place_meeting(x, y, list[i])  //this function takes a list of hitboxes as a parameter and checks if the player is making contact with any of them.
+		 {
+			 beenhit = true;
+		 }
+	}
+	return beenhit;
 }
 
 edges = layer_tilemap_get_id("edges");
