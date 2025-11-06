@@ -22,7 +22,6 @@ switch (player.state)
 {
 	case pState.idle:
 	{
-		exists = false;
 		if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
@@ -35,13 +34,11 @@ switch (player.state)
             dmgspeed = 150;
             x = round(x);
             y = round(y);
-			break;
 		}
         break;	
 	}
     case pState.run:
 	{
-		exists = false;
 		if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
@@ -54,15 +51,13 @@ switch (player.state)
             dmgspeed = 150;
             x = round(x);
             y = round(y);
-			break;
 		}
         break;	
 	}	
 	case pState.atk:
 	{
-		slashhwall = instance_create_layer(x, y, "hitboxes", slashwall);
-		slashbox = instance_create_layer(x, y, "hurtboxes", slashhbox);
-		if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
+		slashhwall = instance_create_layer(x, y, "hitboxes", slashwall); 
+        if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
 			player.hp -= 50;

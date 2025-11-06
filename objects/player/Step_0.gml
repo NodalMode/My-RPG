@@ -51,8 +51,8 @@ switch (state)
             state = pState.run; 
         }
         if (mouse_check_button(mb_left) && attackCooldown <= 0)
-        { 
-			state = pState.atk; 
+        {
+            state = pState.atk; 
         }
         break;
 
@@ -77,14 +77,15 @@ switch (state)
             state = pState.idle; 
         }
         if (mouse_check_button(mb_left) && attackCooldown <= 0)
-        { 
-			state = pState.atk; 
+        {
+            state = pState.atk; 
         }
         break;
     }
     
     case pState.atk:
     {
+        slashbox = instance_create_layer(x, y, "hurtboxes", slashhbox);
         switch (dir)
             {
                 case facing.d:
