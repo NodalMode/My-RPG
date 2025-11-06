@@ -15,11 +15,9 @@ if (player.sprite_index == spr_player_body_run_down) or (player.sprite_index == 
         {
             sprite_index = spr_player_legs_run_updown
             switch (playerFrame)
-            {
-                case 0: image_index = 0; runFrame = 0; break;
-                case 1: image_index = 1; runFrame = 1; break;
-                case 2: image_index = 2; runFrame = 2; break;
-                case 3: image_index = 3; runFrame = 3; break;
+            { 
+                case 0: if (image_index != 0 and image_index != 2) { if (i == false) { image_index = 0; runFrame = 0; i = true; } else { runFrame = 2; image_index = 2; i = false; } }  break; 
+                case 1: image_index = 1; runFrame = 1; break; 
             }
             break;
         }
@@ -28,10 +26,8 @@ if (player.sprite_index == spr_player_body_run_down) or (player.sprite_index == 
             sprite_index = spr_player_legs_run_updown
             switch (playerFrame)
             {
-                case 0: image_index = 0; runFrame = 0; break;
+                case 0: if (image_index != 0 and image_index != 2) { if (i == false) { image_index = 0; runFrame = 0; i = true; } else { runFrame = 2; image_index = 2; i = false; } }  break;
                 case 1: image_index = 1; runFrame = 1; break;
-                case 2: image_index = 2; runFrame = 2; break;
-                case 3: image_index = 3; runFrame = 3; break;
             }
             break;    
         }    
@@ -83,7 +79,7 @@ switch (player.state){
         break;
     
     case pState.run:
-        visible = true;
+        visible = false;
         break;
     
 }

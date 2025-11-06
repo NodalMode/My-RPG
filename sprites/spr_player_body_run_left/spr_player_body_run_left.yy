@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_player_body_run_left",
   "bboxMode":0,
-  "bbox_bottom":20,
+  "bbox_bottom":22,
   "bbox_left":0,
   "bbox_right":11,
   "bbox_top":0,

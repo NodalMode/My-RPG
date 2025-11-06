@@ -56,7 +56,7 @@ switch (player.state)
 	}	
 	case pState.atk:
 	{
-		slashhwall = instance_create_layer(x, y, "hitboxes", slashwall); 
+		slashhwall = instance_create_layer(x, y-10, "hitboxes", slashwall); 
         if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
@@ -145,7 +145,7 @@ if kb <= 0{
 if  kb > 0{
 	switch player.dir{
 		case facing.u:{
-			if (!tile_place_meeting(x, y-2*kbsp*global.dt, edges)){
+			if (!tile_place_meeting(x, y+1, edges)){
 				y+=kbsp*global.dt;
             }    
 			kbsp -= 5	
@@ -155,7 +155,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.d:{
-			if (!tile_place_meeting(x, y+2*kbsp*global.dt, edges)){
+			if (!tile_place_meeting(x, y-1, edges)){
 				y-=kbsp*global.dt;
             }
 			kbsp -= 5	
@@ -165,7 +165,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.l:{
-			if (!tile_place_meeting(x+2*kbsp*global.dt, y, edges)){
+			if (!tile_place_meeting(x+1, y, edges)){
 				x+=kbsp*global.dt;
             }
 			kbsp -= 5
@@ -175,7 +175,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.r:{
-			if (!tile_place_meeting(x-2*kbsp*global.dt, y, edges)){
+			if (!tile_place_meeting(x-1, y, edges)){
 				x-=kbsp*global.dt;
             }
 			kbsp -= 5	

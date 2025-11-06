@@ -2,7 +2,7 @@
 
 
 x = playerhbox.x;
-y = playerhbox.y;
+y = playerhbox.y-10;
 
 
 
