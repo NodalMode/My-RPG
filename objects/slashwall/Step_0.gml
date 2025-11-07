@@ -3,6 +3,7 @@ switch player.dir{
         sprite_index = spr_slash_upwall;
         if tile_place_meeting(x, y, edges) or tile_place_meeting(x, y, foreground) or tile_place_meeting(x, y, walls){
             knockback = true;
+			
         }
         break;
     }
