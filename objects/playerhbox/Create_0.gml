@@ -5,8 +5,9 @@ moveSpeed = 42;
 
 edges = layer_tilemap_get_id("edges");
 foreground = layer_tilemap_get_id("tlayerfg");
+walls = layer_tilemap_get_id("walls")
 
-global.tilemap = [layer_tilemap_get_id("tlayerfg"), layer_tilemap_get_id("edges"), duckhbox]
+global.tilemap = [layer_tilemap_get_id("tlayerfg"), layer_tilemap_get_id("edges"), layer_tilemap_get_id("walls"), duckhbox];
 
 function checkcollisionlist(x, y, list){
 	var length = array_length(list);
@@ -90,17 +91,56 @@ function wallcollidecheck(tilemap_id){
 function tile_place_meeting(xx, yy, layer_id){
     var xp = x;
     var yp = y;
+	var meeting = false;
     
     x = xx;
     y = yy;
     
-    var meeting = tilemap_get_at_pixel(layer_id, bbox_left, bbox_top) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top) ||
+    meeting = tilemap_get_at_pixel(layer_id, bbox_left, bbox_top) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top) ||
                   tilemap_get_at_pixel(layer_id, bbox_left, y) || tilemap_get_at_pixel(layer_id, bbox_right, y) ||
                   tilemap_get_at_pixel(layer_id, bbox_left, bbox_bottom) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top)
     
     
     x = xp;
     y = yp;
+    
+    return meeting;
+}
+
+function tile_place_meeting_dir(xx, yy, layer_id){
+    var xp = x;
+    var yp = y;
+	var pointing = player.dir;
+	var meeting = false;
+    
+    x = xx;
+    y = yy;
+    
+    //var meeting = tilemap_get_at_pixel(layer_id, bbox_left, bbox_top) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top) ||
+    //              tilemap_get_at_pixel(layer_id, bbox_left, y) || tilemap_get_at_pixel(layer_id, bbox_right, y) ||
+    //              tilemap_get_at_pixel(layer_id, bbox_left, bbox_bottom) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top)
+    
+	switch pointing{
+		case facing.d:{
+			meeting = tilemap_get_at_pixel(layer_id, x, bbox_top+1);
+		}
+		case facing.u:{
+			meeting = tilemap_get_at_pixel(layer_id, x, bbox_bottom-1);
+		}
+		case facing.l:{
+			meeting = tilemap_get_at_pixel(layer_id, bbox_left, y);
+		}
+		case facing.r:{
+			meeting = tilemap_get_at_pixel(layer_id, bbox_right, y);
+		}
+	}
+    
+    x = xp;
+    y = yp;
+	
+	if meeting{
+		show_debug_message("THERE IS A COLLISION TILE BEHIND ME!!!");
+	}
     
     return meeting;
 }

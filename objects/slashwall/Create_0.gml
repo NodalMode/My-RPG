@@ -21,5 +21,7 @@ function tile_place_meeting(xx, yy, layer_id){
 
 edges = layer_tilemap_get_id("edges");
 foreground = layer_tilemap_get_id("tlayerfg");
+walls = layer_tilemap_get_id("walls");
 
 knockback = false;
+

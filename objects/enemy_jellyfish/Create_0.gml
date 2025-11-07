@@ -31,5 +31,9 @@ hitbox = instance_create_layer(x, y, "hurtboxes", enemy_jellyfish_hbox);
 
 array_push(player.hurtbox, hitbox);
 
+array_push(player.ehitbox, hitbox);
+
+hp = 50;
+
 
 

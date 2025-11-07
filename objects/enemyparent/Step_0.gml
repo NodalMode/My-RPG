@@ -1,1 +1,2 @@
 distfromplayer = sqrt(sqr(x-playerhbox.x)+sqr(y-playerhbox.y));
+

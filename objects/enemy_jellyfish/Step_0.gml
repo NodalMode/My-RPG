@@ -3,6 +3,10 @@ event_inherited();
 hitbox.x = x;
 hitbox.y = y;
 
+if hp <= 0{
+	state = eState.dead;
+}
+
 
 
 switch (state){
@@ -51,6 +55,11 @@ switch (state){
         y = round(y);
         break;  
     }
+	case (eState.dead):{
+		sprite_swap(NOTHING);
+		instance_destroy(hitbox)
+		instance_destroy()
+	}
         
 }
 

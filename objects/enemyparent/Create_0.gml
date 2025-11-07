@@ -30,3 +30,6 @@ function movetoplayer(speed)
     }  
     
 }
+
+dmgrecieved = false;
+

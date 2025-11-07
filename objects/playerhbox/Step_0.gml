@@ -73,6 +73,7 @@ switch (player.state)
 		if slashwall.knockback and kbsp <= 0{
 			kbsp = 70;
 			kb = 0.4;
+			check = 0;
 		}
         break;
 	}
@@ -145,45 +146,46 @@ if kb <= 0{
 if  kb > 0{
 	switch player.dir{
 		case facing.u:{
-			if (!tile_place_meeting(x, y+1, edges)){
+			if (!tile_place_meeting_dir(x, y+1, edges) and !tile_place_meeting_dir(x, y+1, foreground) and !tile_place_meeting_dir(x, y+1, walls)){
 				y+=kbsp*global.dt;
             }    
-			kbsp -= 5	
+			kbsp -= 5;	
 			if kbsp <= 0{
-				kbsp = 0
+				kbsp = 0;
             }
 			break;
 		}	
 		case facing.d:{
-			if (!tile_place_meeting(x, y-1, edges)){
+			if (!tile_place_meeting_dir(x, y-1, edges) and !tile_place_meeting_dir(x, y-1, foreground) and !tile_place_meeting_dir(x, y-1, walls)){
 				y-=kbsp*global.dt;
             }
-			kbsp -= 5	
+			kbsp -= 5;	
 			if kbsp <= 0{
-				kbsp = 0
+				kbsp = 0;
 			}
 			break;
 		}	
 		case facing.l:{
-			if (!tile_place_meeting(x+1, y, edges)){
+			if (!tile_place_meeting_dir(x+1, y, edges) and !tile_place_meeting_dir(x+1, y, foreground) and !tile_place_meeting_dir(x+1, y, walls)){
 				x+=kbsp*global.dt;
             }
-			kbsp -= 5
+			kbsp -= 5;
 			if kbsp <= 0{
-				kbsp = 0
+				kbsp = 0;
 			}
 			break;
 		}	
 		case facing.r:{
-			if (!tile_place_meeting(x-1, y, edges)){
+			if (!tile_place_meeting_dir(x-1, y, edges) and !tile_place_meeting_dir(x-1, y, foreground) and !tile_place_meeting_dir(x-1, y, walls)){
 				x-=kbsp*global.dt;
             }
-			kbsp -= 5	
+			kbsp -= 5;	
 			if kbsp <= 0{
-				kbsp = 0
+				kbsp = 0;
 			}
 			break;
 		}	
 	}
+	check += 1;
 }
 

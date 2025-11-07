@@ -2,6 +2,7 @@ global.dt = delta_time / 1000000;
 
 
 cleaninstancearray(hurtbox);
+cleaninstancearray(ehitbox);
 
 
 
@@ -16,12 +17,17 @@ if hp <= 0{
     hp = 0;
 }
 
+if state != pState.atk{
+	instance_destroy(slashhbox);
+    instance_destroy(slashwall);
+}
+
 
 
      
 
 
-if (mouse_check_button_pressed(mb_left) && state != pState.atk && attackCooldown <= 0) 
+if (mouse_check_button_pressed(mb_left) && state != pState.atk  && state != pState.damaged && attackCooldown <= 0) 
 {
     state = pState.atk;
     image_index = 0;   
@@ -53,6 +59,7 @@ switch (state)
         if (mouse_check_button(mb_left) && attackCooldown <= 0)
         {
             state = pState.atk; 
+			slashhbox.hitenemies = [];
         }
         break;
 
@@ -81,6 +88,7 @@ switch (state)
         if (mouse_check_button(mb_left) && attackCooldown <= 0)
         {
             state = pState.atk; 
+			slashhbox.hitenemies = [];
         }
         break;
     }

@@ -101,6 +101,7 @@ function cleaninstancearray(list){
 }
 
 hurtbox = [];
+ehitbox = [];
 
 function arraytostring(list){
 	var len = array_length(list);

@@ -19,3 +19,11 @@ switch (player.dir){
         break;
     }
 }
+
+if player.state = pState.atk{
+	for (var i = 0; i < array_length(player.ehitbox); i += 1){
+		if place_meeting(x, y, player.ehitbox[i]) and !array_contains(hitenemies, player.ehitbox[i]){
+			array_push(hitenemies, player.ehitbox[i])
+		}
+	}
+}
