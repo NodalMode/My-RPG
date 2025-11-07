@@ -5,3 +5,5 @@ walls = layer_tilemap_get_id("edges")
 
 hitenemies = [];
 
+check = false;
+

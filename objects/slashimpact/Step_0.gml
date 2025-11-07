@@ -1,12 +1,15 @@
 switch effect{
-	case 0:{
+	case "1":{
 		sprite_swap(spr_effect_impact1);
+        break;
 	}
-	case 1:{
+	case "2":{
 		sprite_swap(spr_effect_impact2);
+        break;
 	}
-	case 2:{
+	case "3":{
 		sprite_swap(spr_effect_impact3);
+        break;
 	}
 }
 

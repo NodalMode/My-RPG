@@ -3,6 +3,7 @@ if instance_exists(slashhbox){
 		enemy_jellyfish.hp -= 25
 		dmgrecieved = true;
 		show_debug_message("enemy hit!")
+        instance_create_layer(playerhbox.x, playerhbox.y, "anims", slashimpact);
 	}
 }
 

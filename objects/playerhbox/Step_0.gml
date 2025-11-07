@@ -144,7 +144,10 @@ if kb <= 0{
 }	
 
 if  kb > 0{
-	switch player.dir{
+	if check == 0{
+        instance_create_layer(x, y, "anims", slashimpact);
+    }
+    switch player.dir{
 		case facing.u:{
 			if (!tile_place_meeting_dir(x, y+1, edges) and !tile_place_meeting_dir(x, y+1, foreground) and !tile_place_meeting_dir(x, y+1, walls)){
 				y+=kbsp*global.dt;
