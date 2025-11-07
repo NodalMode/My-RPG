@@ -30,6 +30,7 @@ if state != pState.atk{
 if (mouse_check_button_pressed(mb_left) && state != pState.atk  && state != pState.damaged && attackCooldown <= 0) 
 {
     state = pState.atk;
+	clearedlist = false;
     image_index = 0;   
 }    
 
@@ -59,7 +60,7 @@ switch (state)
         if (mouse_check_button(mb_left) && attackCooldown <= 0)
         {
             state = pState.atk; 
-			slashhbox.hitenemies = [];
+			clearedlist = false;
         }
         break;
 
@@ -88,7 +89,7 @@ switch (state)
         if (mouse_check_button(mb_left) && attackCooldown <= 0)
         {
             state = pState.atk; 
-			slashhbox.hitenemies = [];
+			clearedlist = false;
         }
         break;
     }
@@ -96,6 +97,10 @@ switch (state)
     case pState.atk:
     {
         slashbox = instance_create_layer(x, y, "hurtboxes", slashhbox);
+		if clearedlist == false{
+			slashhbox.hitenemies = [];
+			clearedlist = true;
+		}
         switch (dir)
             {
                 case facing.d:

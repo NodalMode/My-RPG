@@ -1,8 +1,5 @@
 event_inherited();
 
-hitbox.x = x;
-hitbox.y = y;
-
 if hp <= 0{
 	state = eState.dead;
 }
@@ -57,12 +54,15 @@ switch (state){
     }
 	case (eState.dead):{
 		sprite_swap(NOTHING);
-		instance_destroy(hitbox)
-		instance_destroy()
+		instance_destroy(hitbox);
 	}
         
 }
 
+if instance_exists(enemy_jellyfish_hbox){
+	hitbox.x = x;
+	hitbox.y = y;
+}
 
     
     
