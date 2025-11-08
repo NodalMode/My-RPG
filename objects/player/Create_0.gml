@@ -113,5 +113,9 @@ function arraytostring(list){
 	return str;
 }		
 
+
+hurt = 0;
+flash_counter = 0;
+
 global.dt = delta_time / 1000000;
 

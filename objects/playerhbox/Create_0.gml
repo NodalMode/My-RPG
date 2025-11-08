@@ -5,7 +5,7 @@ moveSpeed = 42;
 
 edges = layer_tilemap_get_id("edges");
 foreground = layer_tilemap_get_id("tlayerfg");
-walls = layer_tilemap_get_id("walls")
+walls = layer_tilemap_get_id("walls");
 
 global.tilemap = [layer_tilemap_get_id("tlayerfg"), layer_tilemap_get_id("edges"), layer_tilemap_get_id("walls"), duckhbox];
 

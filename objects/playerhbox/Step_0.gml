@@ -28,6 +28,7 @@ switch (player.state)
 			player.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
+            player.hurt = 16;
             dir = whohitme(x, y, player.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
@@ -45,6 +46,7 @@ switch (player.state)
 			player.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
+            player.hurt = 16;
             dir = whohitme(x, y, player.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
@@ -63,6 +65,7 @@ switch (player.state)
 			player.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
+            player.hurt = 16;
             dir = whohitme(x, y, player.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
