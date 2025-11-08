@@ -200,7 +200,7 @@ while tilemap_get_at_pixel(edges, x, bbox_bottom) or tilemap_get_at_pixel(foregr
     y -= 1
 }
 
-while tilemap_get_at_pixel(edges, bbox_right, y) or tilemap_get_at_pixel(foreground, bbox_right, y) or tilemap_get_at_pixel(walls, bbox_right, y){
+while tilemap_get_at_pixel(edges, bbox_right-1, y) or tilemap_get_at_pixel(foreground, bbox_right-1, y) or tilemap_get_at_pixel(walls, bbox_right-1, y){
     y -= 1
 }
 
