@@ -9,7 +9,7 @@ switch player.dir{
     }
     case facing.d:{
         sprite_index = spr_slash_downwall;
-        if tile_place_meeting(x, y, edges) or tile_place_meeting(x, y, foreground) or tile_place_meeting(x, y, walls){
+        if tile_place_meeting(x, y, edges) or tile_place_meeting(x, y, foreground){
             knockback = true;
         }
         break;
@@ -27,5 +27,9 @@ switch player.dir{
             knockback = true;
         }
         break;
-    }    
+    }  
+}
+
+if knockback == true{
+    show_debug_message("HIT WALL");
 }

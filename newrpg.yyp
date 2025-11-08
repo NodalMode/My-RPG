@@ -10,6 +10,7 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"shaders","folderPath":"folders/shaders.yy","name":"shaders","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"objects","folderPath":"folders/objects.yy","name":"objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -42,6 +43,7 @@
     {"id":{"name":"slashimpact","path":"objects/slashimpact/slashimpact.yy",},},
     {"id":{"name":"slashwall","path":"objects/slashwall/slashwall.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"replacecolour","path":"shaders/replacecolour/replacecolour.yy",},},
     {"id":{"name":"area_01","path":"sprites/area_01/area_01.yy",},},
     {"id":{"name":"duck_didle","path":"sprites/duck_didle/duck_didle.yy",},},
     {"id":{"name":"duck_dwalk","path":"sprites/duck_dwalk/duck_dwalk.yy",},},

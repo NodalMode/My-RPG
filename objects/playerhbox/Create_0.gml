@@ -1,4 +1,4 @@
-visible = false;
+visible = true;
 solid = true;
 
 moveSpeed = 42;
@@ -122,10 +122,10 @@ function tile_place_meeting_dir(xx, yy, layer_id){
     
 	switch pointing{
 		case facing.d:{
-			meeting = tilemap_get_at_pixel(layer_id, x, bbox_top+1);
+			meeting = tilemap_get_at_pixel(layer_id, x, bbox_top);
 		}
 		case facing.u:{
-			meeting = tilemap_get_at_pixel(layer_id, x, bbox_bottom-1);
+			meeting = tilemap_get_at_pixel(layer_id, x, bbox_bottom);
 		}
 		case facing.l:{
 			meeting = tilemap_get_at_pixel(layer_id, bbox_left, y);

@@ -3,6 +3,8 @@ solid = false;
 
 effect = choose("1", "2", "3");
 
+rotation = choose(0, 90, 180, 270);
+
 switch player.dir{
 	case facing.d:{
 		x = slashwall.x;

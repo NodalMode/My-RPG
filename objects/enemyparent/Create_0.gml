@@ -33,3 +33,5 @@ function movetoplayer(speed)
 
 dmgrecieved = false;
 
+hurt = 0;
+flash_counter = 0;

@@ -149,7 +149,7 @@ if  kb > 0{
     }
     switch player.dir{
 		case facing.u:{
-			if (!tile_place_meeting_dir(x, y+1, edges) and !tile_place_meeting_dir(x, y+1, foreground) and !tile_place_meeting_dir(x, y+1, walls)){
+			if (!tile_place_meeting_dir(x, y+kbsp*global.dt*2, edges) and !tile_place_meeting_dir(x, y+kbsp*global.dt*2, foreground) and !tile_place_meeting_dir(x, y+kbsp*global.dt*2, walls)){
 				y+=kbsp*global.dt;
             }    
 			kbsp -= 5;	
@@ -159,7 +159,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.d:{
-			if (!tile_place_meeting_dir(x, y-1, edges) and !tile_place_meeting_dir(x, y-1, foreground) and !tile_place_meeting_dir(x, y-1, walls)){
+			if (!tile_place_meeting_dir(x, y-kbsp*global.dt*2, edges) && !tile_place_meeting_dir(x, y-kbsp*global.dt*2, foreground) && !tile_place_meeting_dir(x, y-kbsp*global.dt*2, walls)){
 				y-=kbsp*global.dt;
             }
 			kbsp -= 5;	
@@ -169,7 +169,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.l:{
-			if (!tile_place_meeting_dir(x+1, y, edges) and !tile_place_meeting_dir(x+1, y, foreground) and !tile_place_meeting_dir(x+1, y, walls)){
+			if (!tile_place_meeting_dir(x+kbsp*global.dt*2, y, edges) && !tile_place_meeting_dir(x+kbsp*global.dt*2, y, foreground) && !tile_place_meeting_dir(x+kbsp*global.dt*2, y, walls)){
 				x+=kbsp*global.dt;
             }
 			kbsp -= 5;
@@ -179,7 +179,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.r:{
-			if (!tile_place_meeting_dir(x-1, y, edges) and !tile_place_meeting_dir(x-1, y, foreground) and !tile_place_meeting_dir(x-1, y, walls)){
+			if (!tile_place_meeting_dir(x-kbsp*global.dt*2, y, edges) && !tile_place_meeting_dir(x-kbsp*global.dt*2, y, foreground) && !tile_place_meeting_dir(x-kbsp*global.dt*2, y, walls)){
 				x-=kbsp*global.dt;
             }
 			kbsp -= 5;	
@@ -191,4 +191,23 @@ if  kb > 0{
 	}
 	check += 1;
 }
+
+while tilemap_get_at_pixel(edges, x, bbox_top) or tilemap_get_at_pixel(foreground, x, bbox_top) or tilemap_get_at_pixel(walls, x, bbox_top){
+    y += 1
+}
+
+while tilemap_get_at_pixel(edges, x, bbox_bottom) or tilemap_get_at_pixel(foreground, x, bbox_bottom) or tilemap_get_at_pixel(walls, x, bbox_bottom){
+    y -= 1
+}
+
+while tilemap_get_at_pixel(edges, bbox_right, y) or tilemap_get_at_pixel(foreground, bbox_right, y) or tilemap_get_at_pixel(walls, bbox_right, y){
+    y -= 1
+}
+
+while tilemap_get_at_pixel(edges, bbox_left, y) or tilemap_get_at_pixel(foreground, bbox_left, y) or tilemap_get_at_pixel(walls, bbox_left, y){
+    y += 1
+}
+
+//^this makes sure that in the case the hitbox DOES go out of bounds, the game will push them back out.
+//so no matter whatever bugs cause the player to leave the walkable space, this will act as a band-aid that fixes all.
 

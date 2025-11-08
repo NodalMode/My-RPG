@@ -59,10 +59,7 @@ switch (state){
         
 }
 
-if instance_exists(enemy_jellyfish_hbox){
-	hitbox.x = x;
-	hitbox.y = y;
-}
+
 
     
     

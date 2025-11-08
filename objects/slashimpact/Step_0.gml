@@ -1,3 +1,6 @@
+image_angle = rotation;
+
+
 switch effect{
 	case "1":{
 		sprite_swap(spr_effect_impact1);
@@ -12,4 +15,5 @@ switch effect{
         break;
 	}
 }
+
 

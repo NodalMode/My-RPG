@@ -29,11 +29,15 @@ sprite_swap_rand(spr_enemy_jellyfish_idle);
 
 hitbox = instance_create_layer(x, y, "hurtboxes", enemy_jellyfish_hbox);
 
+with hitbox{
+    parent = other.id;
+}
+
 array_push(player.hurtbox, hitbox);
 
 array_push(player.ehitbox, hitbox);
 
-hp = 50;
+hp = 500;
 
 
 

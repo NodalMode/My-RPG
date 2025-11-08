@@ -1,4 +1,4 @@
-visible = false;
+visible = true;
 solid = false;
 
 function tile_place_meeting(xx, yy, layer_id){
