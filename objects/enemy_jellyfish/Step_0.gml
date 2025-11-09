@@ -60,10 +60,10 @@ switch (state){
 }
 
 
-if state == eState.dead and killsoundplayed == false{
-    audio_play_sound(killsound, 10, false);
-    killsoundplayed = true;
-}
+//if state == eState.dead and killsoundplayed == false{
+//    audio_play_sound(killsound, 10, false);
+//    killsoundplayed = true;
+//}
 
 
     
