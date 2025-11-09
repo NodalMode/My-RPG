@@ -37,7 +37,9 @@ array_push(player.hurtbox, hitbox);
 
 array_push(player.ehitbox, hitbox);
 
-hp = 500;
+hp = 100;
+
+killsoundplayed = false;
 
 
 

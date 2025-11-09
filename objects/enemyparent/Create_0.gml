@@ -71,3 +71,6 @@ dmgrecieved = false;
 
 hurt = 0;
 flash_counter = 0;
+
+startx = x;
+starty = y;
