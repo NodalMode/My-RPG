@@ -84,6 +84,21 @@ switch (player.state)
 				break;
 			}
 		}
+		if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
+		{
+			player.state = pState.damaged;
+			player.hp -= 50;
+			player.damageCooldown = 0.35;
+            player.invincibleCooldown = 3;
+            player.hurt = 16;
+            dir = whohitme(x, y, player.hurtbox);
+            point = dircardinal(dir);
+            hitstop = 0.2;
+            dmgspeed = 150;
+            x = round(x);
+            y = round(y);
+		}
+		break;
 	}
 	case pState.atk:
 	{

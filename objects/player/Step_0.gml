@@ -35,11 +35,18 @@ if (mouse_check_button_pressed(mb_left)) && (state = pState.idle or state = pSta
 }    
 
 
-if (state = pState.idle or state = pState.run) 
+if (state == pState.idle or state == pState.run) 
 {
-    if (_hor == 0 && _ver == 0) state = pState.idle;
+	if (_hor == 0 && _ver == 0) state = pState.idle;
     else state = pState.run;
-}        
+}   
+
+if (state == pState.idle or state == pState.run) {
+	if mouse_check_button_pressed(mb_right) && dashCooldown <= 0{
+		dashTime = 0.25;
+		state = pState.dash;
+	}
+}
 
 
 switch (state)
@@ -57,12 +64,13 @@ switch (state)
         {
             state = pState.run; 
         }
-        if (mouse_check_button(mb_left) && attackCooldown <= 0)
+        if (mouse_check_button_pressed(mb_left) && attackCooldown <= 0)
         {
             state = pState.atk; 
 			clearedlist = false;
+			image_index = 0;
         }
-		if keyboard_check_pressed(vk_space) && dashCooldown <= 0{
+		if mouse_check_button_pressed(mb_right) && dashCooldown <= 0{
 			dashTime = 0.25;
 			state = pState.dash;
 		}
@@ -90,12 +98,13 @@ switch (state)
         {
             state = pState.idle; 
         }
-        if (mouse_check_button(mb_left) && attackCooldown <= 0)
+        if (mouse_check_button_pressed(mb_left) && attackCooldown <= 0)
         {
             state = pState.atk; 
 			clearedlist = false;
+			image_index = 0;
         }
-		if keyboard_check_pressed(vk_space) && dashCooldown <= 0{
+		if mouse_check_button_pressed(mb_right) && dashCooldown <= 0{
 			dashTime = 0.25;
 			state = pState.dash;
 		}
