@@ -118,19 +118,19 @@ switch (state)
 		}
 		switch dir{
 			case facing.d:{
-				sprite_swap_rand(duck_dwalk);
+				sprite_swap(spr_player_body_dash_down);
 				break;
 			}
 			case facing.u:{
-				sprite_swap_rand(duck_uwalk);
+				sprite_swap(spr_player_body_dash_up);
 				break;
 			}
 			case facing.r:{
-				sprite_swap_rand(duck_rwalk);
+				sprite_swap(spr_player_body_dash_right);
 				break;
 			}
 			case facing.l:{
-				sprite_swap_rand(duck_lwalk);
+				sprite_swap(spr_player_body_dash_left);
 				break;
 			}
 		}
