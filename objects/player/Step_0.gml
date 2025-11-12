@@ -27,15 +27,15 @@ if state != pState.atk{
      
 
 
-if (mouse_check_button_pressed(mb_left) && state != pState.atk  && state != pState.damaged && attackCooldown <= 0) 
+if (mouse_check_button_pressed(mb_left)) && (state = pState.idle or state = pState.damaged) && (attackCooldown <= 0) 
 {
-    state = pState.atk;
-	clearedlist = false;
+    clearedlist = false;
+	state = pState.atk;
     image_index = 0;   
 }    
 
 
-if (state != pState.atk and state != pState.damaged) 
+if (state = pState.idle or state = pState.run) 
 {
     if (_hor == 0 && _ver == 0) state = pState.idle;
     else state = pState.run;
@@ -62,6 +62,10 @@ switch (state)
             state = pState.atk; 
 			clearedlist = false;
         }
+		if keyboard_check_pressed(vk_space) && dashCooldown <= 0{
+			dashTime = 0.25;
+			state = pState.dash;
+		}
         break;
 
     }  
@@ -91,8 +95,38 @@ switch (state)
             state = pState.atk; 
 			clearedlist = false;
         }
+		if keyboard_check_pressed(vk_space) && dashCooldown <= 0{
+			dashTime = 0.25;
+			state = pState.dash;
+		}
         break;
     }
+	case pState.dash:
+	{
+		if player.dashTime <= 0{
+			player.state = pState.idle;
+			player.dashCooldown = 0.15;
+		}
+		switch dir{
+			case facing.d:{
+				sprite_swap_rand(duck_dwalk);
+				break;
+			}
+			case facing.u:{
+				sprite_swap_rand(duck_uwalk);
+				break;
+			}
+			case facing.r:{
+				sprite_swap_rand(duck_rwalk);
+				break;
+			}
+			case facing.l:{
+				sprite_swap_rand(duck_lwalk);
+				break;
+			}
+		}
+		break;
+	}
     
     case pState.atk:
     {
@@ -258,6 +292,16 @@ if damageCooldown <= 0{
 invincibleCooldown -= global.dt;
 if invincibleCooldown <= 0{
     invincibleCooldown = 0;
+}
+
+dashCooldown -= global.dt;
+if dashCooldown <= 0{
+    dashCooldown = 0;
+}
+
+dashTime -= global.dt;
+if dashTime <= 0{
+	dashTime = 0
 }
 
 show_debug_message("atk cooldown - " + string(attackCooldown));

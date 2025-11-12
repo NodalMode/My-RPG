@@ -69,20 +69,7 @@ else
     }
 } 
 
-switch (player.state){
-    case pState.idle:
-        visible = false;
-        break;
-    
-    case pState.atk:
-        visible = false;
-        break;
-    
-    case pState.run:
-        visible = false;
-        break;
-    
-}
+
 
 
     

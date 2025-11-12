@@ -40,6 +40,7 @@ enum pState
     idle,  
     run,   
     atk,
+	dash,
 	damaged,
 	dead
 }
@@ -71,6 +72,9 @@ attackCooldown = 0;  //0.25
 invincibleCooldown = 0; //3
 
 damageCooldown = 0;  //0.25
+
+dashTime = 0; //0.25
+dashCooldown = 0; // 0.15
 
 attackIntent = false;
 

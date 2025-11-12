@@ -1,7 +1,7 @@
 var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-if player.state != pState.damaged and kb <= 0{	
+if player.state != pState.damaged and kb <= 0 and player.state != pState.dash{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
 }
 
@@ -55,7 +55,36 @@ switch (player.state)
             y = round(y);
 		}
         break;	
-	}	
+	}
+	case pState.dash:
+	{
+		switch player.dir{
+			case facing.d:{
+				if !tile_place_meeting(x, y+dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, foreground){
+					y += dashSpeed*global.dt;
+				}
+				break;
+			}
+			case facing.u:{
+				if !tile_place_meeting(x, y-dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, foreground){
+					y -= dashSpeed*global.dt;
+				}
+				break;
+			}
+			case facing.l:{
+				if !tile_place_meeting(x-dashSpeed*global.dt, y, edges) and !tile_place_meeting(x-dashSpeed*global.dt, y, walls) and !tile_place_meeting(x-dashSpeed*global.dt, y, foreground){
+					x -= dashSpeed*global.dt;
+				}
+				break;
+			}
+			case facing.r:{
+				if !tile_place_meeting(x+dashSpeed*global.dt, y, edges) and !tile_place_meeting(x+dashSpeed*global.dt, y, walls) and !tile_place_meeting(x+dashSpeed*global.dt, y, foreground){
+					x += dashSpeed*global.dt
+				}
+				break;
+			}
+		}
+	}
 	case pState.atk:
 	{
 		slashhwall = instance_create_layer(x, y-10, "hitboxes", slashwall); 

@@ -3,9 +3,12 @@ solid = true;
 
 moveSpeed = 42;
 
+dashSpeed = 150;
+
 edges = layer_tilemap_get_id("edges");
 foreground = layer_tilemap_get_id("tlayerfg");
 walls = layer_tilemap_get_id("walls");
+background = layer_tilemap_get_id("tlayerbg");
 
 global.tilemap = [layer_tilemap_get_id("tlayerfg"), layer_tilemap_get_id("edges"), layer_tilemap_get_id("walls"), duckhbox];
 
@@ -93,19 +96,32 @@ function tile_place_meeting(xx, yy, layer_id){
     var yp = y;
 	var meeting = false;
     
-    x = xx;
+	if player.dir == facing.d or player.dir == facing.u{
+		x = xx-1;
+	}
+	else{
+		x = xx;
+	}
     y = yy;
     
-    meeting = tilemap_get_at_pixel(layer_id, bbox_left, bbox_top) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top) ||
-                  tilemap_get_at_pixel(layer_id, bbox_left, y) || tilemap_get_at_pixel(layer_id, bbox_right, y) ||
-                  tilemap_get_at_pixel(layer_id, bbox_left, bbox_bottom) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top)
-    
+    if player.dir == facing.d or player.dir == facing.u{
+		meeting = tilemap_get_at_pixel(layer_id, bbox_left+2, bbox_top) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top) ||
+	                  tilemap_get_at_pixel(layer_id, bbox_left+2, y) || tilemap_get_at_pixel(layer_id, bbox_right, y) ||
+	                  tilemap_get_at_pixel(layer_id, bbox_left+2, bbox_bottom) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top)
+	}
+	else{
+		meeting = tilemap_get_at_pixel(layer_id, bbox_left, bbox_top) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top) ||
+	                  tilemap_get_at_pixel(layer_id, bbox_left, y) || tilemap_get_at_pixel(layer_id, bbox_right, y) ||
+	                  tilemap_get_at_pixel(layer_id, bbox_left, bbox_bottom) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top)
+	}
     
     x = xp;
     y = yp;
     
     return meeting;
 }
+
+
 
 function tile_place_meeting_dir(xx, yy, layer_id){
     var xp = x;
@@ -116,9 +132,6 @@ function tile_place_meeting_dir(xx, yy, layer_id){
     x = xx;
     y = yy;
     
-    //var meeting = tilemap_get_at_pixel(layer_id, bbox_left, bbox_top) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top) ||
-    //              tilemap_get_at_pixel(layer_id, bbox_left, y) || tilemap_get_at_pixel(layer_id, bbox_right, y) ||
-    //              tilemap_get_at_pixel(layer_id, bbox_left, bbox_bottom) || tilemap_get_at_pixel(layer_id, bbox_right, bbox_top)
     
 	switch pointing{
 		case facing.d:{
@@ -144,6 +157,9 @@ function tile_place_meeting_dir(xx, yy, layer_id){
     
     return meeting;
 }
+
+
+
 
 dir = 0;
 
