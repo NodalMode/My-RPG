@@ -28,11 +28,16 @@ function checkcollisionlist(x, y, list){
 function whohitme(x, y, list){
     var length = array_length(list);
     var dir = 0;
+    var midx = 0;
+    var midy = 0;
     for (var i = 0; i < length; i+=1)
     {
         if place_meeting(x, y, list[i])
         {
-            dir = point_direction(x, y, list[i].x, list[i].y);
+            midx = round((list[i].bbox_bottom + list[i].bbox_top)/2);
+            midy = round((list[i].bbox_right + list[i].bbox_left)/2);
+            dir = point_direction(x, y, midx, midy);
+            break;
         }
     }
     return dir;
@@ -43,6 +48,7 @@ function place_meeting_tile(_x, _y, _tilemap) {
     return (tile != 0);  
                                          // if empty, it’s not a wall tile 
 }
+
 
 function dircardinal(dir){
     if dir >= 225 and dir < 315{
