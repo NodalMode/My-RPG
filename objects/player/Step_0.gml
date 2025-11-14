@@ -27,7 +27,7 @@ if state != pState.atk{
      
 
 
-if (mouse_check_button_pressed(mb_left)) && (state = pState.idle or state = pState.damaged) && (attackCooldown <= 0) 
+if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.damaged) && (attackCooldown <= 0) 
 {
     clearedlist = false;
 	state = pState.atk;
@@ -42,8 +42,9 @@ if (state == pState.idle or state == pState.run)
 }   
 
 if (state == pState.idle or state == pState.run) {
-	if mouse_check_button_pressed(mb_right) && dashCooldown <= 0{
+	if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
 		dashTime = 0.25;
+		playerhbox.dashSpeed = 250;
 		state = pState.dash;
 	}
 }
@@ -64,14 +65,15 @@ switch (state)
         {
             state = pState.run; 
         }
-        if (mouse_check_button_pressed(mb_left) && attackCooldown <= 0)
+        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0)
         {
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
         }
-		if mouse_check_button_pressed(mb_right) && dashCooldown <= 0{
+		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
 			dashTime = 0.25;
+			playerhbox.dashSpeed = 250;
 			state = pState.dash;
 		}
         break;
@@ -98,14 +100,15 @@ switch (state)
         {
             state = pState.idle; 
         }
-        if (mouse_check_button_pressed(mb_left) && attackCooldown <= 0)
+        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0)
         {
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
         }
-		if mouse_check_button_pressed(mb_right) && dashCooldown <= 0{
+		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
 			dashTime = 0.25;
+			playerhbox.dashSpeed = 250;
 			state = pState.dash;
 		}
         break;
@@ -114,7 +117,7 @@ switch (state)
 	{
 		if player.dashTime <= 0{
 			player.state = pState.idle;
-			player.dashCooldown = 0.15;
+			player.dashCooldown = 0.25;
 		}
 		switch dir{
 			case facing.d:{

@@ -79,7 +79,7 @@ switch (player.state)
 			}
 			case facing.r:{
 				if !tile_place_meeting(x+dashSpeed*global.dt, y, edges) and !tile_place_meeting(x+dashSpeed*global.dt, y, walls) and !tile_place_meeting(x+dashSpeed*global.dt, y, foreground){
-					x += dashSpeed*global.dt
+					x += dashSpeed*global.dt;
 				}
 				break;
 			}
@@ -237,6 +237,11 @@ if  kb > 0{
 		}	
 	}
 	check += 1;
+}
+
+dashSpeed-=7.5;
+if dashSpeed <=0{
+	dashSpeed = 0;
 }
 
 while tilemap_get_at_pixel(edges, x, bbox_top) or tilemap_get_at_pixel(foreground, x, bbox_top) or tilemap_get_at_pixel(walls, x, bbox_top){

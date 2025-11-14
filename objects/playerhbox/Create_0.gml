@@ -1,9 +1,9 @@
-visible = true;
+visible = false;
 solid = true;
 
 moveSpeed = 42;
 
-dashSpeed = 150;
+dashSpeed = 300;
 
 edges = layer_tilemap_get_id("edges");
 foreground = layer_tilemap_get_id("tlayerfg");
