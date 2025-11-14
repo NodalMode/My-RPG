@@ -27,7 +27,7 @@ if state != pState.atk{
      
 
 
-if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.damaged) && (attackCooldown <= 0) 
+if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.run) && (attackCooldown <= 0) 
 {
     clearedlist = false;
 	state = pState.atk;
