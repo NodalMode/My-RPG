@@ -196,7 +196,7 @@ if  kb > 0{
     }
     switch player.dir{
 		case facing.u:{
-			if (!tile_place_meeting_dir(x, y+kbsp*global.dt*2, edges) and !tile_place_meeting_dir(x, y+kbsp*global.dt*2, foreground) and !tile_place_meeting_dir(x, y+kbsp*global.dt*2, walls)){
+			if (!tile_place_meeting(x, y+kbsp*global.dt*2, edges) and !tile_place_meeting(x, y+kbsp*global.dt*2, foreground) and !tile_place_meeting(x, y+kbsp*global.dt*2, walls)){
 				y+=kbsp*global.dt;
             }    
 			kbsp -= 5;	
@@ -206,7 +206,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.d:{
-			if (!tile_place_meeting_dir(x, y-kbsp*global.dt*2, edges) && !tile_place_meeting_dir(x, y-kbsp*global.dt*2, foreground) && !tile_place_meeting_dir(x, y-kbsp*global.dt*2, walls)){
+			if (!tile_place_meeting(x, y-kbsp*global.dt*2, edges) && !tile_place_meeting(x, y-kbsp*global.dt*2, foreground) && !tile_place_meeting(x, y-kbsp*global.dt*2, walls)){
 				y-=kbsp*global.dt;
             }
 			kbsp -= 5;	
@@ -216,7 +216,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.l:{
-			if (!tile_place_meeting_dir(x+kbsp*global.dt*2, y, edges) && !tile_place_meeting_dir(x+kbsp*global.dt*2, y, foreground) && !tile_place_meeting_dir(x+kbsp*global.dt*2, y, walls)){
+			if (!tile_place_meeting(x+kbsp*global.dt*2, y, edges) && !tile_place_meeting(x+kbsp*global.dt*2, y, foreground) && !tile_place_meeting(x+kbsp*global.dt*2, y, walls)){
 				x+=kbsp*global.dt;
             }
 			kbsp -= 5;
@@ -226,7 +226,7 @@ if  kb > 0{
 			break;
 		}	
 		case facing.r:{
-			if (!tile_place_meeting_dir(x-kbsp*global.dt*2, y, edges) && !tile_place_meeting_dir(x-kbsp*global.dt*2, y, foreground) && !tile_place_meeting_dir(x-kbsp*global.dt*2, y, walls)){
+			if (!tile_place_meeting(x-kbsp*global.dt*2, y, edges) && !tile_place_meeting(x-kbsp*global.dt*2, y, foreground) && !tile_place_meeting(x-kbsp*global.dt*2, y, walls)){
 				x-=kbsp*global.dt;
             }
 			kbsp -= 5;	
