@@ -194,6 +194,12 @@ if  kb > 0{
 	if check == 0{
         instance_create_layer(x, y, "anims", slashimpact);
     }
+	if kb>0.3{	
+		layer_set_visible(player.screenshake, true);
+	}
+	else{
+		layer_set_visible(player.screenshake, false);
+	}
     switch player.dir{
 		case facing.u:{
 			if (!tile_place_meeting(x, y+kbsp*global.dt*2, edges) and !tile_place_meeting(x, y+kbsp*global.dt*2, foreground) and !tile_place_meeting(x, y+kbsp*global.dt*2, walls)){

@@ -250,6 +250,7 @@ switch (state)
 	            
 	    attackCooldown = 0.25;
 	    instance_destroy(slashhbox);
+		layer_set_visible(screenshake, false);
         instance_destroy(slashwall);
 	}
     break;    
@@ -299,6 +300,10 @@ if (attackCooldown <= 0){
 damageCooldown -= global.dt;
 if damageCooldown <= 0{
     damageCooldown = 0;
+	layer_set_visible(screenshake, false);
+}
+else{
+	layer_set_visible(screenshake, true);
 }
 
 invincibleCooldown -= global.dt;

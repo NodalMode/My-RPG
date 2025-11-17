@@ -1,5 +1,9 @@
 gpu_set_texfilter(false);
 
+screenshake = layer_get_id("screenshake");
+
+layer_set_visible(screenshake, false);
+
 moveSpeed = 1;
 image_speed = 1;
 

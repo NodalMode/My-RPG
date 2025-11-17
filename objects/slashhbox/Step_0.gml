@@ -23,6 +23,7 @@ switch (player.dir){
 if player.state = pState.atk{
 	for (var i = 0; i < array_length(player.ehitbox); i += 1){
 		if place_meeting(x, y, player.ehitbox[i]) and !array_contains(hitenemies, player.ehitbox[i]){
+			layer_set_visible(player.screenshake, true);
 			array_push(hitenemies, player.ehitbox[i])
 		}
 	}
