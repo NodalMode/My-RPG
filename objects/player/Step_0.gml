@@ -262,6 +262,9 @@ switch (state)
 			state = pState.idle;
             playerhbox.dmgsp = 150;
         }
+        else if damageCooldown <0.2{
+            layer_set_visible(screenshake, false);
+        }
         switch playerhbox.point{
             case facing.u:{
                 sprite_swap_rand(spr_player_body_dmg_down);
