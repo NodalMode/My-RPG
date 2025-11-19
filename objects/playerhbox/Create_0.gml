@@ -10,7 +10,7 @@ foreground = layer_tilemap_get_id("tlayerfg");
 walls = layer_tilemap_get_id("walls");
 background = layer_tilemap_get_id("tlayerbg");
 
-global.tilemap = [layer_tilemap_get_id("tlayerfg"), layer_tilemap_get_id("edges"), layer_tilemap_get_id("walls"), duckhbox];
+global.tilemap = [foreground, edges, walls, duckhbox];
 
 function checkcollisionlist(x, y, list){
 	var length = array_length(list);
