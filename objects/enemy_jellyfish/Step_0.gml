@@ -53,17 +53,19 @@ switch (state){
         break;  
     }
 	case (eState.dead):{
-		sprite_swap(NOTHING);
+		if sprite_index!=NOTHING{  
+            sprite_swap(spr_enemy_jellyfish_death);
+        }
 		instance_destroy(hitbox);
 	}
         
 }
 
 
-//if state == eState.dead and killsoundplayed == false{
-//    audio_play_sound(killsound, 10, false);
-//    killsoundplayed = true;
-//}
+if state == eState.dead and killsoundplayed == false{
+    audio_play_sound(killsound, 10, false);
+    killsoundplayed = true;
+}
 
 
     

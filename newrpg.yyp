@@ -65,6 +65,7 @@
     {"id":{"name":"spr_effect_lightning_hbox","path":"sprites/spr_effect_lightning_hbox/spr_effect_lightning_hbox.yy",},},
     {"id":{"name":"spr_effect_lightning","path":"sprites/spr_effect_lightning/spr_effect_lightning.yy",},},
     {"id":{"name":"spr_enemy_jellyfish_atk1","path":"sprites/spr_enemy_jellyfish_atk1/spr_enemy_jellyfish_atk1.yy",},},
+    {"id":{"name":"spr_enemy_jellyfish_death","path":"sprites/spr_enemy_jellyfish_death/spr_enemy_jellyfish_death.yy",},},
     {"id":{"name":"spr_enemy_jellyfish_hitbox","path":"sprites/spr_enemy_jellyfish_hitbox/spr_enemy_jellyfish_hitbox.yy",},},
     {"id":{"name":"spr_enemy_jellyfish_idle","path":"sprites/spr_enemy_jellyfish_idle/spr_enemy_jellyfish_idle.yy",},},
     {"id":{"name":"spr_player_body_dash_down","path":"sprites/spr_player_body_dash_down/spr_player_body_dash_down.yy",},},
