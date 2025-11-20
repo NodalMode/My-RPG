@@ -1,7 +1,7 @@
 visible = false;
 solid = true;
 
-moveSpeed = 42;
+moveSpeed = 45;
 
 dashSpeed = 300;
 

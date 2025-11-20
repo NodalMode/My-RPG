@@ -55,6 +55,7 @@ switch (state){
 	case (eState.dead):{
 		if sprite_index!=NOTHING{  
             sprite_swap(spr_enemy_jellyfish_death);
+			layer_set_visible(player.screenshake, true);
         }
 		instance_destroy(hitbox);
 	}
@@ -65,6 +66,10 @@ switch (state){
 if state == eState.dead and killsoundplayed == false{
     audio_play_sound(killsound, 10, false);
     killsoundplayed = true;
+}
+
+if sprite_index = spr_enemy_jellyfish_death && image_index >= 4{
+	layer_set_visible(player.screenshake, false);
 }
 
 

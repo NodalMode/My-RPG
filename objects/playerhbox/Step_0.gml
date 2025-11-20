@@ -10,7 +10,7 @@ if player.state != pState.damaged{
     y = round(y);
 }  
 
-if keyboard_check(ord("R")){
+if keyboard_check(ord("R")){   //reset
     x = 255;
     y = 642;
 }  

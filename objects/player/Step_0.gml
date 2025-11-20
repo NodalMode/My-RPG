@@ -90,10 +90,10 @@ switch (state)
             case facing.l: sprite_index = spr_player_body_run_left; break; 
         }
         if playerhbox.kb <= 0{    
-            if (_hor>0) dir = facing.r;
-            else if (_hor<0) dir = facing.l;
-            else if (_ver>0) dir = facing.d;
-            else if (_ver<0) dir = facing.u;   
+            if (_hor>0  && _ver == 0) dir = facing.r;
+            else if (_hor<0  && _ver == 0) dir = facing.l;
+            else if (_ver>0  && _hor == 0) dir = facing.d;
+            else if (_ver<0  && _hor == 0) dir = facing.u;   
         }      
             
         if (_hor == 0 and _ver == 0)
