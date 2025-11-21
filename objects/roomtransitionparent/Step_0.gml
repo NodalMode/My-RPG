@@ -12,7 +12,8 @@ if global.transitioning and room!=global.targetroom and image_index >= 5{
 }
 
 if global.transitioning and room==global.targetroom{
-	global.transitioning = false;
+	visible = true;
+    global.transitioning = false;
     sprite_swap(fadeout);
 }
 
