@@ -1,8 +1,8 @@
 global.dt = delta_time / 1000000;
 
 
-cleaninstancearray(hurtbox);
-cleaninstancearray(ehitbox);
+cleaninstancearray(global.hurtbox);
+cleaninstancearray(global.ehitbox);
 
 
 
@@ -13,8 +13,8 @@ _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
 prevState = state;
 
-if hp <= 0{
-    hp = 0;
+if global.hp <= 0{
+    global.hp = 0;
 }
 
 if state != pState.atk{
@@ -61,7 +61,7 @@ switch (state)
             case facing.r: sprite_swap_rand(spr_player_body_idle_right); break; 
             case facing.l: sprite_swap_rand(spr_player_body_idle_left); break; 
         }
-        if (_hor!=0 or _ver!=0)
+        if (_hor!=0 or _ver!=0) && !global.transitioning
         {
             state = pState.run; 
         }

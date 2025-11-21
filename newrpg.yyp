@@ -61,6 +61,8 @@
     {"id":{"name":"duck_rwalk","path":"sprites/duck_rwalk/duck_rwalk.yy",},},
     {"id":{"name":"duck_uidle","path":"sprites/duck_uidle/duck_uidle.yy",},},
     {"id":{"name":"duck_uwalk","path":"sprites/duck_uwalk/duck_uwalk.yy",},},
+    {"id":{"name":"fadein","path":"sprites/fadein/fadein.yy",},},
+    {"id":{"name":"fadeout","path":"sprites/fadeout/fadeout.yy",},},
     {"id":{"name":"NOTHING","path":"sprites/NOTHING/NOTHING.yy",},},
     {"id":{"name":"player_hbox","path":"sprites/player_hbox/player_hbox.yy",},},
     {"id":{"name":"snow","path":"sprites/snow/snow.yy",},},

@@ -1,1 +1,1 @@
-draw_text(0, 0, "HP: " + string(hp));
+draw_text(0, 0, "HP: " + string(global.hp));

@@ -1,7 +1,7 @@
 var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-if player.state != pState.damaged and kb <= 0 and player.state != pState.dash and global.transitioning == false{	
+if player.state != pState.damaged and kb <= 0 and player.state != pState.dash{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
 }
 
@@ -22,14 +22,14 @@ switch (player.state)
 {
 	case pState.idle:
 	{
-		if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
+		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
-			player.hp -= 50;
+			global.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
             player.hurt = 16;
-            dir = whohitme(x, y, player.hurtbox);
+            dir = whohitme(x, y, global.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
             dmgspeed = 150;
@@ -40,14 +40,14 @@ switch (player.state)
 	}
     case pState.run:
 	{
-		if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
+		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
-			player.hp -= 50;
+			global.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
             player.hurt = 16;
-            dir = whohitme(x, y, player.hurtbox);
+            dir = whohitme(x, y, global.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
             dmgspeed = 150;
@@ -84,14 +84,14 @@ switch (player.state)
 				break;
 			}
 		}
-		if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
+		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
-			player.hp -= 50;
+			global.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
             player.hurt = 16;
-            dir = whohitme(x, y, player.hurtbox);
+            dir = whohitme(x, y, global.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
             dmgspeed = 150;
@@ -103,14 +103,14 @@ switch (player.state)
 	case pState.atk:
 	{
 		slashhwall = instance_create_layer(x, y-10, "hitboxes", slashwall); 
-        if checkcollisionlist(x, y, player.hurtbox) and player.invincibleCooldown <= 0
+        if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
 			player.state = pState.damaged;
-			player.hp -= 50;
+			global.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
             player.hurt = 16;
-            dir = whohitme(x, y, player.hurtbox);
+            dir = whohitme(x, y, global.hurtbox);
             point = dircardinal(dir);
             hitstop = 0.2;
             dmgspeed = 150;

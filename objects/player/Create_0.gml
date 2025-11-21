@@ -82,7 +82,9 @@ dashCooldown = 0; // 0.15
 
 attackIntent = false;
 
-hp = 200;
+if !variable_global_exists("hp"){
+    global.hp = 200;
+}
 
 function checkcollisionlist(x, y, list){
 	var length = array_length(list);
@@ -108,8 +110,13 @@ function cleaninstancearray(list){
 	}
 }
 
-hurtbox = [];
-ehitbox = [];
+if !variable_global_exists("hurtbox"){
+    global.hurtbox = [];
+}
+
+if !variable_global_exists("ehitbox"){
+    global.ehitbox = [];
+}
 
 function arraytostring(list){
 	var len = array_length(list);

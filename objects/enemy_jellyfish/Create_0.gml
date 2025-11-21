@@ -33,9 +33,9 @@ with hitbox{
     parent = other.id;
 }
 
-array_push(player.hurtbox, hitbox);
+array_push(global.hurtbox, hitbox);
 
-array_push(player.ehitbox, hitbox);
+array_push(global.ehitbox, hitbox);
 
 hp = 100;
 
