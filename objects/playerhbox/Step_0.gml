@@ -1,7 +1,7 @@
 var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-if player.state != pState.damaged and kb <= 0 and player.state != pState.dash{	
+if player.state != pState.damaged and kb <= 0 and player.state != pState.dash and global.transitioning == false{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
 }
 

@@ -64,6 +64,19 @@ function movetoplayer(speed)
     
 }
 
+
+function enemydata(){
+	var d = {
+		xpos: x,
+		ypos: y,
+		myroom: room,
+		myhp: hp,
+		name: object_index,
+		mystate: state
+	};
+	array_push(global.enemy_data, d);
+}
+
 //x += lengthdir_x(speed, dir)
 //y += lengthdir_y(speed, dir)
 
@@ -74,3 +87,5 @@ flash_counter = 0;
 
 startx = x;
 starty = y;
+
+killsoundplayed = false;

@@ -65,13 +65,13 @@ switch (state)
         {
             state = pState.run; 
         }
-        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0)
+        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0 && !global.transitioning)
         {
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
         }
-		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
+		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning{
 			dashTime = 0.25;
 			playerhbox.dashSpeed = 250;
 			state = pState.dash;
@@ -89,7 +89,7 @@ switch (state)
             case facing.r: sprite_index = spr_player_body_run_right; break; 
             case facing.l: sprite_index = spr_player_body_run_left; break; 
         }
-        if playerhbox.kb <= 0{    
+        if playerhbox.kb <= 0 and global.transitioning == false{    
             if (_hor>0  && _ver == 0) dir = facing.r;
             else if (_hor<0  && _ver == 0) dir = facing.l;
             else if (_ver>0  && _hor == 0) dir = facing.d;
@@ -100,13 +100,13 @@ switch (state)
         {
             state = pState.idle; 
         }
-        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0)
+        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0  && !global.transitioning)
         {
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
         }
-		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
+		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning{
 			dashTime = 0.25;
 			playerhbox.dashSpeed = 250;
 			state = pState.dash;

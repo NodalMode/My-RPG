@@ -6,3 +6,6 @@ global.get_origin_pos = function(_inst)
         y: _inst.y - sprite_get_yoffset(_inst.sprite_index) * _inst.image_yscale
     };
 };
+
+
+global.enemy_data = [];
