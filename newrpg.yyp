@@ -40,6 +40,7 @@
     {"id":{"name":"playerhbox","path":"objects/playerhbox/playerhbox.yy",},},
     {"id":{"name":"playerLegs","path":"objects/playerLegs/playerLegs.yy",},},
     {"id":{"name":"room1trans1","path":"objects/room1trans1/room1trans1.yy",},},
+    {"id":{"name":"room2trans1","path":"objects/room2trans1/room2trans1.yy",},},
     {"id":{"name":"roomtransitionparent","path":"objects/roomtransitionparent/roomtransitionparent.yy",},},
     {"id":{"name":"slash","path":"objects/slash/slash.yy",},},
     {"id":{"name":"slashhbox","path":"objects/slashhbox/slashhbox.yy",},},
