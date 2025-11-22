@@ -8,7 +8,10 @@ enum eState
 }
 
 state = eState.idle;
-distfromplayer = sqrt(sqr(x-playerhbox.x)+sqr(y-playerhbox.y));
+
+if instance_exists(playerhbox){
+    distfromplayer = sqrt(sqr(x-playerhbox.x)+sqr(y-playerhbox.y));
+}
 
 edges = layer_tilemap_get_id("edges");
 foreground = layer_tilemap_get_id("tlayerfg");

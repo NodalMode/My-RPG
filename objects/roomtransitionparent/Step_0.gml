@@ -1,21 +1,15 @@
 x = view_xport[0];
 y = view_yport[0];
 
-if global.transitioning and room!=global.targetroom{
-	visible = true;
-    sprite_swap(fadein);
+if global.transitioning and room!=global.targetroom and in == false{
+    instance_create_layer(x, y, "fadetoblack", fade);
+    in = true;
 }
 
-if global.transitioning and room!=global.targetroom and image_index >= 5{
-	instance_destroy(player);
-	room_goto(global.targetroom);
+if variable_global_exists("fadedone"){
+    if global.fadedone{
+        instance_destroy(player);
+    	room_goto(global.targetroom);
+    }
 }
-
-if global.transitioning and room==global.targetroom{
-	visible = true;
-    global.transitioning = false;
-    sprite_swap(fadeout);
-}
-
-
-
+    

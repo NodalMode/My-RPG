@@ -22,8 +22,8 @@ function sprite_swap(_sprite) {
     }
 }   
 
-coordx = player.x;
-coordy = player.y;
+coordx = 0;
+coordy = 0;
 
 sprite_swap_rand(spr_enemy_jellyfish_idle);
 

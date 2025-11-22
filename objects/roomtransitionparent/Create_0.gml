@@ -3,8 +3,8 @@ visible = false;
 x = view_xport[0];
 y = view_yport[0];
 
-function sprite_swap(_sprite) {
-    if (sprite_index != _sprite) {     //swaps a sprite to the chosen sprite UNLESS the sprite is already set to the requested sprite.
+function sprite_swap(_sprite){
+    if (sprite_index != _sprite){     //swaps a sprite to the chosen sprite UNLESS the sprite is already set to the requested sprite.
         image_index = 0;
         sprite_index = _sprite;
     }
@@ -25,3 +25,6 @@ if variable_global_exists("transitioning") and variable_global_exists("targetroo
 
 global.transitioning = false;
 
+instance_create_layer(x, y, "fadetoblack", fade);
+
+in = false;
