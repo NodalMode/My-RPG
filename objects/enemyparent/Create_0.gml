@@ -46,23 +46,25 @@ function tile_place_meeting(xx, yy, layer_id){
 function movetoplayer(speed)
 {
     var dir = point_direction(x, y, player.x, player.y);
-    if dir >= 0 and dir < 180{//up
-        if !tile_place_meeting(x, y-speed, edges) and !tile_place_meeting(x, y-speed, walls) and !tile_place_meeting(x, y-speed, foreground){
-            y += lengthdir_y(speed, dir);
-        }
-    }
-    else{//down
-        if !tile_place_meeting(x, y+speed, edges) and !tile_place_meeting(x, y+speed, walls) and !tile_place_meeting(x, y+speed, foreground){
-            y += lengthdir_y(speed, dir);
-        }
-    }
-    if dir >= 90 and dir <270{//left
-        if !tile_place_meeting(x-speed, y, edges) and !tile_place_meeting(x-speed, y, walls) and !tile_place_meeting(x-speed, y, foreground)
-            x += lengthdir_x(speed, dir);
-    }
-    else{//right
-        if !tile_place_meeting(x+speed, y, edges) and !tile_place_meeting(x+speed, y, walls) and !tile_place_meeting(x+speed, y, foreground)
-            x += lengthdir_x(speed, dir);
+    if !global.transitioning{   
+        if dir >= 0 and dir < 180{//up
+           if !tile_place_meeting(x, y-speed, edges) and !tile_place_meeting(x, y-speed, walls) and !tile_place_meeting(x, y-speed, foreground){
+               y += lengthdir_y(speed, dir);
+           }
+       }
+       else{//down
+           if !tile_place_meeting(x, y+speed, edges) and !tile_place_meeting(x, y+speed, walls) and !tile_place_meeting(x, y+speed, foreground){
+               y += lengthdir_y(speed, dir);
+           }
+       }
+       if dir >= 90 and dir <270{//left
+           if !tile_place_meeting(x-speed, y, edges) and !tile_place_meeting(x-speed, y, walls) and !tile_place_meeting(x-speed, y, foreground)
+               x += lengthdir_x(speed, dir);
+       }
+       else{//right
+           if !tile_place_meeting(x+speed, y, edges) and !tile_place_meeting(x+speed, y, walls) and !tile_place_meeting(x+speed, y, foreground)
+               x += lengthdir_x(speed, dir);
+       }
     }
     
 }
