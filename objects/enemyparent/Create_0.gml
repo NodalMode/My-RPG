@@ -84,6 +84,7 @@ startx = x;
 starty = y;
 
 killsoundplayed = false;
+deathanimationplayed = false;
 
 function deadenemydata(room, xx, yy){
     var mystring = ""
@@ -104,6 +105,7 @@ if variable_global_exists("deadenemies"){
             state = eState.dead;
             hp = 0;
             killsoundplayed = true;
+            deathanimationplayed = true;
             sprite_index = NOTHING;
         }
     }   

@@ -76,7 +76,7 @@ if sprite_index = spr_enemy_jellyfish_death && image_index >= 4{
 
     
     
-    
+
     
 
 
