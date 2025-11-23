@@ -31,7 +31,7 @@ if global.transitioning{
 
 if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.run) && (attackCooldown <= 0) 
 {
-    audio_play_sound(choose(swingsound[0], swingsound[1], swingsound[2]), 1, false);
+    audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
     clearedlist = false;
 	state = pState.atk;
     image_index = 0;   
