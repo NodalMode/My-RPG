@@ -297,33 +297,36 @@ switch (state)
 show_debug_message("horizontal speed - " + string(_hor));
 show_debug_message("vertical speed - " + string(_ver));
 
-attackCooldown -= global.dt;
-if (attackCooldown <= 0){
-    attackCooldown = 0;
-}
 
-damageCooldown -= global.dt;
-if damageCooldown <= 0{
-    damageCooldown = 0;
-	layer_set_visible(screenshake, false);
-}
-else{
-	layer_set_visible(screenshake, true);
-}
+if !global.transitioning{
+	attackCooldown -= global.dt;
+	if (attackCooldown <= 0){
+	    attackCooldown = 0;
+	}
 
-invincibleCooldown -= global.dt;
-if invincibleCooldown <= 0{
-    invincibleCooldown = 0;
-}
+	damageCooldown -= global.dt;
+	if damageCooldown <= 0{
+	    damageCooldown = 0;
+		layer_set_visible(screenshake, false);
+	}
+	else{
+		layer_set_visible(screenshake, true);
+	}
 
-dashCooldown -= global.dt;
-if dashCooldown <= 0{
-    dashCooldown = 0;
-}
+	invincibleCooldown -= global.dt;
+	if invincibleCooldown <= 0{
+	    invincibleCooldown = 0;
+	}
 
-dashTime -= global.dt;
-if dashTime <= 0{
-	dashTime = 0
+	dashCooldown -= global.dt;
+	if dashCooldown <= 0{
+	    dashCooldown = 0;
+	}
+
+	dashTime -= global.dt;
+	if dashTime <= 0{
+		dashTime = 0
+	}
 }
 
 show_debug_message("atk cooldown - " + string(attackCooldown));
