@@ -1,7 +1,7 @@
 var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-if player.state != pState.damaged and kb <= 0 and player.state != pState.dash{	
+if player.state != pState.damaged and kb <= 0 and player.state != pState.dash and !global.transitioning{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
 }
 
@@ -60,25 +60,25 @@ switch (player.state)
 	{
 		switch player.dir{
 			case facing.d:{
-				if !tile_place_meeting(x, y+dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, foreground){
+				if !tile_place_meeting(x, y+dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, foreground) and !global.transitioning{
 					y += dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.u:{
-				if !tile_place_meeting(x, y-dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, foreground){
+				if !tile_place_meeting(x, y-dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, foreground) and !global.transitioning{
 					y -= dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.l:{
-				if !tile_place_meeting(x-dashSpeed*global.dt, y, edges) and !tile_place_meeting(x-dashSpeed*global.dt, y, walls) and !tile_place_meeting(x-dashSpeed*global.dt, y, foreground){
+				if !tile_place_meeting(x-dashSpeed*global.dt, y, edges) and !tile_place_meeting(x-dashSpeed*global.dt, y, walls) and !tile_place_meeting(x-dashSpeed*global.dt, y, foreground) and !global.transitioning{
 					x -= dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.r:{
-				if !tile_place_meeting(x+dashSpeed*global.dt, y, edges) and !tile_place_meeting(x+dashSpeed*global.dt, y, walls) and !tile_place_meeting(x+dashSpeed*global.dt, y, foreground){
+				if !tile_place_meeting(x+dashSpeed*global.dt, y, edges) and !tile_place_meeting(x+dashSpeed*global.dt, y, walls) and !tile_place_meeting(x+dashSpeed*global.dt, y, foreground) and !global.transitioning{
 					x += dashSpeed*global.dt;
 				}
 				break;

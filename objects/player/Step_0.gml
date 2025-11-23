@@ -23,7 +23,9 @@ if state != pState.atk{
 }
 
 
-
+if global.transitioning{
+	image_speed = 0;
+}
      
 
 
