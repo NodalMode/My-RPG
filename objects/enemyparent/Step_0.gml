@@ -8,11 +8,15 @@ if variable_global_exists("deadenemies"){
     if state == eState.dead and !array_contains(global.deadenemies, mydata){
         array_push(global.deadenemies, mydata);
     }
-    else if state != eState.dead and array_contains(global.deadenemies, mydata){
-        state = eState.dead;
-        killsoundplayed = true;
-        sprite_index = NOTHING;
-    }
-}
+    //for (var i=0; i<array_length(global.deadenemies)-1; i+=1){
+    //    if global.deadenemies[i]==mydata{
+    if array_contains(global.deadenemies, mydata){
+            state = eState.dead;
+            hp = 0;
+            killsoundplayed = true;
+            sprite_index = NOTHING;
+        }
+    } 
+//}
 
 

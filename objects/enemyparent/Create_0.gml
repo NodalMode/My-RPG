@@ -85,24 +85,26 @@ starty = y;
 
 killsoundplayed = false;
 
-function deadenemydata(room, xx, yy) constructor{
-    myroom = room;
-    myx = xx;
-    myy = yy;
+function deadenemydata(room, xx, yy){
+    var mystring = ""
+    mystring += string(room);
+    mystring += string(xx);
+    mystring += string(yy);
+    return mystring;
 }
 
-mydata = new deadenemydata(room, startx, starty);
+mydata = deadenemydata(room, startx, starty);
 
+
+state = eState.idle;
 if variable_global_exists("deadenemies"){
-   if array_contains(global.deadenemies, mydata){
-       state = eState.dead;
-       killsoundplayed = true;
-       sprite_index = NOTHING;
-   }
-   else{
-       state = eState.idle;
-   }
-}
-else{
-    state = eState.idle;
-}
+    //for (var i=0; i<array_length(global.deadenemies)-1; i+=1){
+    //    if global.deadenemies[i]==mydata{
+    if array_contains(global.deadenemies, mydata){
+            state = eState.dead;
+            hp = 0;
+            killsoundplayed = true;
+            sprite_index = NOTHING;
+        }
+    }   
+//}
