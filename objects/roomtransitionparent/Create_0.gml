@@ -28,3 +28,9 @@ global.transitioning = false;
 instance_create_layer(x, y, "fadetoblack", fade);
 
 in = false;
+
+if !variable_global_exists("deadenemies"){
+    global.deadenemies = [];
+}
+
+//

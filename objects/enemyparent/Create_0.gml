@@ -1,3 +1,5 @@
+
+
 enum eState
 {
     idle, 
@@ -6,8 +8,6 @@ enum eState
     atk2,
     dead
 }
-
-state = eState.idle;
 
 if instance_exists(playerhbox){
     distfromplayer = sqrt(sqr(x-playerhbox.x)+sqr(y-playerhbox.y));
@@ -70,17 +70,7 @@ function movetoplayer(speed)
 }
 
 
-function enemydata(){
-	var d = {
-		xpos: x,
-		ypos: y,
-		myroom: room,
-		myhp: hp,
-		name: object_index,
-		mystate: state
-	};
-	array_push(global.enemy_data, d);
-}
+
 
 //x += lengthdir_x(speed, dir)
 //y += lengthdir_y(speed, dir)
@@ -94,3 +84,25 @@ startx = x;
 starty = y;
 
 killsoundplayed = false;
+
+function deadenemydata(room, xx, yy) constructor{
+    myroom = room;
+    myx = xx;
+    myy = yy;
+}
+
+mydata = new deadenemydata(room, startx, starty);
+
+if variable_global_exists("deadenemies"){
+   if array_contains(global.deadenemies, mydata){
+       state = eState.dead;
+       killsoundplayed = true;
+       sprite_index = NOTHING;
+   }
+   else{
+       state = eState.idle;
+   }
+}
+else{
+    state = eState.idle;
+}

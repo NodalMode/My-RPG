@@ -165,7 +165,7 @@ function tile_place_meeting_dir(xx, yy, layer_id){
 }
 
 
-
+runningplaying = false;
 
 dir = 0;
 
@@ -176,4 +176,7 @@ kbsp = 0; //70
 kb = 0; //0.4
 
 hitstop = 0; //0.2
+
+startx=256;
+starty=640;
 

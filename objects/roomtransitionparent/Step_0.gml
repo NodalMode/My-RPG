@@ -9,6 +9,8 @@ if global.transitioning and room!=global.targetroom and in == false{
 if variable_global_exists("fadedone"){
     if global.fadedone{
         instance_destroy(player);
+        audio_stop_sound(playerhbox.run);
+        playerhbox.runningplaying = false;
     	room_goto(global.targetroom);
     }
 }

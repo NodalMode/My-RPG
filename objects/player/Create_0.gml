@@ -2,6 +2,9 @@ gpu_set_texfilter(false);
 
 screenshake = layer_get_id("screenshake");
 
+swingsound = [swing1, swing2, swing3];
+
+
 layer_set_visible(screenshake, false);
 
 moveSpeed = 1;

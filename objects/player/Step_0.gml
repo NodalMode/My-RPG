@@ -31,6 +31,7 @@ if global.transitioning{
 
 if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.run) && (attackCooldown <= 0) 
 {
+    audio_play_sound(choose(swingsound[0], swingsound[1], swingsound[2]), 1, false);
     clearedlist = false;
 	state = pState.atk;
     image_index = 0;   
@@ -45,6 +46,7 @@ if (state == pState.idle or state == pState.run)
 
 if (state == pState.idle or state == pState.run) {
 	if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
+        audio_play_sound(dash, 1, false);
 		dashTime = 0.25;
 		playerhbox.dashSpeed = 250;
 		state = pState.dash;
@@ -69,12 +71,14 @@ switch (state)
         }
         if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0 && !global.transitioning)
         {
+            audio_play_sound(choose(swingsound[0], swingsound[1], swingsound[2]), 1, false);
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
         }
 		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning{
-			dashTime = 0.25;
+			audio_play_sound(dash, 1, false);
+            dashTime = 0.25;
 			playerhbox.dashSpeed = 250;
 			state = pState.dash;
 		}
@@ -104,12 +108,14 @@ switch (state)
         }
         if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0  && !global.transitioning)
         {
+            audio_play_sound(choose(swingsound[0], swingsound[1], swingsound[2]), 1, false);
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
         }
 		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning{
-			dashTime = 0.25;
+			audio_play_sound(dash, 1, false);
+            dashTime = 0.25;
 			playerhbox.dashSpeed = 250;
 			state = pState.dash;
 		}

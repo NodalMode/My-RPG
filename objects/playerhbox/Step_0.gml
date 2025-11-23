@@ -3,6 +3,14 @@ var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
 if player.state != pState.damaged and kb <= 0 and player.state != pState.dash and !global.transitioning{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
+    if runningplaying == false and player.state!=pState.idle{    
+        run = audio_play_sound(rungrass, 1, true);
+        runningplaying = true;
+    }
+}
+if player.state == pState.idle and runningplaying == true{
+    audio_stop_sound(run);
+    runningplaying = false;
 }
 
 if player.state != pState.damaged{    
@@ -10,9 +18,11 @@ if player.state != pState.damaged{
     y = round(y);
 }  
 
-if keyboard_check(ord("R")){   //reset
-    x = 255;
-    y = 642;
+if keyboard_check_pressed(ord("R")){   //reset
+    global.transitioning = true;
+    room_goto(Room1);
+    x = startx;
+    y = startx;
 }  
 
 
@@ -24,7 +34,8 @@ switch (player.state)
 	{
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
-			player.state = pState.damaged;
+			audio_play_sound(playerdamage, 1, false);
+            player.state = pState.damaged;
 			global.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
@@ -42,7 +53,8 @@ switch (player.state)
 	{
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
-			player.state = pState.damaged;
+			audio_play_sound(playerdamage, 1, false);
+            player.state = pState.damaged;
 			global.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
@@ -86,7 +98,8 @@ switch (player.state)
 		}
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
-			player.state = pState.damaged;
+			audio_play_sound(playerdamage, 1, false);
+            player.state = pState.damaged;
 			global.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
@@ -105,7 +118,8 @@ switch (player.state)
 		slashhwall = instance_create_layer(x, y-10, "hitboxes", slashwall); 
         if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
-			player.state = pState.damaged;
+			audio_play_sound(playerdamage, 1, false);
+            player.state = pState.damaged;
 			global.hp -= 50;
 			player.damageCooldown = 0.35;
             player.invincibleCooldown = 3;
@@ -191,7 +205,9 @@ if kb <= 0{
 }	
 
 if  kb > 0{
-	if check == 0{
+	audio_stop_sound(run);
+    runningplaying = false;
+    if check == 0{
         instance_create_layer(x, y, "anims", slashimpact);
     }
 	if kb>0.3{	
@@ -250,20 +266,26 @@ if dashSpeed <=0{
 	dashSpeed = 0;
 }
 
-while tilemap_get_at_pixel(edges, x, bbox_top) or tilemap_get_at_pixel(foreground, x, bbox_top) or tilemap_get_at_pixel(walls, x, bbox_top){
+while tilemap_get_at_pixel(edges, x, bbox_top) or tilemap_get_at_pixel(foreground, x, bbox_top) or tilemap_get_at_pixel(walls, x, bbox_top)
+or tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(foreground, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top)
+or tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(foreground, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top)
+{
     y += 1
 }
 
-while tilemap_get_at_pixel(edges, x, bbox_bottom) or tilemap_get_at_pixel(foreground, x, bbox_bottom) or tilemap_get_at_pixel(walls, x, bbox_bottom){
+while tilemap_get_at_pixel(edges, x, bbox_bottom) or tilemap_get_at_pixel(foreground, x, bbox_bottom) or tilemap_get_at_pixel(walls, x, bbox_bottom)
+or tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom)
+or tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom)
+{
     y -= 1
 }
 
-while tilemap_get_at_pixel(edges, bbox_right-1, y) or tilemap_get_at_pixel(foreground, bbox_right-1, y) or tilemap_get_at_pixel(walls, bbox_right-1, y){
-    y -= 1
+while tilemap_get_at_pixel(edges, bbox_right+1, y) or tilemap_get_at_pixel(foreground, bbox_right+1, y) or tilemap_get_at_pixel(walls, bbox_right+1, y){
+    x -= 1
 }
 
-while tilemap_get_at_pixel(edges, bbox_left, y) or tilemap_get_at_pixel(foreground, bbox_left, y) or tilemap_get_at_pixel(walls, bbox_left, y){
-    y += 1
+while tilemap_get_at_pixel(edges, bbox_left-1, y) or tilemap_get_at_pixel(foreground, bbox_left-1, y) or tilemap_get_at_pixel(walls, bbox_left-1, y){
+    x += 1
 }
 
 //^this makes sure that in the case the hitbox DOES go out of bounds, the game will push them back out.

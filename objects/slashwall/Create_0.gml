@@ -24,4 +24,5 @@ foreground = layer_tilemap_get_id("tlayerfg");
 walls = layer_tilemap_get_id("walls");
 
 knockback = false;
+soundplayed = false;
 
