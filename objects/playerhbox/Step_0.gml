@@ -40,6 +40,7 @@ switch (player.state)
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
 			audio_play_sound(playerdamage, 1, false);
+            audio_sound_pitch(playerdamage, random_range(1, 1.25));
             player.state = pState.damaged;
 			global.hp -= 50;
 			player.damageCooldown = 0.35;
@@ -59,6 +60,7 @@ switch (player.state)
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
 			audio_play_sound(playerdamage, 1, false);
+            audio_sound_pitch(playerdamage, random_range(1, 1.25));
             player.state = pState.damaged;
 			global.hp -= 50;
 			player.damageCooldown = 0.35;
@@ -104,6 +106,7 @@ switch (player.state)
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
 			audio_play_sound(playerdamage, 1, false);
+            audio_sound_pitch(playerdamage, random_range(1, 1.25));
             player.state = pState.damaged;
 			global.hp -= 50;
 			player.damageCooldown = 0.35;
@@ -124,6 +127,7 @@ switch (player.state)
         if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
 		{
 			audio_play_sound(playerdamage, 1, false);
+            audio_sound_pitch(playerdamage, random_range(1, 1.25));
             player.state = pState.damaged;
 			global.hp -= 50;
 			player.damageCooldown = 0.35;

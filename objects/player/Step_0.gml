@@ -32,6 +32,8 @@ if global.transitioning{
 if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.run) && (attackCooldown <= 0) 
 {
     audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
+    audio_sound_pitch(swingsound[0], random_range(1, 1.5));
+    audio_sound_pitch(swingsound[1], random_range(1, 1.15));
     clearedlist = false;
 	state = pState.atk;
     image_index = 0;   
@@ -47,6 +49,7 @@ if (state == pState.idle or state == pState.run)
 if (state == pState.idle or state == pState.run) {
 	if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
         audio_play_sound(dash, 1, false);
+        audio_sound_pitch(dash, random_range(1, 2));
 		dashTime = 0.25;
 		playerhbox.dashSpeed = 250;
 		state = pState.dash;
@@ -72,12 +75,15 @@ switch (state)
         if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0 && !global.transitioning)
         {
             audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
+            audio_sound_pitch(swingsound[0], random_range(1, 1.5));
+            audio_sound_pitch(swingsound[1], random_range(1, 1.15));
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
         }
 		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning{
 			audio_play_sound(dash, 1, false);
+            audio_sound_pitch(dash, random_range(1, 2));
             dashTime = 0.25;
 			playerhbox.dashSpeed = 250;
 			state = pState.dash;
@@ -109,12 +115,15 @@ switch (state)
         if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0  && !global.transitioning)
         {
             audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
+            audio_sound_pitch(swingsound[0], random_range(1, 1.5));
+            audio_sound_pitch(swingsound[1], random_range(1, 1.15));
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
         }
 		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning{
 			audio_play_sound(dash, 1, false);
+            audio_sound_pitch(dash, random_range(1, 2));
             dashTime = 0.25;
 			playerhbox.dashSpeed = 250;
 			state = pState.dash;

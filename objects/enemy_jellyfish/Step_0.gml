@@ -47,7 +47,8 @@ switch (state){
         if (atkdelay<=0) and (atkspawned==false){     
             instance_create_layer(coordx, coordy+13, "Instances", enemy_jellyfish_atk);
             atkspawned=true;
-            audio_play_sound(choose(lightning1, lightning2, lightning3), 1, false);
+            lightningsound = audio_play_sound(choose(lightning1, lightning2, lightning3), 1, false);
+            audio_sound_pitch(lightningsound, random_range(1, 1.5));
         }
         x = round(x);
         y = round(y);
