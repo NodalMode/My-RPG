@@ -83,6 +83,9 @@ damageCooldown = 0;  //0.25
 dashTime = 0; //0.25
 dashCooldown = 0; // 0.15
 
+deathCooldown = 0; //3
+deathanimplayed = false;
+
 attackIntent = false;
 
 if !variable_global_exists("hp"){

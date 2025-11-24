@@ -7,5 +7,6 @@ draw_text(0, 75, "damage cooldown: " + string(damageCooldown));
 draw_text(0, 90, "invincible cooldown: " + string(invincibleCooldown));
 draw_text(0, 105, "dash time: " + string(dashTime));
 draw_text(0, 120, "dash cooldown: " + string(dashCooldown));
-draw_text(0, 135, "delta time is: " + string(global.dt));
-draw_text(0, 150, "room: " + string(room));
+draw_text(0, 135, "death cooldown: " + string(deathCooldown));
+draw_text(0, 150, "delta time is: " + string(global.dt));
+draw_text(0, 165, "room: " + string(room));

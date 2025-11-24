@@ -24,6 +24,10 @@ switch (player.state)
     case pState.damaged:
         sprite_index = NOTHING;
         break;
+    case pState.dead:{
+        sprite_index = NOTHING;
+        break;
+    }
 	case pState.dash:
 		sprite_index = NOTHING;
 		break;

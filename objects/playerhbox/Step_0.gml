@@ -6,7 +6,7 @@ if _hor!=0 and _ver!=0{
 	moveSpeed *= sqrt(1/2);//i have no idea if this even works
 }
 
-if player.state != pState.damaged and kb <= 0 and player.state != pState.dash and !global.transitioning{	
+if player.state != pState.damaged  and player.state!=pState.dead and kb <= 0 and player.state != pState.dash and !global.transitioning{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
     if runningplaying == false and player.state!=pState.idle{    
         run = audio_play_sound(rungrass, 1, true);
@@ -149,6 +149,8 @@ switch (player.state)
 	}
     case pState.damaged:
     {
+        audio_stop_sound(run);
+        runningplaying = false;
         switch point{
             case facing.u:{
                 dmgsp -= 5;
@@ -192,6 +194,10 @@ switch (player.state)
             }
         }
     } 
+    case pState.dead:{
+        audio_stop_sound(run);
+        runningplaying = false;
+    }    
     break;       	
 }
 

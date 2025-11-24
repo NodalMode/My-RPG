@@ -274,7 +274,11 @@ switch (state)
     }   
 	case pState.damaged:
     {
-		if damageCooldown <= 0
+		if global.hp<=0{
+            state=pState.dead; 
+            audio_play_sound(killsound, 1, false); break;
+        }
+        if damageCooldown <= 0
 		{
 			state = pState.idle;
             playerhbox.dmgsp = 150;
@@ -306,6 +310,33 @@ switch (state)
         }
         break;
 	}
+        case pState.dead:{
+            if !deathanimplayed{   
+                switch dir{
+                   case facing.d:{
+                       sprite_swap(spr_player_body_death_down); break;
+                   } 
+                   case facing.u:{
+                       sprite_swap(spr_player_body_death_up); break;
+                   }
+                   case facing.l:{
+                       sprite_swap(spr_player_body_death_left); break;
+                   }    
+                   case facing.r:{
+                       sprite_swap(spr_player_body_death_right); break;
+                   }    
+               }
+            }
+            if sprite_index == NOTHING and deathCooldown<=0{
+                global.transitioning = true;    //this will be replaced with the death screen at a later point.
+                global.targetroom = Room1;
+                global.targetx = playerhbox.startx;
+                global.targety = playerhbox.starty;
+                global.targetdir = facing.d;
+                global.hp = 200;
+                global.deadenemies = [];
+            }
+        }
 }
 
 
@@ -343,3 +374,7 @@ if !global.transitioning{
 	}
 }
 
+deathCooldown -= global.dt;
+if deathCooldown <= 0{
+	deathCooldown = 0
+}

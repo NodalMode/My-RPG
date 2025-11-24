@@ -28,3 +28,9 @@ switch sprite_index{
 		break;
 	}
 }
+
+if state==pState.dead and !deathanimplayed{
+    deathCooldown=3;
+    deathanimplayed = true;
+    sprite_index = NOTHING;
+}
