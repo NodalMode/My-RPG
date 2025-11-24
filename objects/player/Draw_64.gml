@@ -1,1 +1,11 @@
 draw_text(0, 0, "HP: " + string(global.hp));
+draw_text(0, 15, "x speed: " + string(round(_hor*playerhbox.moveSpeed)));
+draw_text(0, 30, "y speed: " + string(round(_ver*playerhbox.moveSpeed)));
+draw_text(0, 45, "coordinates: (" + string(round(playerhbox.x)) + ", " + string(round(playerhbox.y)) + ")");
+draw_text(0, 60, "attack cooldown: " + string(attackCooldown));
+draw_text(0, 75, "damage cooldown: " + string(damageCooldown));
+draw_text(0, 90, "invincible cooldown: " + string(invincibleCooldown));
+draw_text(0, 105, "dash time: " + string(dashTime));
+draw_text(0, 120, "dash cooldown: " + string(dashCooldown));
+draw_text(0, 135, "delta time is: " + string(global.dt));
+draw_text(0, 150, "room: " + string(room));

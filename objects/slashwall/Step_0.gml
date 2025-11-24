@@ -45,6 +45,3 @@ switch player.dir{
     }  
 }
 
-if knockback == true{
-    show_debug_message("HIT WALL");
-}

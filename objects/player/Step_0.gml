@@ -71,7 +71,7 @@ switch (state)
         }
         if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0 && !global.transitioning)
         {
-            audio_play_sound(choose(swingsound[0], swingsound[1], swingsound[2]), 1, false);
+            audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
@@ -108,7 +108,7 @@ switch (state)
         }
         if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0  && !global.transitioning)
         {
-            audio_play_sound(choose(swingsound[0], swingsound[1], swingsound[2]), 1, false);
+            audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
             state = pState.atk; 
 			clearedlist = false;
 			image_index = 0;
@@ -300,8 +300,7 @@ switch (state)
 }
 
 
-show_debug_message("horizontal speed - " + string(_hor));
-show_debug_message("vertical speed - " + string(_ver));
+
 
 
 if !global.transitioning{
@@ -335,5 +334,3 @@ if !global.transitioning{
 	}
 }
 
-show_debug_message("atk cooldown - " + string(attackCooldown));
-show_debug_message("dmg cooldown - " + string(damageCooldown));

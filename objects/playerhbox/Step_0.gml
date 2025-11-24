@@ -31,7 +31,7 @@ if keyboard_check_pressed(ord("R")){   //reset
 }  
 
 
-show_debug_message("delta time is - " + string(global.dt));
+
 
 switch (player.state)
 {
