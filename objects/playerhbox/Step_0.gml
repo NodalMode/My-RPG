@@ -24,6 +24,10 @@ if player.state != pState.damaged{
 }  
 
 if keyboard_check_pressed(ord("R")){   //reset
+    if runningplaying == true{
+		audio_stop_sound(run);
+		runningplaying = false;
+	}
     global.transitioning = true;
     room_goto(Room1);
     x = startx;
