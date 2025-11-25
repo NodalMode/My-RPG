@@ -1,5 +1,7 @@
 gpu_set_texfilter(false);
 
+draw_set_font(SerifPixel7);
+
 screenshake = layer_get_id("screenshake");
 
 swingsound = [swing1, swing2, swing3];
@@ -54,21 +56,23 @@ enum pState
 
 enum facing
 {
-    u,    //0
-    d,  //1
-    l,  //2
-    r  //3
+    u,    
+    d,  
+    l,  
+    r  
 }
 
 enum attackIndex
 {
-    o,  //0
-    i   //1
+    o,  
+    i   
 }
 
 prevstate = pState.idle;
 state = pState.idle;
+displaystate="";
 dir = facing.d;
+displaydir = "";
 swingNum = attackIndex.o;
 
 _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
@@ -137,6 +141,10 @@ function arraytostring(list){
 
 hurt = 0;
 flash_counter = 0;
+
+if !variable_global_exists("displaydebug"){    
+    global.displaydebug = false;
+}
 
 global.dt = delta_time / 1000000;
 

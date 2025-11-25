@@ -56,6 +56,11 @@ if (state == pState.idle or state == pState.run) {
 	}
 }
 
+if keyboard_check_pressed(ord("M")){
+    if global.displaydebug{global.displaydebug=false;}
+    else{global.displaydebug=true;}    
+}
+
 
 switch (state)
 {
