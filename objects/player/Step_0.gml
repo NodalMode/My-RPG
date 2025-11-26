@@ -4,6 +4,13 @@ global.dt = delta_time / 1000000;
 cleaninstancearray(global.hurtbox);
 cleaninstancearray(global.ehitbox);
 
+if damageCooldown<=0 and invincibleCooldown>0 and state!=pState.dead{
+	flashtime = invincibleflash(flashtime);
+}
+else{
+	image_alpha = 1;
+}
+
 
 
 //show_debug_message("all existing hurtboxes: " + arraytostring(hurtbox))

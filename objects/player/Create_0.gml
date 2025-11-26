@@ -139,6 +139,22 @@ function arraytostring(list){
 }		
 
 
+flashtime = 0;
+
+function invincibleflash(flashtime){
+	if (current_time-flashtime)>35{
+		flashtime = current_time;
+		if image_alpha == 1{
+			image_alpha = 0.1;
+		}
+		else{
+			image_alpha = 1;
+		}
+	}
+	return flashtime;
+}
+
+
 hurt = 0;
 flash_counter = 0;
 
