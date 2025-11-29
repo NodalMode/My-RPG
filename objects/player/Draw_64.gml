@@ -1,4 +1,6 @@
-draw_text(0, 6, "HP: " + string(global.hp));
+debugcount = 8;
+
+draw_text(8, debugcount, "HP: " + string(global.hp));
 
 switch string(state){
     case "0":{
@@ -37,17 +39,30 @@ switch string(dir){
 }
 
 if global.displaydebug{
-     draw_text(0, 38, "x speed: " + string(round(_hor*playerhbox.moveSpeed)));
-     draw_text(0, 74, "y speed: " + string(round(_ver*playerhbox.moveSpeed)));
-     draw_text(0, 110, "coordinates: (" + string(round(playerhbox.x)) + ", " + string(round(playerhbox.y)) + ")");
-     draw_text(0, 146, "attack cooldown: " + string(attackCooldown));
-     draw_text(0, 182, "damage cooldown: " + string(damageCooldown));
-     draw_text(0, 218, "invincible cooldown: " + string(invincibleCooldown));
-     draw_text(0, 254, "dash time: " + string(dashTime));
-     draw_text(0, 290, "dash cooldown: " + string(dashCooldown));
-     draw_text(0, 326, "death cooldown: " + string(deathCooldown));
-     draw_text(0, 362, "delta time is: " + string(global.dt));
-     draw_text(0, 398, "room: " + string(room));
-     draw_text(0, 434, "state: " + displaystate);
-     draw_text(0, 470, "direction: " + displaydir);    
+     debugcount+=12
+     draw_text(8, debugcount, "x speed: " + string(round(_hor*playerhbox.moveSpeed)));
+     debugcount+=12
+     draw_text(8, debugcount, "y speed: " + string(round(_ver*playerhbox.moveSpeed)));
+     debugcount+=12
+     draw_text(8, debugcount, "coordinates: (" + string(round(playerhbox.x)) + ", " + string(round(playerhbox.y)) + ")");
+     debugcount+=12
+     draw_text(8, debugcount, "attack cooldown: " + string(attackCooldown));
+     debugcount+=12
+     draw_text(8, debugcount, "damage cooldown: " + string(damageCooldown));
+     debugcount+=12
+     draw_text(8, debugcount, "invincible cooldown: " + string(invincibleCooldown));
+     debugcount+=12
+     draw_text(8, debugcount, "dash time: " + string(dashTime));
+     debugcount+=12
+     draw_text(8, debugcount, "dash cooldown: " + string(dashCooldown));
+     debugcount+=12
+     draw_text(8, debugcount, "death cooldown: " + string(deathCooldown));
+     debugcount+=12
+     draw_text(8, debugcount, "delta time is: " + string(global.dt));
+     debugcount+=12
+     draw_text(8, debugcount, "room: " + string(room));
+     debugcount+=12
+     draw_text(8, debugcount, "state: " + displaystate);
+     debugcount+=12
+     draw_text(8, debugcount, "direction: " + displaydir);    
 }

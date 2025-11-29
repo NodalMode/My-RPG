@@ -29,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"duck_didle",
+    "path":"sprites/duck_didle/duck_didle.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

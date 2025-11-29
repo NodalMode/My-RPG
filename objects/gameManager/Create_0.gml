@@ -11,3 +11,6 @@ global.get_origin_pos = function(_inst)
 global.enemy_data = [];
 
 global.transitioning = false;
+
+x = round(x);
+y = round(y);

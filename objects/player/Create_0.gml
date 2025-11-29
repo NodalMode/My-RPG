@@ -1,6 +1,6 @@
 gpu_set_texfilter(false);
 
-draw_set_font(SerifPixel7);
+draw_set_font(roomtransitionparent.MYFONT);
 
 screenshake = layer_get_id("screenshake");
 
