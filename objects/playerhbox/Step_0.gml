@@ -3,7 +3,7 @@ var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
 moveSpeed = 45;
 if _hor!=0 and _ver!=0{
-	moveSpeed *= sqrt(1/2);//i have no idea if this even works
+	moveSpeed *= sqrt(1/2);  //i have no idea if this even works
 }
 
 if player.state != pState.damaged  and player.state!=pState.dead and kb <= 0 and player.state != pState.dash and !global.transitioning{	
