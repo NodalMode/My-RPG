@@ -5,7 +5,7 @@ var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
 draw_self()
 
-// then draw eyes
+// player is drawn underneath eyes and slash
 
 
 if hurt-- > 0 {
@@ -13,7 +13,7 @@ if hurt-- > 0 {
     if (flash_counter++ < _flash_time) {
         gpu_set_fog(true, c_white, 0, 0);
         draw_self();
-        gpu_set_fog(false, c_white, 0, 0);
+        gpu_set_fog(false, c_white, 0, 0);           //flash effect while stunned
     } else {
         draw_self();
     }

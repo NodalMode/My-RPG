@@ -4,6 +4,13 @@ y = global.phbox.y-10;
 var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
+if player.damageCooldown<=0 and player.invincibleCooldown>0 and player.state!=pState.dead{
+	flashtime = invincibleflash(flashtime);
+}
+else{
+	image_alpha = 1;
+}
+
 switch (player.state)
 {
     case pState.run:
@@ -25,7 +32,7 @@ switch (player.state)
         sprite_index = NOTHING;
         break;
     case pState.dead:{
-        sprite_index = NOTHING;
+        sprite_index = NOTHING;    //This could be a lot more efficient. Too bad!
         break;
     }
 	case pState.dash:

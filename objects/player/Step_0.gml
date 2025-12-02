@@ -31,7 +31,7 @@ if state != pState.atk{
 
 
 if global.transitioning{
-	image_speed = 0;
+	image_speed = 0;    //freeze animations while going between rooms
 }
      
 
@@ -272,7 +272,7 @@ switch (state)
 				}
 			}	
             
-	if (image_index >= image_number - 1) 
+	if (image_index >= image_number - 1) //animation end
 	{ 
 		if (_hor == 0 && _ver == 0) state = pState.idle; 
 		else state = pState.run; 
@@ -371,7 +371,7 @@ if !global.transitioning{
 	}
 
 	invincibleCooldown -= global.dt;
-	if invincibleCooldown <= 0{
+	if invincibleCooldown <= 0{             //all the cooldowns are counting down
 	    invincibleCooldown = 0;
 	}
 

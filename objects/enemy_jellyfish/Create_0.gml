@@ -30,7 +30,7 @@ sprite_swap_rand(spr_enemy_jellyfish_idle);
 hitbox = instance_create_layer(x, y, "hurtboxes", enemy_jellyfish_hbox);
 
 with hitbox{
-    parent = other.id;
+    parent = other.id;    //this makes it so that the hitbox is aware of the unique id of its jellyfish.
 }
 
 array_push(global.hurtbox, hitbox);

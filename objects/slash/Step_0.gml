@@ -14,7 +14,7 @@ if player.state == pState.atk
                         {
                             
                             if (sprite_index != spr_slash_down1){
-                                sprite_swap(spr_slash_down0); break;
+                                sprite_swap(spr_slash_down0); break;  //this took too long to code. DO NOT ask why. it works now though.
                             }
                         }
                         
@@ -105,6 +105,6 @@ if player.state == pState.atk
                     }
                     break;
                 }
-            }
-        }
+            }                                  //Game development is hard.
+        }                                      //Maybe i should just be a software engineer like my dad says.
     

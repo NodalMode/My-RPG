@@ -1,3 +1,5 @@
+//this object purely exists to check if a wall is being hit, so that a quirky and cool knockback thing will happen. What? No i didn't copy this from hollow knight.
+
 visible = false;
 solid = false;
 

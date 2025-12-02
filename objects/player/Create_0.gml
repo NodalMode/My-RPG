@@ -1,4 +1,4 @@
-gpu_set_texfilter(false);
+gpu_set_texfilter(false);   //no bluriness
 
 draw_set_font(roomtransitionparent.MYFONT);
 
@@ -64,7 +64,7 @@ enum facing
 
 enum attackIndex
 {
-    o,  
+    o,    //attack animations alternate
     i   
 }
 
@@ -78,17 +78,17 @@ swingNum = attackIndex.o;
 _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-attackCooldown = 0;  //0.25
+attackCooldown = 0;  //0.25 - amount of time between attacks
 
-invincibleCooldown = 0; //3
+invincibleCooldown = 0; //3 - amount of time player is invincible after taking damage
 
-damageCooldown = 0;  //0.25
+damageCooldown = 0;  //0.25 - amount of time player is stunned by an attack
 
-dashTime = 0; //0.25
-dashCooldown = 0; // 0.15
+dashTime = 0; //0.25 - the length of the dash
+dashCooldown = 0; // 0.15 - amount of time between dashes
 
-deathCooldown = 0; //3
-deathanimplayed = false;
+deathCooldown = 0; //3 - amount of time until player respawns (will be death screen)
+deathanimplayed = false; 
 
 attackIntent = false;
 
@@ -112,7 +112,7 @@ function checkcollisionlist(x, y, list){
 function cleaninstancearray(list){
 	var len = array_length(list);
 	for (var i = 0; i < len; i+=1){
-		if !instance_exists(list[i]){
+		if !instance_exists(list[i]){   //takes an array of instance ids and if an instance id in the array does not exist, then it is removed from the array
 			list[i] = list[len-1]
 			array_resize(list, len-1)
 		}
@@ -146,7 +146,7 @@ function invincibleflash(flashtime){
 		flashtime = current_time;
 		if image_alpha == 1{
 			image_alpha = 0.1;
-		}
+		}                               //gives the player a visual effect of flashing while they are invincible
 		else{
 			image_alpha = 1;
 		}
@@ -162,5 +162,5 @@ if !variable_global_exists("displaydebug"){
     global.displaydebug = false;
 }
 
-global.dt = delta_time / 1000000;
+global.dt = delta_time / 1000000;   //for convenience - and so that time passes correctly at different frame rates.
 

@@ -11,7 +11,7 @@ switch (state){
         sprite_swap(spr_enemy_jellyfish_idle);
         if (distfromplayer<=125){
             state = eState.run;
-            atkcooldown = 3
+            atkcooldown = 3    //3 second intervals inbetween attacks
         }
         x = round(x);
         y = round(y);
@@ -27,7 +27,7 @@ switch (state){
         if (atkcooldown<=0){
             atkcooldown=0;
         }
-        if (atkcooldown<=0) and !global.transitioning{
+        if (atkcooldown<=0) and !global.transitioning{ 
             state = eState.atk1;
             atkdelay = 0.6
             atkspawned = false
@@ -41,8 +41,8 @@ switch (state){
             atkdelay=0;
         }
         if (image_index==5){
-            coordx = player.x;
-            coordy = player.y;
+            coordx = player.x;   //the coordinates of the player are only recorded partway through the animation, to simulate the effect of a delayed strike.
+            coordy = player.y;   //this is done so that the player would only be hit by this if they were completely still.
         }
         if (atkdelay<=0) and (atkspawned==false){     
             instance_create_layer(coordx, coordy+13, "Instances", enemy_jellyfish_atk);

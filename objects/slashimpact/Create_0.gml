@@ -3,7 +3,7 @@ solid = false;
 
 effect = choose("1", "2", "3");
 
-rotation = choose(0, 90, 180, 270);
+rotation = choose(0, 90, 180, 270);  //each impact will have a random rotation value to make each impact more unique
 
 switch player.dir{
 	case facing.d:{

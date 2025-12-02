@@ -32,7 +32,7 @@ function whohitme(x, y, list){
     var midy = 0;
     for (var i = 0; i < length; i+=1)
     {
-        if place_meeting(x, y, list[i])
+        if place_meeting(x, y, list[i])           //returns the direction from which an attack was recieved
         {
             midx = round((list[i].bbox_bottom + list[i].bbox_top)/2);
             midy = round((list[i].bbox_right + list[i].bbox_left)/2);
@@ -57,7 +57,7 @@ function dircardinal(dir){
     else if dir >= 315 or dir < 45{
         dir = facing.r;
     }
-    else if dir >= 45 and dir < 135{
+    else if dir >= 45 and dir < 135{    //converts an angle into one of the 4 cardinal directions
         dir = facing.d;
     }
     else if dir >= 135 and dir < 255{
@@ -102,7 +102,7 @@ function tile_place_meeting(xx, yy, layer_id){
     var yp = y;
 	var meeting = false;
     
-	if player.dir == facing.d or player.dir == facing.u{
+	if player.dir == facing.d or player.dir == facing.u{   //checking an object colliding with a tile layer
 		x = xx-1;
 	}
 	else{
@@ -141,7 +141,7 @@ function tile_place_meeting_dir(xx, yy, layer_id){
     
 	switch pointing{
 		case facing.d:{
-			meeting = tilemap_get_at_pixel(layer_id, x, bbox_top);
+			meeting = tilemap_get_at_pixel(layer_id, x, bbox_top);   //same as above but checks behind
 		}
 		case facing.u:{
 			meeting = tilemap_get_at_pixel(layer_id, x, bbox_bottom);

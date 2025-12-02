@@ -1,26 +1,26 @@
-var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));   //these variables check for wasd key presses.
+var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));   //if _hor = 1, then the player is moving right. if it is -1, they are moving left.
 
 moveSpeed = 45;
 if _hor!=0 and _ver!=0{
-	moveSpeed *= sqrt(1/2);  //i have no idea if this even works
+	moveSpeed *= sqrt(1/2);  //i have no idea if this even works (speed cap)
 }
 
 if player.state != pState.damaged  and player.state!=pState.dead and kb <= 0 and player.state != pState.dash and !global.transitioning{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
-    if runningplaying == false and player.state!=pState.idle{    
+    if runningplaying == false and player.state!=pState.idle{       //actual movement code, crosschecked with any tile collisions
         run = audio_play_sound(rungrass, 1, true);
         runningplaying = true;
     }
 }
 if player.state == pState.idle and runningplaying == true{
     audio_stop_sound(run);
-    runningplaying = false;
+    runningplaying = false;   //to avoid duplicate running sounds
 }
 
 if player.state != pState.damaged{    
     x = round(x);
-    y = round(y);
+    y = round(y);   //alignment with pixels
 }  
 
 if keyboard_check_pressed(ord("R")){   //reset
@@ -41,7 +41,7 @@ switch (player.state)
 {
 	case pState.idle:
 	{
-		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
+		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0  //damage check. i should make this a function but im lazy :P
 		{
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));
@@ -145,7 +145,7 @@ switch (player.state)
             y = round(y);
 		}
 		if slashwall.knockback and kbsp <= 0{
-			kbsp = 70;
+			kbsp = 70;    //knockback when the slashwall object collides with a wall.
 			kb = 0.4;
 			check = 0;
 		}
@@ -227,7 +227,7 @@ if  kb > 0{
 	audio_stop_sound(run);
     runningplaying = false;
     if check == 0{
-        instance_create_layer(x, y, "anims", slashimpact);
+        instance_create_layer(x, y, "anims", slashimpact);//whenever you see this, it makes the screen shake effect visible.
     }
 	if kb>0.3{	
 		layer_set_visible(player.screenshake, true);

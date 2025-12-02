@@ -24,7 +24,7 @@ if player.state = pState.atk{
 	for (var i = 0; i < array_length(global.ehitbox); i += 1){
 		if place_meeting(x, y, global.ehitbox[i]) and !array_contains(hitenemies, global.ehitbox[i]){
 			layer_set_visible(player.screenshake, true);
-			array_push(hitenemies, global.ehitbox[i])
-		}
+			array_push(hitenemies, global.ehitbox[i])               //hitting enemies logic. ehitbox is an array which stores all the currently existing enemy 
+		}                                                           //hitboxes (that can be damaged)
 	}
 }

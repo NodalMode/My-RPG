@@ -1,5 +1,11 @@
 //visible = false;
 
+
+
+//THE NAME OF THIS OBJECT IS MISLEADING! while it does manage room transitions, i am planning for it to essentially act as the 'game manager'.
+//Yes, i know there is an already an object called game manager with no code. Yes, this object is called room transition parent when it doesnt 
+//do just that. Should i do something about that? Yes. Will I? Fuck no. Maybe one day (no)
+
 MYFONT = font_add_sprite(nodalfont, ord(" "), true, 2);
 
 gpu_set_texfilter(false);
@@ -14,7 +20,7 @@ enum gamestate{
 
 global.gstate = gamestate.menu;
 
-x = 160;
+x = 160;   //since this is a persistent object, i made its coordinates always be in the top left corner of every room.
 y = 90;
 
 function sprite_swap(_sprite){
@@ -59,10 +65,10 @@ pauseoptions[2] = "Back to main menu"
 function menuselect(options, x, y){
     var xx = x;
     var yy = y;
-    var intervals = round(sprite_get_height(black)/(array_length(options)+1));
-    for (var i=0; i<array_length(options); i+=1){
-        yy += intervals;
-        if menuindex == i{ 
+    var intervals = round(sprite_get_height(black)/(array_length(options)+1));   //this function takes an array of strings as a parameter and displays it on 
+    for (var i=0; i<array_length(options); i+=1){                                //screen to act as a menu. it is flexible to allow arrays of many lengths.
+        yy += intervals;                                                         //the selected option will be highlighted yellow, and the default selection
+        if menuindex == i{                                                       //index is always the first option.
             draw_set_color(c_yellow);
         }
         else{

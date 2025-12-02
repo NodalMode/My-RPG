@@ -1,12 +1,12 @@
 x = 160;
 y = 90;
 
-if global.transitioning and room!=global.targetroom and in == false{
+if global.transitioning and room!=global.targetroom and in == false{  //fading to black before moving to the next room.
     instance_create_layer(x, y, "fadetoblack", fade);
     in = true;
 }
-else if global.transitioning and player.state == pState.dead and room==global.targetroom and in==false{
-    instance_create_layer(x, y, "fadetoblack", fade);
+else if global.transitioning and player.state == pState.dead and room==global.targetroom and in==false{  //when dead, it will have the same appearance as a 
+    instance_create_layer(x, y, "fadetoblack", fade);                                                    //room transition
     in = true;
 }
 
@@ -17,7 +17,7 @@ if variable_global_exists("fadedone"){
             audio_stop_sound(playerhbox.run);
         }
         playerhbox.runningplaying = false;
-    	room_goto(global.targetroom);
+    	room_goto(global.targetroom);    //actual transition of the room
     }
 }
 
@@ -30,7 +30,7 @@ else if room == mainmenu{
     if keyboard_check_pressed(vk_down){
         menuindex+=1;
         if menuindex>array_length(mainoptions)-1{
-            menuindex = array_length(mainoptions)-1;
+            menuindex = array_length(mainoptions)-1; //switch between options in the menu, with checks to make sure you dont go out of index.
         }
         else{
             audio_play_sound(lightning1, 1, false);
@@ -42,7 +42,7 @@ else if room == mainmenu{
             menuindex = 0;
         }
         else{
-            audio_play_sound(lightning1, 1, false);
+            audio_play_sound(lightning1, 1, false);  //this would be better as a function. Too bad!
         }
     }
     if keyboard_check_pressed(vk_enter){

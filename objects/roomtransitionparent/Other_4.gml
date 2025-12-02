@@ -20,11 +20,11 @@ if variable_global_exists("transitioning") and variable_global_exists("targetroo
         instance_destroy(player);
         instance_destroy(playerhbox);
         instance_destroy(slashhbox);
-		instance_create_layer(global.targetx, global.targety, "Instances", player)
-		player.x = global.targetx;
-		player.y = global.targety;
+		instance_create_layer(global.targetx, global.targety, "Instances", player)  //each room transition object has target coordinates and a target room.
+		player.x = global.targetx;                                                  //as soon as the player's hitbox is on contact with one, these target 
+		player.y = global.targety;                                                  //target variables are made global.
 		player.dir = global.targetdir;
-	}
+	}                                                                               //the different instances are destroyed just to ensure no duplicates remain
 }
 
 global.transitioning = false;

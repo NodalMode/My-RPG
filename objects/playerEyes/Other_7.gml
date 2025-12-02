@@ -9,8 +9,8 @@ switch sprite_index{
 	case spr_player_eyes_idle_up:{
 		sprite_index = NOTHING; sprite_swap_rand(spr_player_eyes_idle_up); 
 		while image_index>33{
-			sprite_index = NOTHING; sprite_swap_rand(spr_player_eyes_idle_up); 
-		}
+			sprite_index = NOTHING; sprite_swap_rand(spr_player_eyes_idle_up); //resets the frame to a random number except the frames where the eyes are blinking
+		}                                                                      //or the ears are twitching
 		break;
 	}
 	case spr_player_eyes_idle_left:{

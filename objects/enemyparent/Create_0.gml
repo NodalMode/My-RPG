@@ -1,5 +1,3 @@
-
-
 enum eState
 {
     idle, 
@@ -10,7 +8,7 @@ enum eState
 }
 
 if instance_exists(playerhbox){
-    distfromplayer = sqrt(sqr(x-playerhbox.x)+sqr(y-playerhbox.y));
+    distfromplayer = sqrt(sqr(x-playerhbox.x)+sqr(y-playerhbox.y));  //pythagoras
 }
 
 edges = layer_tilemap_get_id("edges");
@@ -65,8 +63,7 @@ function movetoplayer(speed)
            if !tile_place_meeting(x+speed, y, edges) and !tile_place_meeting(x+speed, y, walls) and !tile_place_meeting(x+speed, y, foreground)
                x += lengthdir_x(speed, dir);
        }
-    }
-    
+    }   
 }
 
 
@@ -88,8 +85,8 @@ deathanimationplayed = false;
 
 function deadenemydata(room, xx, yy){
     var mystring = ""
-    mystring += string(room);
-    mystring += string(xx);
+    mystring += string(room);         //this function takes an instances x and coordinates, and its room, and puts them together in a string 
+    mystring += string(xx);           //in order to create a unique ID. this is so that the id can be stored in the case that the enemy dies
     mystring += string(yy);
     return mystring;
 }
@@ -102,8 +99,8 @@ if variable_global_exists("deadenemies"){
     //for (var i=0; i<array_length(global.deadenemies)-1; i+=1){
     //    if global.deadenemies[i]==mydata{
     if array_contains(global.deadenemies, mydata){
-            state = eState.dead;
-            hp = 0;
+            state = eState.dead;                //the reason that an enemies death is stored is so that going between rooms does not reset 
+            hp = 0;                             //whether an enemy is dead or alive, allowing for more seamlessness.
             killsoundplayed = true;
             deathanimationplayed = true;
             sprite_index = NOTHING;

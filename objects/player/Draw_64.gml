@@ -50,7 +50,7 @@ if global.displaydebug{
      debugcount+=12
      draw_text(8, debugcount, "damage cooldown: " + string(damageCooldown));
      debugcount+=12
-     draw_text(8, debugcount, "invincible cooldown: " + string(invincibleCooldown));
+     draw_text(8, debugcount, "invincible cooldown: " + string(invincibleCooldown));    //debug messages - activate by pressing M
      debugcount+=12
      draw_text(8, debugcount, "dash time: " + string(dashTime));
      debugcount+=12
