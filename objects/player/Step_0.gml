@@ -288,6 +288,10 @@ switch (state)
     {
 		if global.hp<=0{
             state=pState.dead; 
+            roomtransitionparent.list = roomtransitionparent.gameovertext();
+            roomtransitionparent.deathmsg = roomtransitionparent.list[0];
+            roomtransitionparent.gameoveroptions[0] = roomtransitionparent.list[1];
+            roomtransitionparent.gameoveroptions[1] = roomtransitionparent.list[2];
             audio_play_sound(killsound, 1, false); break;
         }
         if damageCooldown <= 0
@@ -340,13 +344,14 @@ switch (state)
                }
             }
             if sprite_index == NOTHING and deathCooldown<=0{
-                global.transitioning = true;    //this will be replaced with the death screen at a later point.
-                global.targetroom = Room1;
-                global.targetx = playerhbox.startx;
-                global.targety = playerhbox.starty;
-                global.targetdir = facing.d;
-                global.hp = 200;
-                global.deadenemies = [];
+                //global.transitioning = true;    
+                //global.targetroom = Room1;
+                //global.targetx = playerhbox.startx;
+                //global.targety = playerhbox.starty;
+                //global.targetdir = facing.d;
+                //global.hp = 200;
+                //global.deadenemies = [];
+                room_goto(gameover);
             }
         }
 }

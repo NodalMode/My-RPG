@@ -93,7 +93,7 @@ deathanimplayed = false;
 attackIntent = false;
 
 if !variable_global_exists("hp"){
-    global.hp = 200;
+    global.hp = 50;
 }
 
 function checkcollisionlist(x, y, list){

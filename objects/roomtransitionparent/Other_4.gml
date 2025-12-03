@@ -37,4 +37,7 @@ if !variable_global_exists("deadenemies"){
     global.deadenemies = [];
 }
 
+
 menuindex = 0;
+
+paused = false;

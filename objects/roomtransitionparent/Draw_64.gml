@@ -4,6 +4,11 @@ show_debug_message(sprite_get_width(black), sprite_get_height(black), "room: " +
 if room == mainmenu{
     menuselect(mainoptions, x, bbox_top);
 }
+else if room == gameover{
+    draw_set_color(#a32858);
+    draw_text(x, y, deathmsg+".");
+    menuselect(gameoveroptions, x, y);
+}
 
 if paused == true{
     visible = true;

@@ -1,5 +1,7 @@
 debugcount = 8;
 
+draw_set_halign(fa_left);
+
 draw_text(8, debugcount, "HP: " + string(global.hp));
 
 switch string(state){

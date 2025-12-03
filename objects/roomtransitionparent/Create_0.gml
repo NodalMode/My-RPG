@@ -65,11 +65,11 @@ pauseoptions[2] = "Back to main menu"
 function menuselect(options, x, y){
     var xx = x;
     var yy = y;
-    var intervals = round(sprite_get_height(black)/(array_length(options)+1));   //this function takes an array of strings as a parameter and displays it on 
+    var intervals = round((sprite_get_height(black)-y)/(array_length(options)+1));   //this function takes an array of strings as a parameter and displays it on 
     for (var i=0; i<array_length(options); i+=1){                                //screen to act as a menu. it is flexible to allow arrays of many lengths.
         yy += intervals;                                                         //the selected option will be highlighted yellow, and the default selection
         if menuindex == i{                                                       //index is always the first option.
-            draw_set_color(c_yellow);
+            draw_set_color(#fcef8d);
         }
         else{
             draw_set_color(c_white);
@@ -78,6 +78,20 @@ function menuselect(options, x, y){
     }
 }
 
+function gameovertext(){
+    var gameovermsg = []
+    var deathmsg = choose("end", "nothing", "oblivion", "death", "void", "finish", "termination", "nihility", "zero", "null", "annihilation", "emptiness", "darkness", "erasure", "silence");
+    var contmsg = choose("deny", "resist", "oppose", "reject", "defy", "rebel", "push back", "refuse")
+    var quitmsg = choose("accept", "embrace", "surrender", "yield", "submit", "comply", "obey", "abide", "succumb")
+    gameovermsg = [deathmsg, contmsg, quitmsg];
+    return gameovermsg;
+}
+
+
+list = gameovertext();
+deathmsg = list[0];
+gameoveroptions[0] = list[1];
+gameoveroptions[1] = list[2];
 
 
 menuindex = 0;
