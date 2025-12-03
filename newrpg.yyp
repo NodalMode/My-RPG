@@ -73,6 +73,8 @@
     {"id":{"name":"lightning1","path":"sounds/lightning1/lightning1.yy",},},
     {"id":{"name":"lightning2","path":"sounds/lightning2/lightning2.yy",},},
     {"id":{"name":"lightning3","path":"sounds/lightning3/lightning3.yy",},},
+    {"id":{"name":"menumove","path":"sounds/menumove/menumove.yy",},},
+    {"id":{"name":"menuselection","path":"sounds/menuselection/menuselection.yy",},},
     {"id":{"name":"playerdamage","path":"sounds/playerdamage/playerdamage.yy",},},
     {"id":{"name":"runbones","path":"sounds/runbones/runbones.yy",},},
     {"id":{"name":"rungrass","path":"sounds/rungrass/rungrass.yy",},},

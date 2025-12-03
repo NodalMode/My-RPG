@@ -6,7 +6,7 @@ if room == mainmenu{
 }
 else if room == gameover{
     draw_set_color(#a32858);
-    draw_text(x, y, deathmsg+".");
+    draw_text(x, 60, deathmsg+".");
     menuselect(gameoveroptions, x, y);
 }
 

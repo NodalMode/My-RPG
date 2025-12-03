@@ -64,6 +64,7 @@ if (state == pState.idle or state == pState.run) {
 }
 
 if keyboard_check_pressed(ord("M")){
+    audio_play_sound(menuselection, 1, false);
     if global.displaydebug{global.displaydebug=false;}
     else{global.displaydebug=true;}    
 }

@@ -45,7 +45,7 @@ else if room == mainmenu{
             menuindex = array_length(mainoptions)-1; //switch between options in the menu, with checks to make sure you dont go out of index.
         }
         else{
-            audio_play_sound(lightning1, 1, false);
+            audio_play_sound(menumove, 1, false);
         }
     }
     else if keyboard_check_pressed(vk_up){
@@ -54,10 +54,11 @@ else if room == mainmenu{
             menuindex = 0;
         }
         else{
-            audio_play_sound(lightning1, 1, false);  //this would be better as a function. Too bad!
+            audio_play_sound(menumove, 1, false);  //this would be better as a function. Too bad!
         }
     }
     if keyboard_check_pressed(vk_enter){
+        audio_play_sound(menuselection, 1, false);
         if menuindex==0{
             room_goto(Room1);
             global.gstate = gamestate.gameplay;
@@ -77,7 +78,7 @@ else if room == gameover{
             menuindex = array_length(gameoveroptions)-1; //switch between options in the menu, with checks to make sure you dont go out of index.
         }
         else{
-            audio_play_sound(lightning1, 1, false);
+            audio_play_sound(menumove, 1, false);
         }
     }
     else if keyboard_check_pressed(vk_up){
@@ -86,17 +87,18 @@ else if room == gameover{
             menuindex = 0;
         }
         else{
-            audio_play_sound(lightning1, 1, false);  //this would be better as a function. Too bad!
+            audio_play_sound(menumove, 1, false);  //this would be better as a function. Too bad!
         }
     }
     if keyboard_check_pressed(vk_enter){
+        audio_play_sound(menuselection, 1, false);
         if menuindex==0{
             global.transitioning = true;    
             global.targetroom = Room1;
             global.targetx = 256;
             global.targety = 640;
             global.targetdir = facing.d;
-            global.hp = 50;
+            global.hp = 200;
             global.deadenemies = [];
             global.gstate = gamestate.gameplay;
         }
@@ -123,7 +125,7 @@ if paused == true{
             menuindex = array_length(pauseoptions)-1;
         }
         else{
-            audio_play_sound(lightning1, 1, false);
+            audio_play_sound(menumove, 1, false);
         }
     }
     else if keyboard_check_pressed(vk_up){
@@ -132,10 +134,11 @@ if paused == true{
             menuindex = 0;
         }
         else{
-            audio_play_sound(lightning1, 1, false);
+            audio_play_sound(menumove, 1, false);
         }
     }
     if keyboard_check_pressed(vk_enter){
+        audio_play_sound(menuselection, 1, false);
         if menuindex==0{
             paused = false;
             global.gstate = gamestate.gameplay;
