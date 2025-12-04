@@ -31,7 +31,7 @@ switch sprite_index{
 
 if state==pState.dead and !deathanimplayed{
     deathCooldown=3;
-    audio_play_sound(killtrauma, 1, false);
+    audio_play_sound(killtrauma, 1, false);  //impact swooshing in sound leading up to the death screen.
     deathanimplayed = true;
     sprite_index = NOTHING;
 }

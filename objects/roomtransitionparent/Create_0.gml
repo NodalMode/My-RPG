@@ -66,13 +66,13 @@ function menuselect(options, x, y){
     var xx = x;
     var yy = y;
     var intervals = round((sprite_get_height(black)-y)/(array_length(options)+1));   //this function takes an array of strings as a parameter and displays it on 
-    for (var i=0; i<array_length(options); i+=1){                                //screen to act as a menu. it is flexible to allow arrays of many lengths.
-        yy += intervals;                                                         //the selected option will be highlighted yellow, and the default selection
-        if menuindex == i{                                                       //index is always the first option.
+    for (var i=0; i<array_length(options); i+=1){                                    //screen to act as a menu. it is flexible to allow arrays of many lengths.
+        yy += intervals;                                                             //the selected option will be highlighted yellow, and the default selection
+        if menuindex == i{                                                           //index is always the first option.
             draw_set_color(#fcef8d);
-        }
-        else{
-            draw_set_color(c_white);
+        }                                                                            //the flexibility comes from the fact that you can set the point at which the
+        else{                                                                      //options will begin, and it will equally spread out until reaching the bottom
+            draw_set_color(c_white);                                                 //sprite.
         }
         draw_text(xx, yy, options[i]);
     }
@@ -84,8 +84,8 @@ function gameovertext(){
     var contmsg = choose("deny", "resist", "oppose", "reject", "defy", "rebel", "push back", "refuse")
     var quitmsg = choose("accept", "embrace", "surrender", "yield", "submit", "comply", "obey", "abide", "succumb")
     gameovermsg = [deathmsg, contmsg, quitmsg];
-    return gameovermsg;
-}
+    return gameovermsg;     //i wanted the game over screen to contain randomized messages for "death", "continue" and "quit". I must note that a lot of these
+}                           //were from internet searches for synonyms and i did not come up with them myself.
 
 
 list = gameovertext();

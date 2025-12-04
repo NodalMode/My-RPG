@@ -87,7 +87,7 @@ else if room == gameover{
             menuindex = 0;
         }
         else{
-            audio_play_sound(menumove, 1, false);  //this would be better as a function. Too bad!
+            audio_play_sound(menumove, 1, false);  
         }
     }
     if keyboard_check_pressed(vk_enter){

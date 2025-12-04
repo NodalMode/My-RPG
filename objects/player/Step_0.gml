@@ -292,7 +292,7 @@ switch (state)
             roomtransitionparent.list = roomtransitionparent.gameovertext();
             roomtransitionparent.deathmsg = roomtransitionparent.list[0];
             roomtransitionparent.gameoveroptions[0] = roomtransitionparent.list[1];
-            roomtransitionparent.gameoveroptions[1] = roomtransitionparent.list[2];
+            roomtransitionparent.gameoveroptions[1] = roomtransitionparent.list[2];  //assigns the different random death messages upon death.
             audio_play_sound(killsound, 1, false); break;
         }
         if damageCooldown <= 0
@@ -345,14 +345,7 @@ switch (state)
                }
             }
             if sprite_index == NOTHING and deathCooldown<=0{
-                //global.transitioning = true;    
-                //global.targetroom = Room1;
-                //global.targetx = playerhbox.startx;
-                //global.targety = playerhbox.starty;
-                //global.targetdir = facing.d;
-                //global.hp = 200;
-                //global.deadenemies = [];
-                room_goto(gameover);
+                room_goto(gameover);  //go to game over screen. Why am i even writing this?
             }
         }
 }
