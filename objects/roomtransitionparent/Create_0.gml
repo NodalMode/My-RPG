@@ -80,7 +80,8 @@ function menuselect(options, x, y){
 
 function gameovertext(){
     var gameovermsg = []
-    var deathmsg = choose("end", "nothing", "oblivion", "death", "void", "finish", "termination", "nihility", "zero", "null", "annihilation", "emptiness", "darkness", "erasure", "silence");
+    var deathmsg = choose("end", "nothing", "oblivion", "death", "void", "finish", "termination", "nihility", "zero", "null", 
+    "annihilation", "emptiness", "darkness", "erasure", "silence");
     var contmsg = choose("deny", "resist", "oppose", "reject", "defy", "rebel", "push back", "refuse")
     var quitmsg = choose("accept", "embrace", "surrender", "yield", "submit", "comply", "obey", "abide", "succumb")
     gameovermsg = [deathmsg, contmsg, quitmsg];
