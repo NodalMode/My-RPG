@@ -1,6 +1,13 @@
 _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
+if global.transitioning{
+    image_speed = 0;
+}
+else{
+    image_speed = 1;
+}
+
 if player.state == pState.atk
 {
     visible = true;

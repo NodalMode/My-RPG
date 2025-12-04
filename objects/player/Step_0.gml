@@ -49,7 +49,7 @@ if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.
 
 if (state == pState.idle or state == pState.run) 
 {
-	if (_hor == 0 && _ver == 0) state = pState.idle;
+	if (_hor == 0 && _ver == 0 && !global.transitioning) state = pState.idle;
     else state = pState.run;
 }   
 
@@ -121,7 +121,7 @@ switch (state)
             else if (_ver<0  && _hor == 0) dir = facing.u;   
         }      
             
-        if (_hor == 0 and _ver == 0)
+        if (_hor == 0 and _ver == 0 and !global.transitioning)
         {
             state = pState.idle; 
         }
