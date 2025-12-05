@@ -11,34 +11,27 @@ else{
 	image_alpha = 1;
 }
 
-switch (player.state)
-{
-    case pState.run:
-        visible = false;
-        sprite_index = NOTHING;
-        break;    
-    case pState.idle:
-        visible = true;
-        if (player.dir == facing.d) sprite_swap_rand(spr_player_eyes_idle_down);
-        else if (player.dir == facing.u) sprite_swap_rand(spr_player_eyes_idle_up);
-        else if (player.dir == facing.r) sprite_swap_rand(spr_player_eyes_idle_right);
-        else if (player.dir == facing.l) sprite_swap_rand(spr_player_eyes_idle_left);
-        break; 
-    case pState.atk:
-        visible = false;
-        sprite_index = NOTHING;
-        break;
-    case pState.damaged:
-        sprite_index = NOTHING;
-        break;
-    case pState.dead:{
-        sprite_index = NOTHING;    //This could be a lot more efficient. Too bad!
-        break;
-    }
-	case pState.dash:
-		sprite_index = NOTHING;
-		break;
+if global.transitioning or global.gstate != gamestate.gameplay{
+    image_speed = 0;
 }
+else{
+    image_speed = 1;
+}
+
+
+
+
+	
+	
+if player.state == pState.idle{
+	visible = true;
+	if (player.dir == facing.d) sprite_swap_rand(spr_player_eyes_idle_down);
+	else if (player.dir == facing.u) sprite_swap_rand(spr_player_eyes_idle_up)
+	else if (player.dir == facing.r) sprite_swap_rand(spr_player_eyes_idle_right);
+	else if (player.dir == facing.l) sprite_swap_rand(spr_player_eyes_idle_left);
+}
+	
+
 
 
 

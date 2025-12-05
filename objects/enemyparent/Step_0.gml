@@ -1,7 +1,10 @@
 distfromplayer = sqrt(sqr(x-playerhbox.x)+sqr(y-playerhbox.y)); //pythagoras
 
-if global.transitioning{
+if global.transitioning or global.gstate != gamestate.gameplay{
     image_speed = 0;
+}
+else{
+	image_speed = 1;
 }
 
 if variable_global_exists("deadenemies"){

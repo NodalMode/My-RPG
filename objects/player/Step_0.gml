@@ -30,13 +30,16 @@ if state != pState.atk{
 }
 
 
-if global.transitioning{
+if global.transitioning or global.gstate != gamestate.gameplay{
 	image_speed = 0;    //freeze animations while going between rooms
+}
+else{
+	image_speed = 1;
 }
      
 
 
-if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.run) && (attackCooldown <= 0) 
+if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.run) && (attackCooldown <= 0) and global.gstate = gamestate.gameplay
 {
     audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
     audio_sound_pitch(swingsound[0], random_range(1, 1.5));
@@ -47,13 +50,13 @@ if (keyboard_check_pressed(ord("L"))) && (state = pState.idle or state = pState.
 }    
 
 
-if (state == pState.idle or state == pState.run) 
+if (state == pState.idle or state == pState.run) and global.gstate = gamestate.gameplay
 {
 	if (_hor == 0 && _ver == 0 && !global.transitioning) state = pState.idle;
     else state = pState.run;
 }   
 
-if (state == pState.idle or state == pState.run) {
+if (state == pState.idle or state == pState.run) and global.gstate = gamestate.gameplay{
 	if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
         audio_play_sound(dash, 1, false);
         audio_sound_pitch(dash, random_range(1, 2));
@@ -63,7 +66,7 @@ if (state == pState.idle or state == pState.run) {
 	}
 }
 
-if keyboard_check_pressed(ord("M")){
+if keyboard_check_pressed(ord("M")) and global.gstate = gamestate.gameplay{
     audio_play_sound(menuselection, 1, false);
     if global.displaydebug{global.displaydebug=false;}
     else{global.displaydebug=true;}    
@@ -74,18 +77,19 @@ switch (state)
 {
     case pState.idle:
     { 
-        switch (dir)
+        peyes.visible = true;
+		switch (dir)
         {
             case facing.d: sprite_swap_rand(spr_player_body_idle_down); break;
             case facing.u: sprite_swap_rand(spr_player_body_idle_up); break; 
             case facing.r: sprite_swap_rand(spr_player_body_idle_right); break; 
             case facing.l: sprite_swap_rand(spr_player_body_idle_left); break; 
         }
-        if (_hor!=0 or _ver!=0) && !global.transitioning
+        if (_hor!=0 or _ver!=0) && !global.transitioning && global.gstate = gamestate.gameplay
         {
             state = pState.run; 
         }
-        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0 && !global.transitioning)
+        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0 && !global.transitioning && global.gstate = gamestate.gameplay)
         {
             audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
             audio_sound_pitch(swingsound[0], random_range(1, 1.5));
@@ -94,7 +98,7 @@ switch (state)
 			clearedlist = false;
 			image_index = 0;
         }
-		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning{
+		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning && global.gstate = gamestate.gameplay{
 			audio_play_sound(dash, 1, false);
             audio_sound_pitch(dash, random_range(1, 2));
             dashTime = 0.25;
@@ -114,18 +118,18 @@ switch (state)
             case facing.r: sprite_index = spr_player_body_run_right; break; 
             case facing.l: sprite_index = spr_player_body_run_left; break; 
         }
-        if playerhbox.kb <= 0 and global.transitioning == false{    
+        if playerhbox.kb <= 0 and global.transitioning == false and global.gstate = gamestate.gameplay{    
             if (_hor>0  && _ver == 0) dir = facing.r;
             else if (_hor<0  && _ver == 0) dir = facing.l;
             else if (_ver>0  && _hor == 0) dir = facing.d;
             else if (_ver<0  && _hor == 0) dir = facing.u;   
         }      
             
-        if (_hor == 0 and _ver == 0 and !global.transitioning)
+        if (_hor == 0 and _ver == 0 and !global.transitioning and global.gstate = gamestate.gameplay)
         {
             state = pState.idle; 
         }
-        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0  && !global.transitioning)
+        if (keyboard_check_pressed(ord("L")) && attackCooldown <= 0  && !global.transitioning && global.gstate = gamestate.gameplay)
         {
             audio_play_sound(choose(swingsound[0], swingsound[1]), 1, false);
             audio_sound_pitch(swingsound[0], random_range(1, 1.5));
@@ -134,7 +138,7 @@ switch (state)
 			clearedlist = false;
 			image_index = 0;
         }
-		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning{
+		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning && global.gstate = gamestate.gameplay{
 			audio_play_sound(dash, 1, false);
             audio_sound_pitch(dash, random_range(1, 2));
             dashTime = 0.25;
@@ -354,7 +358,7 @@ switch (state)
 
 
 
-if !global.transitioning{
+if !global.transitioning and global.gstate = gamestate.gameplay{
 	attackCooldown -= global.dt;
 	if (attackCooldown <= 0){
 	    attackCooldown = 0;

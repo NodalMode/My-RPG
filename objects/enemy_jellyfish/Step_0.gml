@@ -27,7 +27,7 @@ switch (state){
         if (atkcooldown<=0){
             atkcooldown=0;
         }
-        if (atkcooldown<=0) and !global.transitioning{ 
+        if (atkcooldown<=0) and !global.transitioning and global.gstate = gamestate.gameplay{ 
             state = eState.atk1;
             atkdelay = 0.6
             atkspawned = false

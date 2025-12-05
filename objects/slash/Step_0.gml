@@ -1,7 +1,7 @@
 _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
-if global.transitioning{
+if global.transitioning or global.gstate != gamestate.gameplay{
     image_speed = 0;
 }
 else{

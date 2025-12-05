@@ -12,5 +12,5 @@ else if room == gameover{
 
 if paused == true{
     visible = true;
-    menuselect(pauseoptions, playerhbox.x, playerhbox.y-90);
+    menuselect(pauseoptions, 160, bbox_top);
 }

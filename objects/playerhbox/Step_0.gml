@@ -6,14 +6,14 @@ if _hor!=0 and _ver!=0{
 	moveSpeed *= sqrt(1/2);  //i have no idea if this even works (speed cap)
 }
 
-if player.state != pState.damaged  and player.state!=pState.dead and kb <= 0 and player.state != pState.dash and !global.transitioning{	
+if player.state != pState.damaged  and player.state!=pState.dead and kb <= 0 and player.state != pState.dash and !global.transitioning and global.gstate = gamestate.gameplay{	
 	move_and_collide(_hor*moveSpeed*global.dt, _ver*moveSpeed*global.dt, global.tilemap, undefined, undefined, undefined, moveSpeed*global.dt, moveSpeed*global.dt);
     if runningplaying == false and player.state!=pState.idle{       //actual movement code, crosschecked with any tile collisions
         run = audio_play_sound(rungrass, 1, true);
         runningplaying = true;
     }
 }
-if player.state == pState.idle and runningplaying == true{
+if ((player.state == pState.idle and runningplaying == true) or !global.gstate = gamestate.gameplay) and variable_instance_exists(id, "run"){
     audio_stop_sound(run);
     runningplaying = false;   //to avoid duplicate running sounds
 }
@@ -23,7 +23,7 @@ if player.state != pState.damaged{
     y = round(y);   //alignment with pixels
 }  
 
-if keyboard_check_pressed(ord("R")){   //reset
+if keyboard_check_pressed(ord("R")) and global.gstate = gamestate.gameplay{   //reset
     if runningplaying == true{
 		audio_stop_sound(run);
 		runningplaying = false;
@@ -41,7 +41,7 @@ switch (player.state)
 {
 	case pState.idle:
 	{
-		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0  //damage check. i should make this a function but im lazy :P
+		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0 and global.gstate = gamestate.gameplay//damage check. i should make this a function but im lazy :P
 		{
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));
@@ -61,7 +61,7 @@ switch (player.state)
 	}
     case pState.run:
 	{
-		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
+		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0 and global.gstate = gamestate.gameplay
 		{
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));
@@ -83,31 +83,31 @@ switch (player.state)
 	{
 		switch player.dir{
 			case facing.d:{
-				if !tile_place_meeting(x, y+dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, foreground) and !global.transitioning{
+				if !tile_place_meeting(x, y+dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, foreground) and !global.transitioning and global.gstate = gamestate.gameplay{
 					y += dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.u:{
-				if !tile_place_meeting(x, y-dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, foreground) and !global.transitioning{
+				if !tile_place_meeting(x, y-dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, foreground) and !global.transitioning and global.gstate = gamestate.gameplay{
 					y -= dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.l:{
-				if !tile_place_meeting(x-dashSpeed*global.dt, y, edges) and !tile_place_meeting(x-dashSpeed*global.dt, y, walls) and !tile_place_meeting(x-dashSpeed*global.dt, y, foreground) and !global.transitioning{
+				if !tile_place_meeting(x-dashSpeed*global.dt, y, edges) and !tile_place_meeting(x-dashSpeed*global.dt, y, walls) and !tile_place_meeting(x-dashSpeed*global.dt, y, foreground) and !global.transitioning and global.gstate = gamestate.gameplay{
 					x -= dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.r:{
-				if !tile_place_meeting(x+dashSpeed*global.dt, y, edges) and !tile_place_meeting(x+dashSpeed*global.dt, y, walls) and !tile_place_meeting(x+dashSpeed*global.dt, y, foreground) and !global.transitioning{
+				if !tile_place_meeting(x+dashSpeed*global.dt, y, edges) and !tile_place_meeting(x+dashSpeed*global.dt, y, walls) and !tile_place_meeting(x+dashSpeed*global.dt, y, foreground) and !global.transitioning and global.gstate = gamestate.gameplay{
 					x += dashSpeed*global.dt;
 				}
 				break;
 			}
 		}
-		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
+		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0 and global.gstate = gamestate.gameplay
 		{
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));
@@ -128,7 +128,7 @@ switch (player.state)
 	case pState.atk:
 	{
 		slashhwall = instance_create_layer(x, y-10, "hitboxes", slashwall); 
-        if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0
+        if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0 and global.gstate = gamestate.gameplay
 		{
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));

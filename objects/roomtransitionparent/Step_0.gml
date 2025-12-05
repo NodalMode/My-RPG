@@ -75,7 +75,7 @@ else if room == gameover{
 }
 else{
     sprite_index = black;
-    if keyboard_check_pressed(vk_escape) and paused == false{
+    if keyboard_check_pressed(vk_escape) and paused == false and !global.transitioning and global.gstate = gamestate.gameplay and player.state != pState.damaged and player.state != pState.dead and player.state != pState.atk{
         global.gstate = gamestate.menu;
         paused = true;
     }
