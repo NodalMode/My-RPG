@@ -39,60 +39,26 @@ else if room == mainmenu{
     sprite_index = darkgrey;
     draw_set_halign(fa_center);
     global.gstate = gamestate.menu;
-    if keyboard_check_pressed(vk_down){
-        menuindex+=1;
-        if menuindex>array_length(mainoptions)-1{
-            menuindex = array_length(mainoptions)-1; //switch between options in the menu, with checks to make sure you dont go out of index.
-        }
-        else{
-            audio_play_sound(menumove, 1, false);
-        }
-    }
-    else if keyboard_check_pressed(vk_up){
-        menuindex-=1;
-        if menuindex<0{
-            menuindex = 0;
-        }
-        else{
-            audio_play_sound(menumove, 1, false);  //this would be better as a function. Too bad!
-        }
-    }
-    if keyboard_check_pressed(vk_enter){
-        audio_play_sound(menuselection, 1, false);
-        if menuindex==0{
+	menumovearray = menuMove(menuindex, mainoptions);
+	menuindex = floor(real(menumovearray[1]));
+    if menumovearray[0] == "true"{
+		if menuindex==0{
             room_goto(Room1);
             global.gstate = gamestate.gameplay;
         }
         else if menuindex==2{
             game_end();
         }
-    }
+	}
 }
 else if room == gameover{
     sprite_index = darkgrey;
     draw_set_halign(fa_center);
     global.gstate = gamestate.menu;
-    if keyboard_check_pressed(vk_down){
-        menuindex+=1;
-        if menuindex>array_length(gameoveroptions)-1{
-            menuindex = array_length(gameoveroptions)-1; //switch between options in the menu, with checks to make sure you dont go out of index.
-        }
-        else{
-            audio_play_sound(menumove, 1, false);
-        }
-    }
-    else if keyboard_check_pressed(vk_up){
-        menuindex-=1;
-        if menuindex<0{
-            menuindex = 0;
-        }
-        else{
-            audio_play_sound(menumove, 1, false);  
-        }
-    }
-    if keyboard_check_pressed(vk_enter){
-        audio_play_sound(menuselection, 1, false);
-        if menuindex==0{
+	menumovearray = menuMove(menuindex, gameoveroptions);
+	menuindex = floor(real(menumovearray[1]));
+    if menumovearray[0] == "true"{
+		if menuindex==0{
             global.transitioning = true;    
             global.targetroom = Room1;
             global.targetx = 256;
@@ -105,7 +71,7 @@ else if room == gameover{
         else if menuindex==1{
             game_end();
         }
-    }
+	}
 }
 else{
     sprite_index = black;
@@ -119,27 +85,12 @@ else{
     }
 }
 if paused == true{
-    if keyboard_check_pressed(vk_down){
-        menuindex+=1;
-        if menuindex>array_length(pauseoptions)-1{
-            menuindex = array_length(pauseoptions)-1;
-        }
-        else{
-            audio_play_sound(menumove, 1, false);
-        }
-    }
-    else if keyboard_check_pressed(vk_up){
-        menuindex-=1;
-        if menuindex<0{
-            menuindex = 0;
-        }
-        else{
-            audio_play_sound(menumove, 1, false);
-        }
-    }
-    if keyboard_check_pressed(vk_enter){
-        audio_play_sound(menuselection, 1, false);
-        if menuindex==0{
+	draw_set_halign(fa_center);
+	global.gstate = gamestate.menu;
+	menumovearray = menuMove(menuindex, pauseoptions);
+	menuindex = floor(real(menumovearray[1]));
+    if menumovearray[0] == "true"{
+		if menuindex==0{
             paused = false;
             global.gstate = gamestate.gameplay;
         }
@@ -147,6 +98,6 @@ if paused == true{
             global.gstate = gamestate.menu;
             room_goto(mainmenu)
         }
-    }
+	}
 }
     

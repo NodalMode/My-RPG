@@ -78,6 +78,31 @@ function menuselect(options, x, y){
     }
 }
 
+
+function menuMove(menuindex, menuoptions){
+	var output = []
+	
+	if keyboard_check_pressed(vk_down) and menuindex < array_length(menuoptions)-1{
+		menuindex+=1;
+		audio_play_sound(menumove, 1, false);
+		array_push(output, "false");
+	}
+	else if keyboard_check_pressed(vk_up) and menuindex > 0{
+		menuindex-=1;
+		audio_play_sound(menumove, 1, false);
+		array_push(output, "false");
+	}
+	else if keyboard_check_pressed(vk_enter){
+		audio_play_sound(menuselection, 1, false);
+		array_push(output, "true");
+	}
+	else{
+		array_push(output, "false");
+	}
+	array_push(output, string(menuindex));
+	return output;
+}
+
 function gameovertext(){
     var gameovermsg = []
     var deathmsg = choose("end", "nothing", "oblivion", "death", "void", "finish", "termination", "nihility", "zero", "null", 
