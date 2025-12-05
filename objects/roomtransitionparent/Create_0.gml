@@ -18,6 +18,8 @@ enum gamestate{
     menu
 }
 
+image_alpha = 1;
+
 global.gstate = gamestate.menu;
 
 x = 160;   //since this is a persistent object, i made its coordinates always be in the top left corner of every room.
@@ -53,6 +55,12 @@ if !variable_global_exists("deadenemies"){
     global.deadenemies = [];
 }
 
+if room!=loading and room!=mainmenu and room!=gameover{
+    global.gstate = gamestate.gameplay;
+}
+else{
+    global.gstate = gamestate.menu;
+}
 
 mainoptions[0] = "Start";
 mainoptions[1] = "Settings";
@@ -65,7 +73,7 @@ pauseoptions[2] = "Back to main menu"
 function menuselect(options, x, y){
     var xx = x;
     var yy = y;
-    var intervals = round((sprite_get_height(black)-y)/(array_length(options)+1));   //this function takes an array of strings as a parameter and displays it on 
+    var intervals = round((180-y)/(array_length(options)+1));   //this function takes an array of strings as a parameter and displays it on 
     for (var i=0; i<array_length(options); i+=1){                                    //screen to act as a menu. it is flexible to allow arrays of many lengths.
         yy += intervals;                                                             //the selected option will be highlighted yellow, and the default selection
         if menuindex == i{                                                           //index is always the first option.

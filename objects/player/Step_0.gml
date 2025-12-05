@@ -1,4 +1,9 @@
-global.dt = delta_time / 1000000;
+if !global.transitioning and global.gstate == gamestate.gameplay{    
+    global.dt = delta_time / 1000000;
+}
+else{
+    global.dt = 0;
+}
 
 
 cleaninstancearray(global.hurtbox);
@@ -78,6 +83,9 @@ switch (state)
     case pState.idle:
     { 
         peyes.visible = true;
+        if global.transitioning or global.gstate != gamestate.gameplay{
+            peyes.visible = true;
+        }
 		switch (dir)
         {
             case facing.d: sprite_swap_rand(spr_player_body_idle_down); break;

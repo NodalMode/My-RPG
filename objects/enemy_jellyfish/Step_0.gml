@@ -19,13 +19,17 @@ switch (state){
     }
     case (eState.run):{
         sprite_swap(spr_enemy_jellyfish_idle);
-        movetoplayer(sp*global.dt);
+        if !global.transitioning and global.gstate == gamestate.gameplay{    
+            movetoplayer(sp*global.dt);
+        }
         if (distfromplayer>=250){
             state = eState.idle;
         }
-        atkcooldown -= global.dt;
-        if (atkcooldown<=0){
-            atkcooldown=0;
+        if !global.transitioning and global.gstate == gamestate.gameplay{   
+           atkcooldown -= global.dt;
+           if (atkcooldown<=0){
+               atkcooldown=0;
+           }
         }
         if (atkcooldown<=0) and !global.transitioning and global.gstate = gamestate.gameplay{ 
             state = eState.atk1;
@@ -36,10 +40,12 @@ switch (state){
     }
     case (eState.atk1):{
         sprite_swap(spr_enemy_jellyfish_atk1);
-        atkdelay -= global.dt;
-        if (atkdelay<=0){
-            atkdelay=0;
-        }
+        if !global.transitioning and global.gstate == gamestate.gameplay{
+            atkdelay -= global.dt;
+            if (atkdelay<=0){
+                atkdelay=0;
+            }
+        } 
         if (image_index==5){
             coordx = player.x;   //the coordinates of the player are only recorded partway through the animation, to simulate the effect of a delayed strike.
             coordy = player.y;   //this is done so that the player would only be hit by this if they were completely still.

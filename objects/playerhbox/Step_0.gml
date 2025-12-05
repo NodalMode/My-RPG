@@ -161,7 +161,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!tile_place_meeting(x, y-2*dmgsp*global.dt, edges)){
+                if (!tile_place_meeting(x, y-dmgsp*global.dt, edges)){
                     y-=dmgsp*global.dt;
                 }
                 break;
@@ -171,7 +171,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!tile_place_meeting(x, y+2*dmgsp*global.dt, edges)){
+                if (!tile_place_meeting(x, y+dmgsp*global.dt, edges)){
                     y+=dmgsp*global.dt;
                 }
                 break;
@@ -181,7 +181,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!tile_place_meeting(x-2*dmgsp*global.dt, y, edges)){
+                if (!tile_place_meeting(x-dmgsp*global.dt, y, edges)){
                     x-=dmgsp*global.dt;
                 }
                 break;
@@ -191,7 +191,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!tile_place_meeting(x+2*dmgsp*global.dt, y, edges)){
+                if (!tile_place_meeting(x+dmgsp*global.dt, y, edges)){
                     x+=dmgsp*global.dt;
                 }
                 break;
@@ -213,17 +213,19 @@ switch (player.state)
 //    y -= lengthdir_y(dmgsp*global.dt, dir)
 //}
 
-hitstop -= global.dt;
-if hitstop <= 0{
-    hitstop = 0;
+if global.gstate == gamestate.gameplay{
+   hitstop -= global.dt;
+   if hitstop <= 0{
+       hitstop = 0;
+   }
+   
+   kb -= global.dt;
+   if kb <= 0{
+   	kb = 0
+   }	
 }
 
-kb -= global.dt;
-if kb <= 0{
-	kb = 0
-}	
-
-if  kb > 0{
+if  kb > 0 and global.gstate == gamestate.gameplay{
 	audio_stop_sound(run);
     runningplaying = false;
     if check == 0{
@@ -280,32 +282,65 @@ if  kb > 0{
 	check += 1;
 }
 
-dashSpeed-=7.5;
-if dashSpeed <=0{
-	dashSpeed = 0;
+
+if global.gstate == gamestate.gameplay{
+   dashSpeed-=7.5;
+   if dashSpeed <=0{
+   	dashSpeed = 0;
+   }
 }
 
-while tilemap_get_at_pixel(edges, x, bbox_top) or tilemap_get_at_pixel(foreground, x, bbox_top) or tilemap_get_at_pixel(walls, x, bbox_top)
-or tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(foreground, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top)
-or tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(foreground, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top)
-{
-    y += 1
-}
 
-while tilemap_get_at_pixel(edges, x, bbox_bottom) or tilemap_get_at_pixel(foreground, x, bbox_bottom) or tilemap_get_at_pixel(walls, x, bbox_bottom)
-or tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom)
-or tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom)
-{
-    y -= 1
-}
+//if !((tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(foreground, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top))
+//and (tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(foreground, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top))
+//and (tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom))
+//and (tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom))){
+    while tilemap_get_at_pixel(edges, x, bbox_top) or tilemap_get_at_pixel(foreground, x, bbox_top) or tilemap_get_at_pixel(walls, x, bbox_top)
+    or tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(foreground, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top)
+    or tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(foreground, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top)
+    {
+        y += 1
+    }
+    
+    while tilemap_get_at_pixel(edges, x, bbox_bottom) or tilemap_get_at_pixel(foreground, x, bbox_bottom) or tilemap_get_at_pixel(walls, x, bbox_bottom)
+    or tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom)
+    or tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom)
+    {
+        y -= 1
+    }
+    
+    while tilemap_get_at_pixel(edges, bbox_right+1, y) or tilemap_get_at_pixel(foreground, bbox_right+1, y) or tilemap_get_at_pixel(walls, bbox_right+1, y){
+        x -= 1
+    }
+    
+    while tilemap_get_at_pixel(edges, bbox_left-1, y) or tilemap_get_at_pixel(foreground, bbox_left-1, y) or tilemap_get_at_pixel(walls, bbox_left-1, y){
+        x += 1
+    }
+//}
 
-while tilemap_get_at_pixel(edges, bbox_right+1, y) or tilemap_get_at_pixel(foreground, bbox_right+1, y) or tilemap_get_at_pixel(walls, bbox_right+1, y){
-    x -= 1
-}
-
-while tilemap_get_at_pixel(edges, bbox_left-1, y) or tilemap_get_at_pixel(foreground, bbox_left-1, y) or tilemap_get_at_pixel(walls, bbox_left-1, y){
-    x += 1
-}
+//while (tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(foreground, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top))
+//and (tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(foreground, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top))
+//and (tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom))
+//and (tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom)){
+//    switch player.dir{
+//        case facing.d:{
+//            y -= 1;
+//            break;
+//        }
+//        case facing.u:{
+//            y += 1;
+//            break;
+//        }
+//        case facing.r:{
+//            y -= 1;
+//            break;
+//        }    
+//        case facing.l:{
+//            y += 1;
+ //           break;
+//        }    
+//    }
+//}
 
 //^this makes sure that in the case the hitbox DOES go out of bounds, the game will push them back out.
 //so no matter whatever bugs cause the player to leave the walkable space, this will act as a band-aid that fixes all.

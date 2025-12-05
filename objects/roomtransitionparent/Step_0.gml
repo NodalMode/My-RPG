@@ -1,6 +1,13 @@
 x = 160;
 y = 90;
 
+if !global.transitioning and global.gstate == gamestate.gameplay{    
+    global.dt = delta_time / 1000000;
+}
+else{
+    global.dt = 0;
+}
+
 if global.transitioning and room!=global.targetroom and in == false{  //fading to black before moving to the next room.
     instance_create_layer(x, y, "fadetoblack", fade);
     in = true;
@@ -12,30 +19,25 @@ if instance_exists(player){
    }
 }
 
-if variable_global_exists("fadedone") and instance_exists(playerhbox){
-    if global.fadedone{
-        instance_destroy(player);
-        if variable_instance_exists(global.phbox, "run"){    
-            audio_stop_sound(playerhbox.run);
-        }
-        playerhbox.runningplaying = false;
-    	room_goto(global.targetroom);    //actual transition of the room
-    }
-}
-
 if variable_global_exists("fadedone"){
     if global.fadedone{
         instance_destroy(player);
+        if instance_exists(playerhbox) and variable_instance_exists(global.phbox, "run"){    
+            audio_stop_sound(playerhbox.run);
+            playerhbox.runningplaying = false;
+        }
     	room_goto(global.targetroom);    //actual transition of the room
     }
 }
 
 if room == loading{
+    image_alpha = 1;
     sprite_index = black;
     global.gstate = gamestate.menu;
     room_goto(mainmenu);
 }
 else if room == mainmenu{
+    image_alpha = 1;
     sprite_index = darkgrey;
     draw_set_halign(fa_center);
     global.gstate = gamestate.menu;
@@ -52,6 +54,7 @@ else if room == mainmenu{
 	}
 }
 else if room == gameover{
+    image_alpha = 1;
     sprite_index = darkgrey;
     draw_set_halign(fa_center);
     global.gstate = gamestate.menu;
@@ -69,22 +72,30 @@ else if room == gameover{
             global.gstate = gamestate.gameplay;
         }
         else if menuindex==1{
-            game_end();
+            global.gstate = gamestate.menu;
+            global.hp = 200;
+            room_goto(mainmenu);
         }
 	}
 }
 else{
-    sprite_index = black;
+    image_alpha = 0;
+    sprite_index = darkgrey;
     if keyboard_check_pressed(vk_escape) and paused == false and !global.transitioning and global.gstate = gamestate.gameplay and player.state != pState.damaged and player.state != pState.dead and player.state != pState.atk{
         global.gstate = gamestate.menu;
+        audio_play_sound(menumove, 1, false);
+        menuindex = 0;
         paused = true;
     }
     else if keyboard_check_pressed(vk_escape) and paused == true{
         global.gstate = gamestate.gameplay;
+        audio_play_sound(menumove, 1, false);
         paused = false
     }
 }
 if paused == true{
+    image_alpha = 0.5;
+    sprite_index = darkgrey;
 	draw_set_halign(fa_center);
 	global.gstate = gamestate.menu;
 	menumovearray = menuMove(menuindex, pauseoptions);
@@ -94,9 +105,9 @@ if paused == true{
             paused = false;
             global.gstate = gamestate.gameplay;
         }
-        else if menuindex==1{
+        else if menuindex==2{
             global.gstate = gamestate.menu;
-            room_goto(mainmenu)
+            room_goto(mainmenu);
         }
 	}
 }

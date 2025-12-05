@@ -1,8 +1,10 @@
 	
-if global.gstate = gamestate.gameplay{	
+if global.gstate == gamestate.gameplay{	
 	debugcount = 8;
 
 	draw_set_halign(fa_left);
+    
+    draw_set_color(c_white); 
 
 	draw_text(8, debugcount, "HP: " + string(global.hp));
 
@@ -71,3 +73,5 @@ if global.gstate = gamestate.gameplay{
 	     draw_text(8, debugcount, "direction: " + displaydir);    
 	}
 }
+draw_set_halign(fa_left);
+//draw_text(8, 60, "state: " + displaystate);

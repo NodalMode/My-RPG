@@ -22,7 +22,7 @@ if hurt-- > 0 {
     draw_self();    
 }
 
-if(_hor = 0 and _ver = 0)
+if state == pState.idle
 {
     with (playerEyes) 
     {

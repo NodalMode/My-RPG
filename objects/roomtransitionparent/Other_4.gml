@@ -29,6 +29,13 @@ if variable_global_exists("transitioning") and variable_global_exists("targetroo
 
 global.transitioning = false;
 
+if room!=loading and room!=mainmenu and room!=gameover{
+    global.gstate = gamestate.gameplay;
+}
+else{
+    global.gstate = gamestate.menu;
+}
+
 instance_create_layer(x, y, "fadetoblack", fade);
 
 in = false;

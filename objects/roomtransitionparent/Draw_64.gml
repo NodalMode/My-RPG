@@ -11,6 +11,7 @@ else if room == gameover{
 }
 
 if paused == true{
+    draw_sprite_ext(darkgrey, 0, view_xport[0], view_yport[0], 1000, 1000, 0, c_white, 0.5)
     visible = true;
     menuselect(pauseoptions, 160, bbox_top);
 }

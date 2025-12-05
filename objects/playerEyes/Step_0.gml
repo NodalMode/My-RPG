@@ -22,15 +22,26 @@ else{
 
 
 	
-	
-if player.state == pState.idle{
-	visible = true;
-	if (player.dir == facing.d) sprite_swap_rand(spr_player_eyes_idle_down);
-	else if (player.dir == facing.u) sprite_swap_rand(spr_player_eyes_idle_up)
-	else if (player.dir == facing.r) sprite_swap_rand(spr_player_eyes_idle_right);
-	else if (player.dir == facing.l) sprite_swap_rand(spr_player_eyes_idle_left);
+ if !global.transitioning and global.gstate == gamestate.gameplay{	
+   if player.state == pState.idle{
+   	visible = true;
+   	if (player.dir == facing.d) sprite_swap_rand(spr_player_eyes_idle_down);
+   	else if (player.dir == facing.u) sprite_swap_rand(spr_player_eyes_idle_up)
+   	else if (player.dir == facing.r) sprite_swap_rand(spr_player_eyes_idle_right);
+   	else if (player.dir == facing.l) sprite_swap_rand(spr_player_eyes_idle_left);
+   }
+   else{
+       visible = false;
+       image_alpha = 0;
+   }
 }
 	
+
+
+//if (sprite_index == spr_player_eyes_idle_down or sprite_index == spr_player_eyes_idle_up
+//    or sprite_index == spr_player_eyes_idle_left or sprite_index == spr_player_eyes_idle_right){
+//    visible = true;
+//}
 
 
 
