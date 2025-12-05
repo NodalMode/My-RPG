@@ -40,7 +40,7 @@
           11,-2,0,-2,5,-3,0,-2,5,-2,0,-75,11,-2,0,-2,12,-3,0,-2,12,-2,0,-75,11,-11,0,-75,11,-11,0,-75,11,-11,0,
           -75,11,-11,0,-75,11,-3,0,-2,5,3,0,5,5,-3,0,-75,11,-3,0,-2,12,3,0,12,12,-3,0,-75,11,-11,0,-75,11,-11,
           0,-2627,11,
-        ],"TileDataFormat":1,},"tilesetId":{"name":"area1","path":"tilesets/area1/area1.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+        ],"TileDataFormat":1,},"tilesetId":{"name":"area1","path":"tilesets/area1/area1.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"tlayerbg","depth":700,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"tlayerbg","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":48,"SerialiseWidth":86,"TileCompressedData":[
           -32,0,-3,1,-83,0,-3,1,-83,0,-3,1,-83,0,-3,1,-83,0,-3,1,-83,0,-3,1,-83,0,-3,1,-83,0,-3,1,-83,0,-3,1,-83,
           0,-3,1,-79,0,-11,1,-75,0,-11,1,-75,0,-3,1,-5,0,-3,1,-75,0,-3,1,-5,0,-3,1,-75,0,-3,1,-5,0,-3,1,-75,0,
