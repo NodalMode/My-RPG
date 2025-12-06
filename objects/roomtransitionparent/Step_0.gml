@@ -47,6 +47,8 @@ else if room == mainmenu{
 		if menuindex==0{
             room_goto(Room1);
             global.gstate = gamestate.gameplay;
+            global.hp = 200;
+            global.deadenemies = [];
         }
         else if menuindex==2{
             game_end();
@@ -84,6 +86,7 @@ else{
     if keyboard_check_pressed(vk_escape) and paused == false and !global.transitioning and global.gstate = gamestate.gameplay and player.state != pState.damaged and player.state != pState.dead and player.state != pState.atk{
         global.gstate = gamestate.menu;
         audio_play_sound(menumove, 1, false);
+        draw_set_halign(fa_center);
         menuindex = 0;
         paused = true;
     }
