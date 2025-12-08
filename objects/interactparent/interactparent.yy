@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"duck",
+  "%Name":"interactparent",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -8,16 +8,13 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"duck",
+  "name":"interactparent",
   "overriddenProperties":[],
   "parent":{
     "name":"objects",
     "path":"folders/objects.yy",
   },
-  "parentObjectId":{
-    "name":"interactparent",
-    "path":"objects/interactparent/interactparent.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -35,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"duck_didle",
-    "path":"sprites/duck_didle/duck_didle.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

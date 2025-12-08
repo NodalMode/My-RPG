@@ -83,25 +83,25 @@ switch (player.state)
 	{
 		switch player.dir{
 			case facing.d:{
-				if !tile_place_meeting(x, y+dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, foreground) and !global.transitioning and global.gstate = gamestate.gameplay{
+				if !tile_place_meeting(x, y+dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y+dashSpeed*global.dt, tlayerfg) and !checkcollisionlist(x-1, y+dashSpeed*global.dt, global.tilemap) and !global.transitioning and global.gstate = gamestate.gameplay{
 					y += dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.u:{
-				if !tile_place_meeting(x, y-dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, foreground) and !global.transitioning and global.gstate = gamestate.gameplay{
+				if !tile_place_meeting(x, y-dashSpeed*global.dt, edges) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, walls) and !tile_place_meeting(x-1, y-dashSpeed*global.dt, tlayerfg) and !checkcollisionlist(x-1, y-dashSpeed*global.dt, global.tilemap) and !global.transitioning and global.gstate = gamestate.gameplay{
 					y -= dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.l:{
-				if !tile_place_meeting(x-dashSpeed*global.dt, y, edges) and !tile_place_meeting(x-dashSpeed*global.dt, y, walls) and !tile_place_meeting(x-dashSpeed*global.dt, y, foreground) and !global.transitioning and global.gstate = gamestate.gameplay{
+				if !tile_place_meeting(x-dashSpeed*global.dt, y, edges) and !tile_place_meeting(x-dashSpeed*global.dt, y, walls) and !tile_place_meeting(x-dashSpeed*global.dt, y, tlayerfg) and !checkcollisionlist(x-dashSpeed*global.dt, y, global.tilemap) and !global.transitioning and global.gstate = gamestate.gameplay{
 					x -= dashSpeed*global.dt;
 				}
 				break;
 			}
 			case facing.r:{
-				if !tile_place_meeting(x+dashSpeed*global.dt, y, edges) and !tile_place_meeting(x+dashSpeed*global.dt, y, walls) and !tile_place_meeting(x+dashSpeed*global.dt, y, foreground) and !global.transitioning and global.gstate = gamestate.gameplay{
+				if !tile_place_meeting(x+dashSpeed*global.dt, y, edges) and !tile_place_meeting(x+dashSpeed*global.dt, y, walls) and !tile_place_meeting(x+dashSpeed*global.dt, y, tlayerfg) and !checkcollisionlist(x+dashSpeed*global.dt, y, global.tilemap) and !global.transitioning and global.gstate = gamestate.gameplay{
 					x += dashSpeed*global.dt;
 				}
 				break;
@@ -161,7 +161,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!tile_place_meeting(x, y-dmgsp*global.dt, edges)){
+                if (!tile_place_meeting(x, y-dmgsp*global.dt, edges) and !checkcollisionlist(x-1, y+dmgsp*global.dt, global.tilemap)){
                     y-=dmgsp*global.dt;
                 }
                 break;
@@ -171,7 +171,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!tile_place_meeting(x, y+dmgsp*global.dt, edges)){
+                if (!tile_place_meeting(x, y+dmgsp*global.dt, edges) and !checkcollisionlist(x-1, y+dmgsp*global.dt, global.tilemap)){
                     y+=dmgsp*global.dt;
                 }
                 break;
@@ -181,7 +181,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!tile_place_meeting(x-dmgsp*global.dt, y, edges)){
+                if (!tile_place_meeting(x-dmgsp*global.dt, y, edges) and !checkcollisionlist(x-1, y+dmgsp*global.dt, global.tilemap)){
                     x-=dmgsp*global.dt;
                 }
                 break;
@@ -191,7 +191,7 @@ switch (player.state)
                 if dmgsp <= 0{
                     dmgsp = 0;
                 }
-                if (!tile_place_meeting(x+dmgsp*global.dt, y, edges)){
+                if (!tile_place_meeting(x+dmgsp*global.dt, y, edges) and !checkcollisionlist(x-1, y+dmgsp*global.dt, global.tilemap)){
                     x+=dmgsp*global.dt;
                 }
                 break;
@@ -239,7 +239,7 @@ if  kb > 0 and global.gstate == gamestate.gameplay{
 	}
     switch player.dir{
 		case facing.u:{
-			if (!tile_place_meeting(x, y+kbsp*global.dt*2, edges) and !tile_place_meeting(x, y+kbsp*global.dt*2, foreground) and !tile_place_meeting(x, y+kbsp*global.dt*2, walls)){
+			if (!tile_place_meeting(x, y+kbsp*global.dt*2, edges) and !tile_place_meeting(x, y+kbsp*global.dt*2, tlayerfg) and !tile_place_meeting(x, y+kbsp*global.dt*2, walls) and !checkcollisionlist(x, y+kbsp*global.dt, global.tilemap)){
 				y+=kbsp*global.dt;
             }    
 			kbsp -= 5;	
@@ -249,7 +249,7 @@ if  kb > 0 and global.gstate == gamestate.gameplay{
 			break;
 		}	
 		case facing.d:{
-			if (!tile_place_meeting(x, y-kbsp*global.dt*2, edges) && !tile_place_meeting(x, y-kbsp*global.dt*2, foreground) && !tile_place_meeting(x, y-kbsp*global.dt*2, walls)){
+			if (!tile_place_meeting(x, y-kbsp*global.dt*2, edges) && !tile_place_meeting(x, y-kbsp*global.dt*2, tlayerfg) && !tile_place_meeting(x, y-kbsp*global.dt*2, walls) and !checkcollisionlist(x, y-kbsp*global.dt, global.tilemap)){
 				y-=kbsp*global.dt;
             }
 			kbsp -= 5;	
@@ -259,7 +259,7 @@ if  kb > 0 and global.gstate == gamestate.gameplay{
 			break;
 		}	
 		case facing.l:{
-			if (!tile_place_meeting(x+kbsp*global.dt*2, y, edges) && !tile_place_meeting(x+kbsp*global.dt*2, y, foreground) && !tile_place_meeting(x+kbsp*global.dt*2, y, walls)){
+			if (!tile_place_meeting(x+kbsp*global.dt*2, y, edges) && !tile_place_meeting(x+kbsp*global.dt*2, y, tlayerfg) && !tile_place_meeting(x+kbsp*global.dt*2, y, walls) and !checkcollisionlist(x+kbsp*global.dt, y, global.tilemap)){
 				x+=kbsp*global.dt;
             }
 			kbsp -= 5;
@@ -269,7 +269,7 @@ if  kb > 0 and global.gstate == gamestate.gameplay{
 			break;
 		}	
 		case facing.r:{
-			if (!tile_place_meeting(x-kbsp*global.dt*2, y, edges) && !tile_place_meeting(x-kbsp*global.dt*2, y, foreground) && !tile_place_meeting(x-kbsp*global.dt*2, y, walls)){
+			if (!tile_place_meeting(x-kbsp*global.dt*2, y, edges) && !tile_place_meeting(x-kbsp*global.dt*2, y, tlayerfg) && !tile_place_meeting(x-kbsp*global.dt*2, y, walls) and !checkcollisionlist(x-kbsp*global.dt, y, global.tilemap)){
 				x-=kbsp*global.dt;
             }
 			kbsp -= 5;	
@@ -291,37 +291,37 @@ if global.gstate == gamestate.gameplay{
 }
 
 
-//if !((tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(foreground, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top))
-//and (tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(foreground, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top))
-//and (tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom))
-//and (tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom))){
-    while tilemap_get_at_pixel(edges, x, bbox_top) or tilemap_get_at_pixel(foreground, x, bbox_top) or tilemap_get_at_pixel(walls, x, bbox_top)
-    or tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(foreground, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top)
-    or tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(foreground, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top)
+//if !((tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(tlayerfg, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top))
+//and (tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(tlayerfg, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top))
+//and (tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(tlayerfg, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom))
+//and (tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(tlayerfg, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom))){
+    while tilemap_get_at_pixel(edges, x, bbox_top) or tilemap_get_at_pixel(tlayerfg, x, bbox_top) or tilemap_get_at_pixel(walls, x, bbox_top)
+    or tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(tlayerfg, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top)
+    or tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(tlayerfg, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top)
     {
         y += 1
     }
     
-    while tilemap_get_at_pixel(edges, x, bbox_bottom) or tilemap_get_at_pixel(foreground, x, bbox_bottom) or tilemap_get_at_pixel(walls, x, bbox_bottom)
-    or tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom)
-    or tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom)
+    while tilemap_get_at_pixel(edges, x, bbox_bottom) or tilemap_get_at_pixel(tlayerfg, x, bbox_bottom) or tilemap_get_at_pixel(walls, x, bbox_bottom)
+    or tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(tlayerfg, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom)
+    or tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(tlayerfg, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom)
     {
         y -= 1
     }
     
-    while tilemap_get_at_pixel(edges, bbox_right+1, y) or tilemap_get_at_pixel(foreground, bbox_right+1, y) or tilemap_get_at_pixel(walls, bbox_right+1, y){
+    while tilemap_get_at_pixel(edges, bbox_right+1, y) or tilemap_get_at_pixel(tlayerfg, bbox_right+1, y) or tilemap_get_at_pixel(walls, bbox_right+1, y){
         x -= 1
     }
     
-    while tilemap_get_at_pixel(edges, bbox_left-1, y) or tilemap_get_at_pixel(foreground, bbox_left-1, y) or tilemap_get_at_pixel(walls, bbox_left-1, y){
+    while tilemap_get_at_pixel(edges, bbox_left-1, y) or tilemap_get_at_pixel(tlayerfg, bbox_left-1, y) or tilemap_get_at_pixel(walls, bbox_left-1, y){
         x += 1
     }
 //}
 
-//while (tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(foreground, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top))
-//and (tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(foreground, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top))
-//and (tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom))
-//and (tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(foreground, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom)){
+//while (tilemap_get_at_pixel(edges, bbox_left, bbox_top) or tilemap_get_at_pixel(tlayerfg, bbox_left, bbox_top) or tilemap_get_at_pixel(walls, bbox_left, bbox_top))
+//and (tilemap_get_at_pixel(edges, bbox_right, bbox_top) or tilemap_get_at_pixel(tlayerfg, bbox_right, bbox_top) or tilemap_get_at_pixel(walls, bbox_right, bbox_top))
+//and (tilemap_get_at_pixel(edges, bbox_left, bbox_bottom) or tilemap_get_at_pixel(tlayerfg, bbox_left, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_left, bbox_bottom))
+//and (tilemap_get_at_pixel(edges, bbox_right, bbox_bottom) or tilemap_get_at_pixel(tlayerfg, bbox_right, bbox_bottom) or tilemap_get_at_pixel(walls, bbox_right, bbox_bottom)){
 //    switch player.dir{
 //        case facing.d:{
 //            y -= 1;

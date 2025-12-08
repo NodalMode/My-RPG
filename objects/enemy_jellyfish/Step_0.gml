@@ -4,6 +4,10 @@ if hp <= 0{
 	state = eState.dead;
 }
 
+if state!=eState.dead{
+	x = hitbox.x;
+	y = hitbox.y;
+}
 
 
 switch (state){

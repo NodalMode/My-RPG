@@ -64,7 +64,7 @@
     },
     "name":"fadein",
     "playback":1,
-    "playbackSpeed":18.0,
+    "playbackSpeed":22.0,
     "playbackSpeedType":0,
     "resourceType":"GMSequence",
     "resourceVersion":"2.0",

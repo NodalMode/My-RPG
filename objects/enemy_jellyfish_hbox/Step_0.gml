@@ -15,10 +15,11 @@ if player.state != pState.atk{
 }
 
 
+if !global.transitioning and global.gstate == gamestate.gameplay and parent.state == eState.run{    
+	movetoplayer(parent.sp*global.dt);
+}
 
 
-x = parent.x;
-y = parent.y;
 if dmgrecieved{
     parent.hurt = 8
 }

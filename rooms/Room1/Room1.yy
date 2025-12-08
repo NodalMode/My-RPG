@@ -12,6 +12,7 @@
     {"name":"inst_4FFE9192","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_64293F12","path":"rooms/Room1/Room1.yy",},
     {"name":"inst_1CF67AC4","path":"rooms/Room1/Room1.yy",},
+    {"name":"inst_5D7078B6","path":"rooms/Room1/Room1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -29,6 +30,7 @@
         {"$GMRInstance":"v4","%Name":"inst_4FFE9192","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4FFE9192","objectId":{"name":"enemy_jellyfish","path":"objects/enemy_jellyfish/enemy_jellyfish.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":640.0,"y":544.0,},
         {"$GMRInstance":"v4","%Name":"inst_64293F12","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_64293F12","objectId":{"name":"room1trans1","path":"objects/room1trans1/room1trans1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1376.0,"y":440.0,},
         {"$GMRInstance":"v4","%Name":"inst_1CF67AC4","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1CF67AC4","objectId":{"name":"room1trans2","path":"objects/room1trans2/room1trans2.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":-90.0,"scaleX":1.0,"scaleY":1.0,"x":264.0,"y":768.0,},
+        {"$GMRInstance":"v4","%Name":"inst_5D7078B6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5D7078B6","objectId":{"name":"duck","path":"objects/duck/duck.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":448.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"edges","depth":400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"edges","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":48,"SerialiseWidth":86,"TileCompressedData":[
           -63,-2147483648,-18,13,-67,-2147483648,1,1879048205,-18,-2147483648,1,1073741837,-66,-2147483648,1,1879048205,

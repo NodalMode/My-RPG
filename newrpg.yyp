@@ -40,6 +40,7 @@
     {"id":{"name":"enemyparent","path":"objects/enemyparent/enemyparent.yy",},},
     {"id":{"name":"fade","path":"objects/fade/fade.yy",},},
     {"id":{"name":"gameManager","path":"objects/gameManager/gameManager.yy",},},
+    {"id":{"name":"interactparent","path":"objects/interactparent/interactparent.yy",},},
     {"id":{"name":"player","path":"objects/player/player.yy",},},
     {"id":{"name":"playerEyes","path":"objects/playerEyes/playerEyes.yy",},},
     {"id":{"name":"playerhbox","path":"objects/playerhbox/playerhbox.yy",},},

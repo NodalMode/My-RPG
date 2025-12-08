@@ -1,0 +1,1 @@
+dialoguetext = dialoguedisplay(practicestring, texttime, default_textdelay, textcounter);

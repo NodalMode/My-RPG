@@ -1,5 +1,13 @@
 image_angle = rotation;
 
+if global.transitioning or global.gstate != gamestate.gameplay{
+    image_speed = 0;
+}
+else{
+    image_speed = 1;
+}
+
+
 
 switch effect{
 	case "1":{
