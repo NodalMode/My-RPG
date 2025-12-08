@@ -10,7 +10,7 @@ tlayerfg = layer_tilemap_get_id("tlayerfg");
 walls = layer_tilemap_get_id("walls");
 tlayerbg = layer_tilemap_get_id("tlayerbg");
 
-global.tilemap = [tlayerfg, edges, walls, duckhbox];
+global.tilemap = [tlayerfg, edges, walls, duckhbox, checkpoint];
 
 function tile_place_meeting(xx, yy, layer_id){
     var xp = x;

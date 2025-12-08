@@ -1,4 +1,4 @@
-visible = true;
+visible = false;
 solid = true;
 
 if !instance_exists(duck){
