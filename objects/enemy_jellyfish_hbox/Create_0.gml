@@ -4,7 +4,7 @@ solid = true;
 dmgrecieved = false;
 
 edges = layer_tilemap_get_id("edges");
-foreground = layer_tilemap_get_id("tlayerfg");
+tlayerfg = layer_tilemap_get_id("tlayerfg");
 walls = layer_tilemap_get_id("walls");
 
 
@@ -43,21 +43,21 @@ function movetoplayer(speed)
     var dir = point_direction(x, y, player.x, player.y);
     if !global.transitioning{   
         if dir >= 0 and dir < 180{//up
-           if !tile_place_meeting(x, y-speed, edges) and !tile_place_meeting(x, y-speed, walls) and !tile_place_meeting(x, y-speed, foreground){
+           if !tile_place_meeting(x, y-speed, edges) and !tile_place_meeting(x, y-speed, walls) and !tile_place_meeting(x, y-speed, tlayerfg){
                y += lengthdir_y(speed, dir);
            }
        }
        else{//down
-           if !tile_place_meeting(x, y+speed, edges) and !tile_place_meeting(x, y+speed, walls) and !tile_place_meeting(x, y+speed, foreground){
+           if !tile_place_meeting(x, y+speed, edges) and !tile_place_meeting(x, y+speed, walls) and !tile_place_meeting(x, y+speed, tlayerfg){
                y += lengthdir_y(speed, dir);
            }
        }
        if dir >= 90 and dir <270{//left
-           if !tile_place_meeting(x-speed, y, edges) and !tile_place_meeting(x-speed, y, walls) and !tile_place_meeting(x-speed, y, foreground)
+           if !tile_place_meeting(x-speed, y, edges) and !tile_place_meeting(x-speed, y, walls) and !tile_place_meeting(x-speed, y, tlayerfg)
                x += lengthdir_x(speed, dir);
        }
        else{//right
-           if !tile_place_meeting(x+speed, y, edges) and !tile_place_meeting(x+speed, y, walls) and !tile_place_meeting(x+speed, y, foreground)
+           if !tile_place_meeting(x+speed, y, edges) and !tile_place_meeting(x+speed, y, walls) and !tile_place_meeting(x+speed, y, tlayerfg)
                x += lengthdir_x(speed, dir);
        }
     }   
