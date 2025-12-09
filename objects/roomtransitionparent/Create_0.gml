@@ -95,7 +95,7 @@ function menuMove(menuindex, menuoptions){
 		audio_play_sound(menumove, 1, false);
 		array_push(output, "false");
 	}
-	else if keyboard_check_pressed(vk_up) and menuindex > 0{
+	else if keyboard_check_pressed(vk_up) and menuindex > 0{    //function to allow movement between options in a menu
 		menuindex-=1;
 		audio_play_sound(menumove, 1, false);
 		array_push(output, "false");
