@@ -5,7 +5,7 @@ if !global.transitioning and global.gstate == gamestate.gameplay{
     global.dt = delta_time / 1000000;
 }
 else{
-    global.dt = 0;
+    global.dt = 0;   //while transitioning or paused, all delta time based things like movement or countdowns are also paused
 }
 
 if global.transitioning and room!=global.targetroom and in == false{  //fading to black before moving to the next room.
@@ -46,7 +46,7 @@ else if room == mainmenu{
     if menumovearray[0] == "true"{
 		if menuindex==0{
             room_goto(Room1);
-            global.gstate = gamestate.gameplay;
+            global.gstate = gamestate.gameplay;   //i want to change this to load the current checkpoint
             global.hp = 200;
             global.deadenemies = [];
         }
@@ -68,7 +68,7 @@ else if room == gameover{
             global.targetroom = Room1;
             global.targetx = 256;
             global.targety = 640;
-            global.targetdir = facing.d;
+            global.targetdir = facing.d;   //i want to change this as well to load the current checkpoint
             global.hp = 200;
             global.deadenemies = [];
             global.gstate = gamestate.gameplay;
