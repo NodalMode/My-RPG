@@ -168,6 +168,7 @@
     {"id":{"name":"spr_slash_up1","path":"sprites/spr_slash_up1/spr_slash_up1.yy",},},
     {"id":{"name":"spr_slash_uphbox","path":"sprites/spr_slash_uphbox/spr_slash_uphbox.yy",},},
     {"id":{"name":"spr_slash_upwall","path":"sprites/spr_slash_upwall/spr_slash_upwall.yy",},},
+    {"id":{"name":"textbox","path":"sprites/textbox/textbox.yy",},},
     {"id":{"name":"trans","path":"sprites/trans/trans.yy",},},
     {"id":{"name":"area1","path":"tilesets/area1/area1.yy",},},
     {"id":{"name":"snowTiles","path":"tilesets/snowTiles/snowTiles.yy",},},

@@ -38,12 +38,12 @@ function checkcollisionlist(xx, yy, list){
 	var beenhit = false;
 	for (var i = 0; i < length; i+=1)
 	{
-		//if object_exists(list[i]){
+		if object_exists(list[i]){
 			 if place_meeting(xx, yy, list[i])  //this function takes a list of hitboxes as a parameter and checks if the player is making contact with any of them.
 			 {
 				 beenhit = true;
 			 }
-		//}
+		}
 	}
 	return beenhit;
 }
