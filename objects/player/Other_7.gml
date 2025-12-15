@@ -35,3 +35,7 @@ if state==pState.dead and !deathanimplayed{
     deathanimplayed = true;
     sprite_index = NOTHING;
 }
+
+if state==pState.dash{
+	dashTime = 0;
+}

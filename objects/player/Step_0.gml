@@ -65,7 +65,7 @@ if (state == pState.idle or state == pState.run) and global.gstate = gamestate.g
 	if keyboard_check_pressed(ord("P")) && dashCooldown <= 0{
         audio_play_sound(dash, 1, false);
         audio_sound_pitch(dash, random_range(1, 2));
-		dashTime = 0.25;
+		dashTime = 0.4;
 		playerhbox.dashSpeed = 250;
 		state = pState.dash;
 	}
@@ -109,10 +109,16 @@ switch (state)
 		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning && global.gstate = gamestate.gameplay{
 			audio_play_sound(dash, 1, false);
             audio_sound_pitch(dash, random_range(1, 2));
-            dashTime = 0.25;
+            dashTime = 0.4;
 			playerhbox.dashSpeed = 250;
 			state = pState.dash;
 		}
+		if playerhbox.kb <= 0 and global.transitioning == false and global.gstate = gamestate.gameplay{    
+            if (_hor>0  && _ver == 0) dir = facing.r;
+            else if (_hor<0  && _ver == 0) dir = facing.l;
+            else if (_ver>0  && _hor == 0) dir = facing.d;
+            else if (_ver<0  && _hor == 0) dir = facing.u;   
+        }  
         break;
 
     }  
@@ -149,7 +155,7 @@ switch (state)
 		if keyboard_check_pressed(ord("P")) && dashCooldown <= 0  && !global.transitioning && global.gstate = gamestate.gameplay{
 			audio_play_sound(dash, 1, false);
             audio_sound_pitch(dash, random_range(1, 2));
-            dashTime = 0.25;
+            dashTime = 0.4;
 			playerhbox.dashSpeed = 250;
 			state = pState.dash;
 		}
@@ -157,10 +163,17 @@ switch (state)
     }
 	case pState.dash:
 	{
-		if player.dashTime <= 0{
+		if player.dashTime <= 0.0{
 			player.state = pState.idle;
 			player.dashCooldown = 0.25;
 		}
+		if playerhbox.kb <= 0 and global.transitioning == false and global.gstate = gamestate.gameplay and dashTime<=0.1{    
+				if (_hor>0){ dir = facing.r; sprite_swap_rand(spr_player_body_idle_right);}
+				else if (_hor<0){ dir = facing.l; sprite_swap_rand(spr_player_body_idle_left);}
+				else if (_ver>0){ dir = facing.d; sprite_swap_rand(spr_player_body_idle_down)}
+				else if (_ver<0){ dir = facing.u; sprite_swap_rand(spr_player_body_idle_up)}
+			}
+		else{
 		switch dir{
 			case facing.d:{
 				sprite_swap(spr_player_body_dash_down);
@@ -178,6 +191,7 @@ switch (state)
 				sprite_swap(spr_player_body_dash_left);
 				break;
 			}
+		}
 		}
 		break;
 	}
