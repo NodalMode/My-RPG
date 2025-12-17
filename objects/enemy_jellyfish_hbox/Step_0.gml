@@ -3,7 +3,10 @@ if instance_exists(slashhbox){
     	if dmgrecieved = false{	
             parent.hp -= 25;
     		dmgrecieved = true;
-            instance_create_layer(playerhbox.x, playerhbox.y, "anims", slashimpact);
+            myimpact = instance_create_layer(playerhbox.x, playerhbox.y, "anims", slashimpact);
+			with (myimpact){
+				type = "slash";
+			}
             audio_play_sound(choose(enemyhit1, enemyhit2, enemyhit3), 1, false);
         }
         

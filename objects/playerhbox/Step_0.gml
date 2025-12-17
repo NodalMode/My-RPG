@@ -43,6 +43,10 @@ switch (player.state)
 	{
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0 and global.gstate = gamestate.gameplay//damage check. i should make this a function but im lazy :P
 		{
+			myimpact = instance_create_layer(player.x, player.y, "anims", slashimpact);
+			with (myimpact){
+				type = "slash";
+			}
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));
             player.state = pState.damaged;
@@ -63,6 +67,10 @@ switch (player.state)
 	{
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0 and global.gstate = gamestate.gameplay
 		{
+			myimpact = instance_create_layer(player.x, player.y, "anims", slashimpact);
+			with (myimpact){
+				type = "slash";
+			}
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));
             player.state = pState.damaged;
@@ -109,6 +117,10 @@ switch (player.state)
 		}
 		if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0 and global.gstate = gamestate.gameplay
 		{
+			myimpact = instance_create_layer(player.x, player.y, "anims", slashimpact);
+			with (myimpact){
+				type = "slash";
+			}
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));
             player.state = pState.damaged;
@@ -130,6 +142,10 @@ switch (player.state)
 		slashhwall = instance_create_layer(x, y-10, "hitboxes", slashwall); 
         if checkcollisionlist(x, y, global.hurtbox) and player.invincibleCooldown <= 0 and global.gstate = gamestate.gameplay
 		{
+			myimpact = instance_create_layer(player.x, player.y, "anims", slashimpact);
+			with (myimpact){
+				type = "slash";
+			}
 			audio_play_sound(playerdamage, 1, false);
             audio_sound_pitch(playerdamage, random_range(1, 1.25));
             player.state = pState.damaged;

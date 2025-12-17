@@ -25,7 +25,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.1.210",
+    "IDEVersion":"2024.14.2.212",
   },
   "name":"newrpg",
   "resources":[
@@ -99,6 +99,9 @@
     {"id":{"name":"duck_uwalk","path":"sprites/duck_uwalk/duck_uwalk.yy",},},
     {"id":{"name":"fadein","path":"sprites/fadein/fadein.yy",},},
     {"id":{"name":"fadeout","path":"sprites/fadeout/fadeout.yy",},},
+    {"id":{"name":"hitimpact1","path":"sprites/hitimpact1/hitimpact1.yy",},},
+    {"id":{"name":"hitimpact2","path":"sprites/hitimpact2/hitimpact2.yy",},},
+    {"id":{"name":"hitimpact3","path":"sprites/hitimpact3/hitimpact3.yy",},},
     {"id":{"name":"nodalfont","path":"sprites/nodalfont/nodalfont.yy",},},
     {"id":{"name":"NOTHING","path":"sprites/NOTHING/NOTHING.yy",},},
     {"id":{"name":"player_hbox","path":"sprites/player_hbox/player_hbox.yy",},},
